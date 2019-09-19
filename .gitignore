@@ -1,1 +1,4 @@
 Icon?
+*.class
+.DS_Store
+.vscode
