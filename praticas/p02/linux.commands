@@ -1,0 +1,18 @@
+touch - cria ficheiro / atualiza timestamp
+ls      lista diretorio
+rm      apaga ficheiro
+    -i  pergunta por confirmação
+    -r  recursiva, apaga tudo dentro da pasta
+mkdir   cria pasta
+rmdia   apaga pasta
+pwd     print working directory
+man     manual
+find    find [pasta] -name "*.java"
+
+
+
+login sigma:
+    ssh ist19****@sigma.tecnico.ulisboa.pt
+    >>>psw
+
+scp [ficheiro] ist19****@sigma.tecnico.ulisboa.pt:[pasta_destino]
