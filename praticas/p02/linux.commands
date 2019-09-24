@@ -16,3 +16,18 @@ login sigma:
     >>>psw
 
 scp [ficheiro] ist19****@sigma.tecnico.ulisboa.pt:[pasta_destino]
+
+
+
+javac file.java -> cria file.class
+java file       -> corre o ficheiro
+
+
+cenas q ele disse q me parecem inuteis:
+
+javac `find PO -name "*.java"`
+
+compactar:
+    jar -cvf Hello.jar `find PO -name "*.java"`
+descompactar:
+    jar -xvf Hello.jar
