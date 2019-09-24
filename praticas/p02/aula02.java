@@ -2,7 +2,7 @@ public class aula02{
     public static void main(String[] args){
         //ex01();
         //ex02();
-        ex03();
+        //ex03();
     }
 
     public static void ex01(){

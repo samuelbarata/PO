@@ -7,9 +7,9 @@ public class point{
 
     //construtores
     public point(int x, int y, int z){
-        _x = x;
-        _y = y;
-        _z = z;
+        _x = abs(x);
+        _y = abs(y);
+        _z = abs(z);
         numberOfPoints++;
     }
     public point(){
@@ -34,18 +34,26 @@ public class point{
     }
 
     public void setX(int x){
-        _x = x;
+        _x = abs(x);
     }
     public void setY(int y){
-        _y = y;
+        _y = abs(y);
     }
     public void setZ(int z){
-        _z = z;
+        _z = abs(z);
     }
 
     public void move(int dx, int dy){
-        _x+=dx;
-        _y+=dy;
+        if(_x+dx<0){
+            _x = 0;
+        } else {
+            _x+=dx;
+        }
+        if(_y+dy<0){
+            _y=0;
+        } else {
+            _y+=dy;
+        }
     }
     public void move(int dx, int dy, int dz){
         _x+=dx;
@@ -53,6 +61,12 @@ public class point{
         _z+=dz;
     }
 
+    private int abs(int x){
+        if(x<0){
+            return -x;
+        }
+        return x;
+    }
 
     public String toString(){
         return "(" + _x + ", " + _y + ", " + _z + ")";

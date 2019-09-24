@@ -1,7 +1,8 @@
 public class teorica{
     public static void main(String[] args){
         //aula01();
-        aula02();
+        //aula02();
+        //aula03();
     }
 
     //aula 17/09/2019
@@ -16,6 +17,10 @@ public class teorica{
         System.out.println(p);
         //animal dog = new animal();
         //System.out.println(dog);
+    }
+
+    public static void aula03(){
+        //n fizemos nada
     }
 
 }
