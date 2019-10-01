@@ -4,7 +4,7 @@ rm      apaga ficheiro
     -i  pergunta por confirmação
     -r  recursiva, apaga tudo dentro da pasta
 mkdir   cria pasta
-rmdia   apaga pasta
+rmdir   apaga pasta
 pwd     print working directory
 man     manual
 find    find [pasta] -name "*.java"

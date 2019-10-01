@@ -1,4 +1,21 @@
 public class car{
+    /* │─└┘├┤
+    ┌──────────────────────────────────────────────────────────────────┐
+    │                               car                                │
+    ├──────────────────────────────────────────────────────────────────┤
+    │- _quilometragem:int                                              │
+    │- _vMax:int                                                       │
+    │- _marca:String                                                   │
+    │- _pneus:pneu[]                                                   │
+    ├──────────────────────────────────────────────────────────────────┤
+    │+ car(marca:String, vMax:int, p1:pneu, p2:pneu, p3:pneu, p4:pneu) │
+    │+ novosPneus(p1:pneu, p2:pneu, p3:pneu, p4:pneu):void             │
+    │+ getQuilometros():int                                            │
+    │+ getMarca():String                                               │
+    │+ pneuVazio():boolean                                             │
+    │+ setQilometros(km:int):void                                      │
+    └──────────────────────────────────────────────────────────────────┘
+    */
     private int _quilometragem = 0;
     private int _vMax;
     private String _marca;

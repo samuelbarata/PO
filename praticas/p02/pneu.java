@@ -1,6 +1,23 @@
 public class pneu{
+    /*
+    ┌───────────────────────────────────┐4
+    │               pneu                │<--------------------carro
+    ├───────────────────────────────────┤
+    │- _pressaoAtual : double           │   private
+    │- _pressaoRecomendada : double     │   
+    │- _furo : boolean                  │
+    ├───────────────────────────────────┤
+    │+ pneu(pAr:double, pRec:double)    │   public
+    │+ pressaoAtual():double            │
+    │+ pressaoRecomendada():double      │
+    │+ estaVazio():boolean              │
+    │+ aumentarPressao(dPer:double):void│
+    │+ temFuro():boolbean               │
+    │- rebenta():void                   │
+    └───────────────────────────────────┘
+    */
     private double _pressaoAtual;
-    private double _pressaoRecomendada;
+    private final double _pressaoRecomendada;   //final = n pode ser alterada apos atribuicao
     private boolean _furo = false;
 
     public pneu(double pa, double pr){
@@ -17,10 +34,7 @@ public class pneu{
     }
 
     public boolean estaVazio(){
-        if(_pressaoRecomendada*0.8 > _pressaoAtual){
-            return true;
-        }
-        return false;
+        return (_pressaoRecomendada*0.8 > _pressaoAtual);
     }
 
     public boolean temFuro(){

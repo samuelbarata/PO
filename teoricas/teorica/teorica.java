@@ -24,12 +24,3 @@ public class teorica{
     }
 
 }
-
-/**
- *  Compilar:
- *      javac HelloWorld.java
- *  Correr:
- *      java HelloWorld
- * 
- *      javac HelloWorld.java && java HelloWorld && rm HelloWorld.class
- */
