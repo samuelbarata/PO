@@ -1724,7 +1724,7 @@
 											"top": 718,
 											"width": 217.85791015625,
 											"height": 13,
-											"text": "+devolverRequisocao(): Notificacao[*]",
+											"text": "+devolverRequisocao(): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6344,10 +6344,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFtrC5ks7HaN5k="
 									},
-									"type": {
-										"$ref": "AAAAAAFtrCfUT6wsAwQ="
-									},
-									"multiplicity": "*",
+									"type": "void",
 									"direction": "return"
 								}
 							]
