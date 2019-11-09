@@ -1,6 +1,7 @@
 package m19.core;
 
 import java.io.Serializable;
+import java.util.Set;
 import java.io.IOException;
 
 import m19.core.exception.MissingFileAssociationException;
@@ -16,12 +17,37 @@ public class Library implements Serializable {
 
   /** Serial number for serialization. */
   private static final long serialVersionUID = 201901101348L;
+  
+  private static int _nextWorkId;
+  private static int _nextUserId;
+  private static Date _date;
+  private Set<User> _users;
+  private Set<Work> _works;
+  private Set<Request> _requests;
 
-  // FIXME define attributes
 
-  // FIXME define contructor(s)
+  public Library(){
+    _nextUserId=0;
+    _nextWorkId=0;
 
-  // FIXME define methods
+  }
+
+  /**
+   * @return next user's id
+   */
+  public static int getNextUId(){
+    return _nextUserId++;
+  }
+
+  /**
+   * @return next work's id
+   */
+  public static int getNextWId(){
+    return _nextWorkId++;
+  }
+ 
+
+ 
 
   /**
    * Read the text input file at the beginning of the program and populates the
@@ -35,5 +61,9 @@ public class Library implements Serializable {
   void importFile(String filename) throws BadEntrySpecificationException, IOException {
     // FIXME implement method
   }
+ 
+  // FIXME define methods
+
+
 
 }

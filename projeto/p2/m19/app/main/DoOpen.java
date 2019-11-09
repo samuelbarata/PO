@@ -29,7 +29,7 @@ public class DoOpen extends Command<LibraryManager> {
     try {
       // FIXME implement command
     } catch (FileNotFoundException fnfe) {
-      throw new FileOpenFailedException(/*FIXME: fill with the missing file name*/);
+      throw new FileOpenFailedException("fileName"/*FIXME: replace with the missing file name*/);
     } catch (ClassNotFoundException | IOException e) {
       e.printStackTrace();
     }

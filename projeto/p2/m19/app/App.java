@@ -1,6 +1,6 @@
 package m19.app;
 
-import static pt.tecnico.po.ui.Dialog.IO;
+import static pt.tecnico.po.ui.Dialog.IO;   //https://www.l2f.inesc-id.pt/~david/ist/docencia/po/2017-2018/javadoc/po-uuilib/
 
 import m19.core.LibraryManager;
 import m19.core.exception.ImportFileException;

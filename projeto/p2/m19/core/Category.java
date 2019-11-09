@@ -11,7 +11,7 @@ public enum Category {
     private Category(String categoria){
         _categoria=categoria;
     }
-    
+
     public String toString(){
         return _categoria;
     }

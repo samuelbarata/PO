@@ -1,14 +1,16 @@
 package m19.core;
 
+import java.util.Set;
+
 public class User{
-    private static int _nextId = 0;
     private final int _id;
     private boolean _isActive;
     private final String _name;
     private final String _email;
+    private Set<Notification> _notifications;
 
-    public User(String name, String email){
-        _id = _nextId++;
+    protected User(String name, String email){
+        _id = Library.getNextUId();
         _isActive = true;
         _name = name;
         _email = email;
@@ -16,9 +18,6 @@ public class User{
 
     protected boolean isActive(){
         return _isActive;
-    }
-    public String getDescription(){
-        //TODO
     }
     
 }
