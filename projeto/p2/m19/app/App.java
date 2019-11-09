@@ -13,7 +13,7 @@ public class App {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		LibraryManager mgr = new LibraryManager();
+		final LibraryManager mgr = new LibraryManager();
 
 		String datafile = System.getProperty("import"); //$NON-NLS-1$
 		if (datafile != null) {

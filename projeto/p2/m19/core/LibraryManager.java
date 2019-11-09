@@ -15,7 +15,7 @@ import m19.core.exception.ImportFileException;
  */
 public class LibraryManager {
 
-	private Library _library;  // FIXME initialize this attribute
+	private static Library _library = new Library();
 
 	// FIXME define other attributes
 
@@ -73,5 +73,9 @@ public class LibraryManager {
 		} catch (IOException | BadEntrySpecificationException e) {
 			throw new ImportFileException(e);
 		}
+	}
+
+	public static int getCurrentDate(){
+		return _library.getCurrentDate();
 	}
 }

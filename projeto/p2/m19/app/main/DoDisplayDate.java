@@ -3,6 +3,7 @@ package m19.app.main;
 import m19.core.LibraryManager;
 
 import pt.tecnico.po.ui.Command;
+import pt.tecnico.po.ui.Display;
 
 // FIXME import other core concepts
 // FIXME import other ui concepts
@@ -10,7 +11,7 @@ import pt.tecnico.po.ui.Command;
 /**
  * 4.1.2. Display the current date.
  */
-public class DoDisplayDate extends Command<LibraryManager> {
+public class DoDisplayDate extends Command<LibraryManager> implements Message {
 
 	/**
 	 * @param receiver
@@ -22,7 +23,11 @@ public class DoDisplayDate extends Command<LibraryManager> {
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() {
-		// FIXME define method
+		Display display = new Display();
+		display.add(Message.currentDate(LibraryManager.getCurrentDate()));
+		display.display();
+
+		//currentDate()
 	}
   
 }

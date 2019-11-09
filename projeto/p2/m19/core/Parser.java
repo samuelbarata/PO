@@ -17,7 +17,7 @@ public class Parser {
 	}
 
 	void parseFile(String filename) throws IOException, BadEntrySpecificationException {
-		try (Reader reader = new BufferedReader(new FileReader(filename))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			String line;
 
 			while ((line = reader.readLine()) != null)
@@ -48,9 +48,9 @@ public class Parser {
 		if (components.length != 7)
 			throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
 		
-			Dvd dvd = new Dvd(components[1], components[2], Integer.parseInt(components[3]),
-							Category.valueOf(components[4]), Integer.parseInt(components[5]),
-							Integer.parseInt(components[6]));
+		Dvd dvd = new Dvd(components[1], components[2], Integer.parseInt(components[3]),
+						Category.valueOf(components[4]), Integer.parseInt(components[5]),
+						Integer.parseInt(components[6]));
 		
 		// add dvd to _library
   }

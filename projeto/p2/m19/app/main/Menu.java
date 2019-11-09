@@ -19,6 +19,6 @@ public class Menu extends pt.tecnico.po.ui.Menu {
 			new DoOpenWorksMenu(receiver),      //6	Shows Work's Menu
 			new DoOpenRequestsMenu(receiver),   //7	Show's Requests Menu
 		});
-  }
+	}
 
 }
