@@ -1,11 +1,12 @@
 package m19.app.main;
 
-import m19.core.LibraryManager;
-
+import java.io.IOException;
+import java.io.FileNotFoundException;
 import pt.tecnico.po.ui.Command;
+import pt.tecnico.po.ui.DialogException;
 
-// FIXME import other core concepts
-// FIXME import other ui concepts
+import m19.core.LibraryManager;
+import m19.app.exception.FileOpenFailedException;
 
 /**
  * 4.1.1. Open existing document.
@@ -28,7 +29,7 @@ public class DoOpen extends Command<LibraryManager> {
     try {
       // FIXME implement command
     } catch (FileNotFoundException fnfe) {
-      throw new FileOpenFailedException(/* fill with the missing file name*/);
+      throw new FileOpenFailedException(/*FIXME: fill with the missing file name*/);
     } catch (ClassNotFoundException | IOException e) {
       e.printStackTrace();
     }

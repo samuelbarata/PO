@@ -3,17 +3,17 @@ package m19.core;
 public enum Category {
     FICTION("Ficção"), SCITECH("Técnica e Científica"), REFERENCE("Referência");
     
-    private String _category;
-    
-    private Category(String category){
-        _category = category;
+    //TODO: preceber esta cena
+
+    private String _categoria;
+
+
+    private Category(String categoria){
+        _categoria=categoria;
     }
     
-    public String valueOf(){
-        return _category;
-    }
-    public String toString(){ 
-        return valueOf();
+    public String toString(){
+        return _categoria;
     }
 
-}
+}   

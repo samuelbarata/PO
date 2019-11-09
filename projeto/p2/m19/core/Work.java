@@ -18,6 +18,6 @@ public abstract class Work{
         _category = categoria;
     }
     public void requestWorkId(String tipo){
-        System.out.print(_id + " - " + _available + " de " + _numberOfCopies + " - " + tipo + " - " + _title + " - " + _price + " - " + _category.toString());
+        System.out.print(_id + " - " + _available + " de " + _numberOfCopies + " - " + tipo + " - " + _title + " - " + _price + " - " + _category);
     }
 }
