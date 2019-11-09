@@ -11,7 +11,7 @@ public class caneta{
     private int _capacidade;
     private String _cor;
     private String _marca;
-    private int _quantidadeAtual;
+    protected int _quantidadeAtual;
     private String ansiCode;
 
     

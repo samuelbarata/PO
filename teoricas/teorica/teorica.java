@@ -3,6 +3,7 @@ public class teorica{
         //aula01();
         //aula02();
         //aula03();
+        kahoot();
     }
 
     //aula 17/09/2019
@@ -19,8 +20,22 @@ public class teorica{
         //System.out.println(dog);
     }
 
+    //aula 03/10/19
     public static void aula03(){
         //n fizemos nada
+    }
+
+    public static void kahoot(){
+        point p = null;
+        Object o = (Object)p;
+        dog b = (dog)o;
+        //long x = ;
+        //int x = ;
+        //double x = ;
+
+
+        System.out.println(x);
+
     }
 
 }
