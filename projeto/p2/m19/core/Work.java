@@ -18,7 +18,7 @@ public abstract class Work{
         _title = titulo;
         _category = categoria;
     }
-    protected void requestWorkId(String tipo){
-        //_id + " - " + _available + " de " + _numberOfCopies + " - " + tipo + " - " + _title + " - " + _price + " - " + _category
-    }
+	protected void requestWorkId(String tipo){
+		//_id + " - " + _available + " de " + _numberOfCopies + " - " + tipo + " - " + _title + " - " + _price + " - " + _category
+	}
 }

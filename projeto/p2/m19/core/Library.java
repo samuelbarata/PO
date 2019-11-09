@@ -15,54 +15,54 @@ import m19.core.exception.BadEntrySpecificationException;
  */
 public class Library implements Serializable {
 
-  /** Serial number for serialization. */
-  private static final long serialVersionUID = 201901101348L;
-  
-  private static int _nextWorkId;
-  private static int _nextUserId;
-  private static Date _date;
-  private Set<User> _users;
-  private Set<Work> _works;
-  private Set<Request> _requests;
+	/** Serial number for serialization. */
+	private static final long serialVersionUID = 201901101348L;
+	
+	private static int _nextWorkId;
+	private static int _nextUserId;
+	private static Date _date;
+	private Set<User> _users;
+	private Set<Work> _works;
+	private Set<Request> _requests;
 
 
-  public Library(){
-    _nextUserId=0;
-    _nextWorkId=0;
+	public Library(){
+		_nextUserId=0;
+		_nextWorkId=0;
 
-  }
+	}
 
-  /**
-   * @return next user's id
-   */
-  public static int getNextUId(){
-    return _nextUserId++;
-  }
+	/**
+	 * @return next user's id
+	 */
+	public static int getNextUId(){
+		return _nextUserId++;
+	}
 
-  /**
-   * @return next work's id
-   */
-  public static int getNextWId(){
-    return _nextWorkId++;
-  }
- 
+	/**
+	 * @return next work's id
+	 */
+	public static int getNextWId(){
+		return _nextWorkId++;
+	}
+	
 
- 
+	
 
-  /**
-   * Read the text input file at the beginning of the program and populates the
-   * instances of the various possible types (books, DVDs, users).
-   * 
-   * @param filename
-   *          name of the file to load
-   * @throws BadEntrySpecificationException
-   * @throws IOException
-   */
-  void importFile(String filename) throws BadEntrySpecificationException, IOException {
-    // FIXME implement method
-  }
- 
-  // FIXME define methods
+	/**
+	 * Read the text input file at the beginning of the program and populates the
+	 * instances of the various possible types (books, DVDs, users).
+	 * 
+	 * @param filename
+	 *          name of the file to load
+	 * @throws BadEntrySpecificationException
+	 * @throws IOException
+	 */
+	void importFile(String filename) throws BadEntrySpecificationException, IOException {
+		// FIXME implement method
+	}
+	
+	// FIXME define methods
 
 
 

@@ -12,20 +12,20 @@ import pt.tecnico.po.ui.Command;
  */
 public class DoAdvanceDate extends Command<LibraryManager> {
 
-  // FIXME define input fields
+	// FIXME define input fields
 
-  /**
-   * @param receiver
-   */
-  public DoAdvanceDate(LibraryManager receiver) {
-    super(Label.ADVANCE_DATE, receiver);
-    // FIXME initialize input fields
-  }
+	/**
+	 * @param receiver
+	 */
+	public DoAdvanceDate(LibraryManager receiver) {
+		super(Label.ADVANCE_DATE, receiver);
+		// FIXME initialize input fields
+	}
 
-  /** @see pt.tecnico.po.ui.Command#execute() */
-  @Override
-  public final void execute() {
-    // FIXME define method
-  }
+	/** @see pt.tecnico.po.ui.Command#execute() */
+	@Override
+	public final void execute() {
+		// FIXME define method
+	}
   
 }

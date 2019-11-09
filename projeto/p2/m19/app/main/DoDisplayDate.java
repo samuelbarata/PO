@@ -12,17 +12,17 @@ import pt.tecnico.po.ui.Command;
  */
 public class DoDisplayDate extends Command<LibraryManager> {
 
-  /**
-   * @param receiver
-   */
-  public DoDisplayDate(LibraryManager receiver) {
-    super(Label.DISPLAY_DATE, receiver);
-  }
+	/**
+	 * @param receiver
+	 */
+	public DoDisplayDate(LibraryManager receiver) {
+		super(Label.DISPLAY_DATE, receiver);
+	}
 
-  /** @see pt.tecnico.po.ui.Command#execute() */
-  @Override
-  public final void execute() {
-    // FIXME define method
-  }
+	/** @see pt.tecnico.po.ui.Command#execute() */
+	@Override
+	public final void execute() {
+		// FIXME define method
+	}
   
 }

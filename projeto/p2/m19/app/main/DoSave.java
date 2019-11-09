@@ -12,19 +12,19 @@ import pt.tecnico.po.ui.Command;
  */
 public class DoSave extends Command<LibraryManager> {
   
-  // FIXME define input fields
+	// FIXME define input fields
 
-  /**
-   * @param receiver
-   */
-  public DoSave(LibraryManager receiver) {
-    super(Label.SAVE, receiver);
-    // FIXME initialize input fields
-  }
+	/**
+	 * @param receiver
+	 */
+	public DoSave(LibraryManager receiver) {
+		super(Label.SAVE, receiver);
+		// FIXME initialize input fields
+	}
 
-  /** @see pt.tecnico.po.ui.Command#execute() */
-  @Override
-  public final void execute() {
-    // FIXME implement command
-  }
+	/** @see pt.tecnico.po.ui.Command#execute() */
+	@Override
+	public final void execute() {
+		// FIXME implement command
+	}
 }

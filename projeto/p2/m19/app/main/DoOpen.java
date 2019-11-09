@@ -13,26 +13,26 @@ import m19.app.exception.FileOpenFailedException;
  */
 public class DoOpen extends Command<LibraryManager> {
 
-  // FIXME define input fields if needed
+	// FIXME define input fields if needed
 
-  /**
-   * @param receiver
-   */
-  public DoOpen(LibraryManager receiver) {
-    super(Label.OPEN, receiver);
-    // FIXME initialize input fields if needed
-  }
+	/**
+	 * @param receiver
+	 */
+	public DoOpen(LibraryManager receiver) {
+		super(Label.OPEN, receiver);
+		// FIXME initialize input fields if needed
+	}
 
-  /** @see pt.tecnico.po.ui.Command#execute() */
-  @Override
-  public final void execute() throws DialogException {
-    try {
-      // FIXME implement command
-    } catch (FileNotFoundException fnfe) {
-      throw new FileOpenFailedException("fileName"/*FIXME: replace with the missing file name*/);
-    } catch (ClassNotFoundException | IOException e) {
-      e.printStackTrace();
-    }
-  }
+	/** @see pt.tecnico.po.ui.Command#execute() */
+	@Override
+	public final void execute() throws DialogException {
+		try {
+			// FIXME implement command
+		} catch (FileNotFoundException fnfe) {
+			throw new FileOpenFailedException("fileName"/*FIXME: replace with the missing file name*/);
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
