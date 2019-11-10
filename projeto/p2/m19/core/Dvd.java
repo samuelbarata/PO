@@ -1,5 +1,6 @@
 package m19.core;
 
+
 public class Dvd extends Work{
 	private String _director;
 	private int _igac;
@@ -10,8 +11,36 @@ public class Dvd extends Work{
 		_igac = igac;
 	}
 
-	protected void requestWorkId(){
-		super.requestWorkId("DVD");
-		System.out.println(" - " + _director + " - " + _igac);
+
+	protected String getDirector() {
+		return _director;
 	}
+
+	protected int getIgac() {
+		return _igac;
+	}
+
+    protected int getId() {
+        return super.getId();
+    }
+
+    protected int getPrice() {
+        return super.getPrice();
+    }
+
+    protected int getNumberOfCopies() {
+        return super.getNumberOfCopies();
+    }
+
+    protected int getAvailable() {
+        return super.getAvailable();
+    }
+
+    protected String getTitle() {
+        return super.getTitle();
+    }
+
+    protected Category getCategory() {
+        return super.getCategory();
+    }
 }

@@ -39,7 +39,7 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * @return next user's id
+	 * @return next user's id 				// @return == comentar return ; @param comentar variavel ;
 	 */
 	public static int getNextUId(){
 		return _nextUserId++;

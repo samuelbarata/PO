@@ -8,7 +8,7 @@ public enum Category {
 	private String _categoria;
 
 
-	private Category(String categoria){
+	private Category(String categoria){		//entao isto acrescenta uma categoria no enum?
 		_categoria=categoria;
 	}
 
