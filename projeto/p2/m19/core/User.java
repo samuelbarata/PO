@@ -1,6 +1,7 @@
 package m19.core;
 
 import java.util.Set;
+import m19.app.exception.UserRegistrationFailedException;;
 
 public class User{
     private final int _id;
@@ -10,11 +11,13 @@ public class User{
     private UserBehavior _behavior;
     private Set<Notification> _notifications;
 
-    protected User(String name, String email){
-        _id = Library.getNextUId();
+    public User(String name, String email) throws UserRegistrationFailedException{
+        if(name.isEmpty() || email.isEmpty())
+            throw new UserRegistrationFailedException(name, email);
         _isActive = true;
         _name = name;
         _email = email;
+        _id = Library.getNextUId();
     }
 
     protected boolean isActive(){
@@ -52,4 +55,12 @@ public class User{
         return _behavior;
     }
 
+    /**
+     * Compares if 2 works have the same name
+     * @param work
+     * @return
+     */
+    public boolean equals(User user){
+        return this.getName().equals(user.getName());
+    }
 }

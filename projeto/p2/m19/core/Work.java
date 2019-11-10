@@ -8,7 +8,7 @@ public abstract class Work{  // Obra
     private String _title;
     private Category _category;
 
-    protected Work(String titulo, int preco, Category categoria, int exemplares){
+    public Work(String titulo, int preco, Category categoria, int exemplares){
         _id=Library.getNextWId();
         _price = preco;
         _numberOfCopies = exemplares;
@@ -77,4 +77,12 @@ public abstract class Work{  // Obra
         return "";
     }
 
+    /**
+     * Compares if 2 works have the same title
+     * @param work
+     * @return
+     */
+    public boolean equals(Work work){
+        return this.getTitle().equals(work.getTitle());
+    }
 }

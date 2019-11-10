@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.*;
 
 import m19.core.exception.MissingFileAssociationException;
+import m19.app.exception.UserRegistrationFailedException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.core.exception.ImportFileException;
 
@@ -69,8 +70,6 @@ public class LibraryManager {
 	 * @throws IOException if there is a reading error while processing the file
 	 * @throws FileNotFoundException if the file does not exist
 	 * @throws ClassNotFoundException 
-	 * 
-	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 30;32
 	 */
 	public static void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream obIn = null;
@@ -105,5 +104,9 @@ public class LibraryManager {
 
 	public static void advanceDay(int nDays){
 		_library.advanceDay(nDays);
+	}
+
+	public static void addUser(User user) throws UserRegistrationFailedException{
+		_library.addUser(user);
 	}
 }

@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
+import m19.app.exception.UserRegistrationFailedException;
 
 // FIXME import other system types
 // FIXME import project (core) types if needed
@@ -89,7 +90,7 @@ public class Library implements Serializable {
 	 */
 	void addWork(Work work){
 		for(Work myWork:_works){
-			if(myWork.getTitle().equals(work.getTitle()))
+			if(myWork==work)
 				return;
 		}
 		_works.add(work);
@@ -99,11 +100,12 @@ public class Library implements Serializable {
 	 * checks if a user with the same name exists;
 	 * if not, adds it
 	 * @param user
+	 * @throws UserRegistrationFailedException
 	 */
-	void addUser(User user){	//TODO verificar se manda exceção
+	void addUser(User user) throws UserRegistrationFailedException{
 		for(User myUser:_users){
-			if(myUser.getName().equals(user.getName()))
-				return;
+			if(myUser==user)
+				throw new UserRegistrationFailedException(user.getName(), user.getEmail());
 		}
 		_users.add(user);
 	}

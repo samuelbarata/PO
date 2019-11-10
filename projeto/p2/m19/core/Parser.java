@@ -7,6 +7,7 @@ import java.io.Reader;
 import pt.tecnico.po.ui.DialogException;
 
 import m19.core.exception.BadEntrySpecificationException;
+import m19.app.exception.UserRegistrationFailedException;
 
 public class Parser {
 
@@ -16,7 +17,13 @@ public class Parser {
 		_library = lib;
 	}
 
-	void parseFile(String filename) throws IOException, BadEntrySpecificationException {
+	/**
+	 * Recives initial state textual representation and populates de library
+	 * @param filename textual input
+	 * @throws IOException
+	 * @throws BadEntrySpecificationException
+	 */
+	public void parseFile(String filename) throws IOException, BadEntrySpecificationException {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			String line;
 
@@ -25,6 +32,11 @@ public class Parser {
 		}
 	}
 
+	/**
+	 * split line into arguments and call respective functions
+	 * @param line
+	 * @throws BadEntrySpecificationException
+	 */
 	private void parseLine(String line) throws BadEntrySpecificationException {
 		String[] components = line.split(":");
 
@@ -44,6 +56,12 @@ public class Parser {
 		}
 	}
 
+	/**
+	 * Creates and adds Dvd to library
+	 * @param components
+	 * @param line
+	 * @throws BadEntrySpecificationException
+	 */
 	private void parseDVD(String[] components, String line) throws BadEntrySpecificationException {
 		if (components.length != 7)
 			throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
@@ -53,9 +71,15 @@ public class Parser {
 						Integer.parseInt(components[6]));
 		
 		_library.addWork(dvd);
-  }
+	}
 
-  	private void parseBook(String[] components, String line) throws BadEntrySpecificationException {
+	/**
+	 * Creates and adds Book to library 
+	 * @param components
+	 * @param line
+	 * @throws BadEntrySpecificationException
+	 */
+	private void parseBook(String[] components, String line) throws BadEntrySpecificationException {
     	if (components.length != 7)
       		throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
 
@@ -64,17 +88,23 @@ public class Parser {
 							Integer.parseInt(components[6]));
     
 		_library.addWork(book);
-  	}
+	}
 
+	/**
+	 * Creates and ads User to library
+	 * @param components
+	 * @param line
+	 * @throws BadEntrySpecificationException
+	 */
 	private void parseUser(String[] components, String line) throws BadEntrySpecificationException {
 		if (components.length != 3)
 			throw new BadEntrySpecificationException("Wrong number of fields (2) in " + line);
-		
-		User user = new User(components[1], components[2]);
-		
-		_library.addUser(user);
-		//TODO investigar comment de baixo
-		// Pode ser necessário ter um try-catch adicional neste método
+		try {
+			User user = new User(components[1], components[2]);
+			_library.addUser(user);
+		} catch (UserRegistrationFailedException e) {
+			//TODO: what to do here??
+		}
 	}
 
 }
