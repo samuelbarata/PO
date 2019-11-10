@@ -1,12 +1,10 @@
 package m19.app.main;
 
-import pt.tecnico.po.ui.Input;
-
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
-
+import pt.tecnico.po.ui.Input;
 
 import m19.core.LibraryManager;
 import m19.app.exception.FileOpenFailedException;

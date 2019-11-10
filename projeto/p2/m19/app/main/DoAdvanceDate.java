@@ -3,6 +3,7 @@ package m19.app.main;
 import m19.core.LibraryManager;
 
 import pt.tecnico.po.ui.Command;
+import pt.tecnico.po.ui.Input;
 
 // FIXME import iother core concepts
 // FIXME import ui concepts
@@ -12,20 +13,24 @@ import pt.tecnico.po.ui.Command;
  */
 public class DoAdvanceDate extends Command<LibraryManager> {
 
-	// FIXME define input fields
+	private Input<Integer> _inputForm;	//field of form
 
 	/**
 	 * @param receiver
 	 */
 	public DoAdvanceDate(LibraryManager receiver) {
 		super(Label.ADVANCE_DATE, receiver);
-		// FIXME initialize input fields
+		_inputForm = _form.addIntegerInput(Message.requestDaysToAdvance());
 	}
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() {
-		// FIXME define method
+		int _days;
+		_form.parse();
+		_days = _inputForm.value();
+		LibraryManager.advanceDay(_days);
+		//TODO: verificar tudo com nova data
 	}
   
 }

@@ -13,21 +13,21 @@ import pt.tecnico.po.ui.Display;
  */
 public class DoDisplayDate extends Command<LibraryManager> implements Message {
 
+	private Display _display;
+
 	/**
 	 * @param receiver
 	 */
 	public DoDisplayDate(LibraryManager receiver) {
 		super(Label.DISPLAY_DATE, receiver);
+		_display = new Display();
 	}
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() {
-		Display display = new Display();
-		display.add(Message.currentDate(LibraryManager.getCurrentDate()));
-		display.display();
-
-		//currentDate()
+		_display.add(Message.currentDate(LibraryManager.getCurrentDate()));
+		_display.display();
 	}
   
 }

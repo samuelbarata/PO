@@ -39,24 +39,32 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * @return next user's id 				// @return == comentar return ; @param comentar variavel ;
+	 * @return next user's id
 	 */
-	public static int getNextUId(){
+	protected static int getNextUId(){
 		return _nextUserId++;
 	}
 
 	/**
 	 * @return next work's id
 	 */
-	public static int getNextWId(){
+	protected static int getNextWId(){
 		return _nextWorkId++;
 	}
 	
 	/**
 	 * @return current system date
 	 */
-	public int getCurrentDate(){
+	protected int getCurrentDate(){
 		return _date.getCurrentDate();
+	}
+
+	protected int advanceDay(int nDays){
+		try {
+			return _date.advanceDay(nDays);
+		} catch(BadEntrySpecificationException e) {
+			return 0;
+		}
 	}
 	
 
@@ -70,9 +78,34 @@ public class Library implements Serializable {
 	 * @throws IOException
 	 */
 	void importFile(String filename) throws BadEntrySpecificationException, IOException {
-		// FIXME implement method
+		Parser _parser = new Parser(this);
+		_parser.parseFile(filename);
 	}
 	
-	// FIXME define methods
+	/**
+	 * checks if a work with the same title exists;
+	 * if not, adds it
+	 * @param work
+	 */
+	void addWork(Work work){
+		for(Work myWork:_works){
+			if(myWork.getTitle().equals(work.getTitle()))
+				return;
+		}
+		_works.add(work);
+	}
+
+	/**
+	 * checks if a user with the same name exists;
+	 * if not, adds it
+	 * @param user
+	 */
+	void addUser(User user){	//TODO verificar se manda exceção
+		for(User myUser:_users){
+			if(myUser.getName().equals(user.getName()))
+				return;
+		}
+		_users.add(user);
+	}
 
 }

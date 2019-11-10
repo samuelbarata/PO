@@ -35,7 +35,7 @@ public class LibraryManager {
 	 * 
 	*/
 	public static void save() throws MissingFileAssociationException, IOException {
-		saveAs("library.xprt");
+		//TODO: gravar por cima do nome anterior
 	}
 
 	/**
@@ -101,5 +101,9 @@ public class LibraryManager {
 
 	public static int getCurrentDate(){
 		return _library.getCurrentDate();
+	}
+
+	public static void advanceDay(int nDays){
+		_library.advanceDay(nDays);
 	}
 }

@@ -74,7 +74,7 @@ public abstract class Work{  // Obra
     }
 
     public String getDescritpion(){
-        //FIXME
+        return "";
     }
 
 }

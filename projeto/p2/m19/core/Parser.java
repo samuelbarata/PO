@@ -52,7 +52,7 @@ public class Parser {
 						Category.valueOf(components[4]), Integer.parseInt(components[5]),
 						Integer.parseInt(components[6]));
 		
-		// add dvd to _library
+		_library.addWork(dvd);
   }
 
   	private void parseBook(String[] components, String line) throws BadEntrySpecificationException {
@@ -63,7 +63,7 @@ public class Parser {
 							Category.valueOf(components[4]), Integer.parseInt(components[5]),
 							Integer.parseInt(components[6]));
     
-    	// add book to _library
+		_library.addWork(book);
   	}
 
 	private void parseUser(String[] components, String line) throws BadEntrySpecificationException {
@@ -72,7 +72,8 @@ public class Parser {
 		
 		User user = new User(components[1], components[2]);
 		
-		// add user to _library
+		_library.addUser(user);
+		//TODO investigar comment de baixo
 		// Pode ser necessário ter um try-catch adicional neste método
 	}
 

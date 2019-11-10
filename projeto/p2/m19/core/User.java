@@ -28,6 +28,28 @@ public class User{
         return _id + " - " + _name + " - " + _email + " - " + _behavior + " - " + _isActive;
     }
     
-    //TODO: getters
+    /**
+     * 
+     * @return name
+     */
+    protected String getName(){
+        return _name;
+    }
+
+    /**
+     * 
+     * @return email
+     */
+    protected String getEmail(){
+        return _email;
+    }
+
+    /**
+     * 
+     * @return user behavior
+     */
+    protected UserBehavior getBehaviour(){
+        return _behavior;
+    }
 
 }

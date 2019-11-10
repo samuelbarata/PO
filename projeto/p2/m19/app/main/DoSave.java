@@ -6,6 +6,8 @@ import m19.core.LibraryManager;
 import m19.core.exception.MissingFileAssociationException;
 
 import pt.tecnico.po.ui.Command;
+import pt.tecnico.po.ui.Input;
+import pt.tecnico.po.ui.Display;
 
 // FIXME import other core concepts
 // FIXME import other ui concepts
@@ -15,29 +17,33 @@ import pt.tecnico.po.ui.Command;
  */
 public class DoSave extends Command<LibraryManager> implements Message{
   
-	// FIXME define input fields
+	private Input<String> _inputForm;
+	private Display _display;
 
 	/**
 	 * @param receiver
 	 */
 	public DoSave(LibraryManager receiver) {
 		super(Label.SAVE, receiver);
-		// FIXME initialize input fields
+		_display = new Display();
+		_inputForm = _form.addStringInput(Message.saveAs());
 	}
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() {
-		//TODO ask for filename Message.saveAs(); copiar do DoOpen.java depois de feito
+		String _filename;
+		_form.parse();					//pede ao utilizador o form construido acima
+		_filename=_inputForm.value();	//devolve o primeiro valor lido pelo form
 
-		/*try{
-			if(name)
-				LibraryManager.saveAs(name);
-			else
-				//TODO warn: Message.newSaveAs();
-				LibraryManager.save();
+		try{
+			if(_filename.equals(null)){
+				_display.add(Message.newSaveAs());
+			} else {
+				LibraryManager.saveAs(_filename);
+			}
 		} catch(MissingFileAssociationException | IOException ex) {
 
-		}*/
+		}
 	}
 }

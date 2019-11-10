@@ -22,8 +22,8 @@ public class Date{
 	 * @return current date
 	 */
 	protected int advanceDay(int nDays) throws BadEntrySpecificationException{
-		if(nDays <= 0){
-			return _currentDate;
+		if(nDays < 0){
+			throw new BadEntrySpecificationException("number of days to advance < 0");
 		}
 		return _currentDate+=nDays;
 	}
