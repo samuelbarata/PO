@@ -2,6 +2,7 @@ package m19.core;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.*;
 
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
@@ -15,11 +16,13 @@ import m19.core.exception.ImportFileException;
  */
 public class LibraryManager {
 
-	private static Library _library = new Library();
+	private static Library _library;
 
 	// FIXME define other attributes
 
-	// FIXME define contructor(s)
+	public LibraryManager(){
+		_library = new Library();
+	}
 	
 	// FIXME define methods
 
@@ -29,10 +32,10 @@ public class LibraryManager {
 	 * @throws MissingFileAssociationException if the name of the file to store the persistent
 	 *         state has not been set yet.
 	 * @throws IOException if some error happen during the serialization of the persistent state
-
+	 * 
 	*/
 	public void save() throws MissingFileAssociationException, IOException {
-		// FIXME implement method
+		saveAs("library.xprt");
 	}
 
 	/**
@@ -43,9 +46,19 @@ public class LibraryManager {
 	 * @throws MissingFileAssociationException if the name of the file to store the persistent
 	 *         is not a valid one.
 	 * @throws IOException if some error happen during the serialization of the persistent state
+	 * 
+	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 29;31
 	 */
 	public void saveAs(String filename) throws MissingFileAssociationException, IOException {
-		// FIXME implement method
+		ObjectOutputStream obOut = null;
+		try {
+			FileOutputStream fpout = new FileOutputStream(filename);
+			obOut = new ObjectOutputStream(fpout);
+			obOut.writeObject(_library);
+		} finally {
+			if (obOut != null)
+				obOut.close();
+		}
 	}
 
 	/**
@@ -56,9 +69,23 @@ public class LibraryManager {
 	 * @throws IOException if there is a reading error while processing the file
 	 * @throws FileNotFoundException if the file does not exist
 	 * @throws ClassNotFoundException 
+	 * 
+	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 30;32
 	 */
 	public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
-		// FIXME implement method
+		ObjectInputStream obIn = null;
+		try {
+			FileInputStream fpin = new FileInputStream(filename);
+			obIn = new ObjectInputStream(fpin);
+			Object in = obIn.readObject();
+			if (in instanceof Library) {
+                _library = (Library)in;
+			}
+
+		} finally {
+			if (obIn != null)
+				obIn.close();
+		}
 	}
 
 	/**

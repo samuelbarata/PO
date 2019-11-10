@@ -2,6 +2,7 @@ package m19.core;
 
 import java.io.Serializable;
 import java.util.Set;
+import java.util.Collections;
 import java.io.IOException;
 
 import m19.core.exception.MissingFileAssociationException;
@@ -20,16 +21,21 @@ public class Library implements Serializable {
 	
 	private static int _nextWorkId;
 	private static int _nextUserId;
-	private static Date _date = new Date();
+	private static Date _date;
 	private Set<User> _users;
 	private Set<Work> _works;
 	private Set<Request> _requests;
 
-
+	/**
+	 * Initialize empty library
+	 */
 	public Library(){
 		_nextUserId=0;
 		_nextWorkId=0;
-
+		_date = new Date();
+		_users = Collections.emptySet();
+		_works = Collections.emptySet();
+		_requests = Collections.emptySet();
 	}
 
 	/**
@@ -46,6 +52,9 @@ public class Library implements Serializable {
 		return _nextWorkId++;
 	}
 	
+	/**
+	 * @return current system date
+	 */
 	public int getCurrentDate(){
 		return _date.getCurrentDate();
 	}
@@ -65,7 +74,5 @@ public class Library implements Serializable {
 	}
 	
 	// FIXME define methods
-
-
 
 }
