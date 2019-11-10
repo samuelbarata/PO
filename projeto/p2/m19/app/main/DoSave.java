@@ -1,6 +1,9 @@
 package m19.app.main;
 
+import java.io.IOException;
+
 import m19.core.LibraryManager;
+import m19.core.exception.MissingFileAssociationException;
 
 import pt.tecnico.po.ui.Command;
 
@@ -10,7 +13,7 @@ import pt.tecnico.po.ui.Command;
 /**
  * 4.1.1. Save to file under current name (if unnamed, query for name).
  */
-public class DoSave extends Command<LibraryManager> {
+public class DoSave extends Command<LibraryManager> implements Message{
   
 	// FIXME define input fields
 
@@ -25,6 +28,16 @@ public class DoSave extends Command<LibraryManager> {
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() {
-		// FIXME implement command
+		//TODO ask for filename Message.saveAs(); copiar do DoOpen.java depois de feito
+
+		/*try{
+			if(name)
+				LibraryManager.saveAs(name);
+			else
+				//TODO warn: Message.newSaveAs();
+				LibraryManager.save();
+		} catch(MissingFileAssociationException | IOException ex) {
+
+		}*/
 	}
 }

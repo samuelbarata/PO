@@ -34,7 +34,7 @@ public class LibraryManager {
 	 * @throws IOException if some error happen during the serialization of the persistent state
 	 * 
 	*/
-	public void save() throws MissingFileAssociationException, IOException {
+	public static void save() throws MissingFileAssociationException, IOException {
 		saveAs("library.xprt");
 	}
 
@@ -49,7 +49,7 @@ public class LibraryManager {
 	 * 
 	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 29;31
 	 */
-	public void saveAs(String filename) throws MissingFileAssociationException, IOException {
+	public static void saveAs(String filename) throws MissingFileAssociationException, IOException {
 		ObjectOutputStream obOut = null;
 		try {
 			FileOutputStream fpout = new FileOutputStream(filename);
@@ -72,7 +72,7 @@ public class LibraryManager {
 	 * 
 	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 30;32
 	 */
-	public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream obIn = null;
 		try {
 			FileInputStream fpin = new FileInputStream(filename);
