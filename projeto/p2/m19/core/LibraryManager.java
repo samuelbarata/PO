@@ -78,10 +78,7 @@ public class LibraryManager {
 			FileInputStream fpin = new FileInputStream(filename);
 			obIn = new ObjectInputStream(fpin);
 			Object in = obIn.readObject();
-			if (in instanceof Library) {
-                _library = (Library)in;
-			}
-
+			_library = (Library)in;
 		} finally {
 			if (obIn != null)
 				obIn.close();
