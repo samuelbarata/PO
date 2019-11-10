@@ -1,12 +1,9 @@
 package m19.core;
 
-import m19.app.works.*;
-import Category;
-
 public abstract class Work{  // Obra
-    private int _id;
-    private int _price;
-    private int _numberOfCopies;
+    private final int _id;
+    private final int _price;
+    private final int _numberOfCopies;
     private int _available;
     private String _title;
     private Category _category;
@@ -20,41 +17,64 @@ public abstract class Work{  // Obra
         _category = categoria;
     }
 
+    /**
+     * 
+     * @return work's id
+     */
     protected int getId() {
         return _id;
     }
 
+    /**
+     * 
+     * @return work's price
+     */
     protected int getPrice() {
         return _price;
     }
 
+    /**
+     * 
+     * @return total number of copies
+     */
     protected int getNumberOfCopies() {
         return _numberOfCopies;
     }
 
+    /**
+     * 
+     * @return number of available copies
+     */
     protected int getAvailable() {
         return _available;
     }
 
+    /**
+     * 
+     * @return Work's title
+     */
     protected String getTitle() {
         return _title;
     }
 
+    /**
+     * 
+     * @return Work's category
+     */
     protected Category getCategory() {
         return _category;
     }
 
-    protected void setPrice(int price) {
-        _price = price;
-    }
-
-    protected void setNumberOfCopies(int number) {
-        _numberOfCopies = number;
-    }
-
+    /**
+     * Set Work's category to
+     * @param category
+     */
     protected void setCategory(Category category) {
         _category = category;
     }
 
+    public String getDescritpion(){
+        //FIXME
+    }
 
 }
