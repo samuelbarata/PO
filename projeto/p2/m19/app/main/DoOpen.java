@@ -1,6 +1,6 @@
 package m19.app.main;
 
-import pt.tecnico.po.ui.Form;
+import pt.tecnico.po.ui.Input;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -16,34 +16,30 @@ import m19.app.exception.FileOpenFailedException;
  */
 public class DoOpen extends Command<LibraryManager> implements Message{
 
-	// FIXME define input fields if needed
+	private Input<String> _inputForm;
 
 	/**
 	 * @param receiver
 	 */
 	public DoOpen(LibraryManager receiver) {
 		super(Label.OPEN, receiver);
-		// FIXME initialize input fields if needed
+		_inputForm = _form.addStringInput(Message.openFile());
+	
 	}
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException {
-		//FIXME: n sei receber input do utilizador com a Class Form; https://stackoverflow.com/questions/58785543/how-to-read-a-string-using-class-form-in-java
-		String filename;
-
-		Form form = new Form();
-		form.addStringInput(Message.openFile());
-
-		filename = form.entry(0);
+		String _filename;
+		_form.parse();					//pede ao utilizador o form construido acima
+		_filename=_inputForm.value();	//devolve o primeiro valor lido pelo form
 
 		try {
-			LibraryManager.load(filename);
+			LibraryManager.load(_filename);
 		} catch (FileNotFoundException fnfe) {
-			throw new FileOpenFailedException(filename);
+			throw new FileOpenFailedException(_filename);
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
 	}
-
 }
