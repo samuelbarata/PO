@@ -20,7 +20,7 @@ public class Library implements Serializable {
 	
 	private static int _nextWorkId;
 	private static int _nextUserId;
-	private static Date _date;
+	private static Date _date = new Date();
 	private Set<User> _users;
 	private Set<Work> _works;
 	private Set<Request> _requests;
@@ -46,7 +46,9 @@ public class Library implements Serializable {
 		return _nextWorkId++;
 	}
 	
-
+	public int getCurrentDate(){
+		return _date.getCurrentDate();
+	}
 	
 
 	/**
