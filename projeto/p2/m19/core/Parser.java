@@ -103,7 +103,7 @@ public class Parser {
 			User user = new User(components[1], components[2]);
 			_library.addUser(user);
 		} catch (UserRegistrationFailedException e) {
-			//TODO: what to do here??
+			//TODO: what to do here?? just ignore it??
 		}
 	}
 

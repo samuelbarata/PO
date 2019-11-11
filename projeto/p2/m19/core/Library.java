@@ -2,15 +2,14 @@ package m19.core;
 
 import java.io.Serializable;
 import java.util.Set;
-import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.IOException;
 
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.app.exception.UserRegistrationFailedException;
-
-// FIXME import other system types
-// FIXME import project (core) types if needed
 
 /**
  * Class that represents the library as a whole.
@@ -23,8 +22,8 @@ public class Library implements Serializable {
 	private static int _nextWorkId;
 	private static int _nextUserId;
 	private static Date _date;
-	private Set<User> _users;
-	private Set<Work> _works;
+	private List<User> _users;
+	private List<Work> _works;
 	private Set<Request> _requests;
 
 	/**
@@ -34,9 +33,9 @@ public class Library implements Serializable {
 		_nextUserId=0;
 		_nextWorkId=0;
 		_date = new Date();
-		_users = Collections.emptySet();
-		_works = Collections.emptySet();
-		_requests = Collections.emptySet();
+		_users = new ArrayList<>();
+		_works = new ArrayList<>();
+		_requests = new HashSet<>();
 	}
 
 	/**
@@ -93,7 +92,8 @@ public class Library implements Serializable {
 			if(myWork==work)
 				return;
 		}
-		_works.add(work);
+		work.setId(Library.getNextWId());
+		_works.add(work.getId(),work);
 	}
 
 	/**
@@ -110,4 +110,11 @@ public class Library implements Serializable {
 		_users.add(user);
 	}
 
+	public String getWorkDescription(int id){
+		return _works.get(id).getDescription();
+	}
+
+	public String getUserDescription(int id){
+		return _users.get(id).getDescription();
+	}
 }

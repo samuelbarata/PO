@@ -25,9 +25,13 @@ public class User{
         return _isActive;
     }
 
+
+    /**
+     * 
+     * @return User's Description
+     */
     public String getDescription(){
         //FIXME: mudar _behaviour;_isActive para as Strings correspondentes
-        //TODO: javadoc funcao
         return _id + " - " + _name + " - " + _email + " - " + _behavior + " - " + _isActive;
     }
     

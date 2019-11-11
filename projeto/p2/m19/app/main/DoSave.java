@@ -33,6 +33,7 @@ public class DoSave extends Command<LibraryManager> implements Message{
 	@Override
 	public final void execute() {
 		String _filename;
+		_display.clear();
 		_form.parse();					//pede ao utilizador o form construido acima
 		_filename=_inputForm.value();	//devolve o primeiro valor lido pelo form
 

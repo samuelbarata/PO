@@ -109,4 +109,12 @@ public class LibraryManager {
 	public static void addUser(User user) throws UserRegistrationFailedException{
 		_library.addUser(user);
 	}
+
+	public static String getWorkDescription(int id){
+		return _library.getWorkDescription(id);
+	}
+
+	public static String getUserDescription(int id){
+		return _library.getUserDescription(id);
+	}
 }

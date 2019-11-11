@@ -1,7 +1,7 @@
 package m19.core;
 
 public abstract class Work{  // Obra
-    private final int _id;
+    private int _id;
     private final int _price;
     private final int _numberOfCopies;
     private int _available;
@@ -9,7 +9,7 @@ public abstract class Work{  // Obra
     private Category _category;
 
     public Work(String titulo, int preco, Category categoria, int exemplares){
-        _id=Library.getNextWId();
+        _id=-1;
         _price = preco;
         _numberOfCopies = exemplares;
         _available = _numberOfCopies;
@@ -23,6 +23,10 @@ public abstract class Work{  // Obra
      */
     protected int getId() {
         return _id;
+    }
+
+    protected void setId(int id){
+        _id = id;
     }
 
     /**
@@ -73,8 +77,18 @@ public abstract class Work{  // Obra
         _category = category;
     }
 
-    public String getDescritpion(){
-        return "";
+    /**
+     * 
+     * @return Work's Description
+     */
+    public abstract String getDescription();
+
+    /**
+     * 
+     * @return Work's Description
+     */
+    public String getDescription(String type, String addInfo){
+        return _id + " - " + _available + " de " + _numberOfCopies + " - " + type + " - " + _title + " - " + _price + " - " + _category + addInfo;
     }
 
     /**

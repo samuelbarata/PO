@@ -43,6 +43,15 @@ public class Book extends Work{
     protected Category getCategory() {
         return super.getCategory();
     }
+
+    /**
+     * 
+     * @return Book's Description
+     */
+    @Override
+    public String getDescription(){
+        return super.getDescription("Livro",  " - " + _author + " - " + _isbn);
+    }
     
 /*
     protected void setPrice(int price) {

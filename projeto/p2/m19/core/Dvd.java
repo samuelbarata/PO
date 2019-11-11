@@ -43,4 +43,13 @@ public class Dvd extends Work{
     protected Category getCategory() {
         return super.getCategory();
     }
+
+    /**
+     * 
+     * @return Dvd's Description
+     */
+    @Override
+    public String getDescription(){
+        return super.getDescription("DVD", " - " + _director + " - " + _igac);
+    }
 }
