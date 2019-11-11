@@ -53,19 +53,17 @@ public class Book extends Work{
         return super.getDescription("Livro",  " - " + _author + " - " + _isbn);
     }
     
-/*
-    protected void setPrice(int price) {
-        _price = price;
+    /**
+     * Check's if the Book's author matches the searchQuery
+     * @param searchQuery
+     * @return boolean
+     */
+    protected boolean search(String searchQuery){
+        if(super.search(searchQuery) || super.containsIgnoreCase(_author, searchQuery)){
+            return true;
+        }
+        return false;
     }
-
-    protected void setNumberOfCopies(int number) {
-        _numberOfCopies = number;
-    }
-
-    protected void setCategory(Category category) {
-        _category = category;
-    }
-*/
 
 
 }

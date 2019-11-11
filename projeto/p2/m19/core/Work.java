@@ -109,5 +109,27 @@ public abstract class Work implements Comparable<Work>{  // Obra
     @Override
     public int compareTo(Work b){
         return Integer.compare(this.getId(), b.getId());
-    } 
+    }
+
+    /**
+     * Check's if the Work's title matches the searchQuery
+     * @param searchQuery
+     * @return boolean
+     */
+    protected boolean search(String searchQuery){
+        if(containsIgnoreCase(_title, searchQuery)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Checks if subString is in str
+     * @param str
+     * @param subString
+     * @return boolean
+     */
+    protected static boolean containsIgnoreCase(String str, String subString) {
+        return str.toLowerCase().contains(subString.toLowerCase());
+    }
 }

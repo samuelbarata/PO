@@ -173,4 +173,13 @@ public class Library implements Serializable {
 		return sorted;
 	}
 
+	protected ArrayList<Work> searchWork(String searchQuery){
+		ArrayList<Work> sorted = new ArrayList<>();
+		for(Work myWork:_works){
+			if(myWork.search(searchQuery))
+				sorted.add(myWork);
+		}
+		Collections.sort(sorted);
+		return sorted;
+	}
 }
