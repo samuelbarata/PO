@@ -1,6 +1,6 @@
 package m19.core;
 
-public abstract class Work{  // Obra
+public abstract class Work implements Comparable<Work>{  // Obra
     private int _id;
     private final int _price;
     private final int _numberOfCopies;
@@ -9,12 +9,12 @@ public abstract class Work{  // Obra
     private Category _category;
 
     public Work(String titulo, int preco, Category categoria, int exemplares){
-        _id=-1;
         _price = preco;
         _numberOfCopies = exemplares;
         _available = _numberOfCopies;
         _title = titulo;
         _category = categoria;
+        _id=-1;
     }
 
     /**
@@ -96,7 +96,18 @@ public abstract class Work{  // Obra
      * @param work
      * @return
      */
-    public boolean equals(Work work){
-        return this.getTitle().equals(work.getTitle());
+    @Override
+    public boolean equals(Object other){
+        if(!(other instanceof Work)) return false;
+        Work otherWork = (Work)other;
+        return this.getTitle().equals(otherWork.getTitle());
     }
+
+    /**
+     * Compares Work a to Work b by ID
+     */
+    @Override
+    public int compareTo(Work b){
+        return Integer.compare(this.getId(), b.getId());
+    } 
 }

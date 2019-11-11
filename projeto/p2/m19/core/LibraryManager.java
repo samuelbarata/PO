@@ -2,10 +2,13 @@ package m19.core;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.io.*;
 
 import m19.core.exception.MissingFileAssociationException;
 import m19.app.exception.UserRegistrationFailedException;
+import m19.app.exception.NoSuchUserException;
+import m19.app.exception.NoSuchWorkException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.core.exception.ImportFileException;
 
@@ -110,11 +113,19 @@ public class LibraryManager {
 		_library.addUser(user);
 	}
 
-	public static String getWorkDescription(int id){
+	public static String getWorkDescription(int id) throws NoSuchWorkException{
 		return _library.getWorkDescription(id);
 	}
 
-	public static String getUserDescription(int id){
+	public static String getUserDescription(int id) throws NoSuchUserException{
 		return _library.getUserDescription(id);
+	}
+
+	public static ArrayList<User> getAllUsers(){
+		return _library.getAllUsers();
+	}
+
+	public static ArrayList<Work> getAllWorks(){
+		return _library.getAllWorks();
 	}
 }

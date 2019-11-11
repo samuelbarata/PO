@@ -3,13 +3,15 @@ package m19.core;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.IOException;
 
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.app.exception.UserRegistrationFailedException;
+import m19.app.exception.NoSuchUserException;
+import m19.app.exception.NoSuchWorkException;
 
 /**
  * Class that represents the library as a whole.
@@ -22,8 +24,8 @@ public class Library implements Serializable {
 	private static int _nextWorkId;
 	private static int _nextUserId;
 	private static Date _date;
-	private List<User> _users;
-	private List<Work> _works;
+	private Set<User> _users;
+	private Set<Work> _works;
 	private Set<Request> _requests;
 
 	/**
@@ -33,8 +35,8 @@ public class Library implements Serializable {
 		_nextUserId=0;
 		_nextWorkId=0;
 		_date = new Date();
-		_users = new ArrayList<>();
-		_works = new ArrayList<>();
+		_users = new HashSet<>();
+		_works = new HashSet<>();
 		_requests = new HashSet<>();
 	}
 
@@ -93,7 +95,7 @@ public class Library implements Serializable {
 				return;
 		}
 		work.setId(Library.getNextWId());
-		_works.add(work.getId(),work);
+		_works.add(work);
 	}
 
 	/**
@@ -107,14 +109,68 @@ public class Library implements Serializable {
 			if(myUser==user)
 				throw new UserRegistrationFailedException(user.getName(), user.getEmail());
 		}
+		user.setId(Library.getNextUId());
 		_users.add(user);
 	}
 
-	public String getWorkDescription(int id){
-		return _works.get(id).getDescription();
+	/**
+	 * 
+	 * @param id
+	 * @return Work's Description
+	 * @throws NoSuchWorkException
+	 */
+	protected String getWorkDescription(int id) throws NoSuchWorkException{
+		if(id < 0 || id >= _nextWorkId)
+			throw new NoSuchWorkException(id);
+		for(Work myWork:_works){
+			if(myWork.getId()==id)
+				return myWork.getDescription();			
+		}
+		throw new NoSuchWorkException(id);
 	}
 
-	public String getUserDescription(int id){
-		return _users.get(id).getDescription();
+	/**
+	 * 
+	 * @param id
+	 * @return User's Description
+	 * @throws NoSuchUserException
+	 */
+	protected String getUserDescription(int id) throws NoSuchUserException{
+		if(id < 0 || id >= _nextUserId)
+			throw new NoSuchUserException(id);
+		for(User myUser:_users){
+			if(myUser.getId()==id)
+				return myUser.getDescription();			
+		}
+		throw new NoSuchUserException(id);
 	}
+
+	/**
+	 * 
+	 * @return Sorted Users List
+	 * @see https://github.com/PedroTheAxe/PO-IST/tree/master/Fichas/Ficha5/src/Ex2
+	 */
+	protected ArrayList<User> getAllUsers(){
+		ArrayList<User> sorted = new ArrayList<>();
+		for(User myUser:_users){
+			sorted.add(myUser);
+		}
+		Collections.sort(sorted);
+		return sorted;
+	}
+
+	/**
+	 * 
+	 * @return Sorted Works List
+	 * @see https://github.com/PedroTheAxe/PO-IST/tree/master/Fichas/Ficha5/src/Ex2
+	 */
+	protected ArrayList<Work> getAllWorks(){
+		ArrayList<Work> sorted = new ArrayList<>();
+		for(Work myWork:_works){
+			sorted.add(myWork);
+		}
+		Collections.sort(sorted);
+		return sorted;
+	}
+
 }

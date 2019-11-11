@@ -7,8 +7,6 @@ import m19.app.exception.UserRegistrationFailedException;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Input;
-// FIXME import other core concepts
-// FIXME import other ui concepts
 
 /**
  * 4.2.1. Register new user.
