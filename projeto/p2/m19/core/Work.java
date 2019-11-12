@@ -1,6 +1,8 @@
 package m19.core;
 
-public abstract class Work implements Comparable<Work>{  // Obra
+import java.io.Serializable;
+
+public abstract class Work implements Comparable<Work>, Serializable{  // Obra    
     private int _id;
     private final int _price;
     private final int _numberOfCopies;

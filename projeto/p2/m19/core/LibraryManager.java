@@ -109,8 +109,8 @@ public class LibraryManager {
 		_library.advanceDay(nDays);
 	}
 
-	public static void addUser(User user) throws UserRegistrationFailedException{
-		_library.addUser(user);
+	public static int addUser(User user) throws UserRegistrationFailedException{
+		return _library.addUser(user);
 	}
 
 	public static String getWorkDescription(int id) throws NoSuchWorkException{

@@ -104,13 +104,14 @@ public class Library implements Serializable {
 	 * @param user
 	 * @throws UserRegistrationFailedException
 	 */
-	void addUser(User user) throws UserRegistrationFailedException{
+	protected int addUser(User user) throws UserRegistrationFailedException{
 		for(User myUser:_users){
 			if(myUser==user)
 				throw new UserRegistrationFailedException(user.getName(), user.getEmail());
 		}
 		user.setId(Library.getNextUId());
 		_users.add(user);
+		return user.getId();
 	}
 
 	/**

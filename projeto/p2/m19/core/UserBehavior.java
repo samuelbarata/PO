@@ -1,7 +1,7 @@
 package m19.core;
 
 public enum UserBehavior{
-	NORMAL("Normal"), CUMPRIDOR("Cumpridor"), FALTOSO("Faltoso");
+	NORMAL("NORMAL"), CUMPRIDOR("CUMPRIDOR"), FALTOSO("FALTOSO");
 
 	//TODO: preceber esta cena
 

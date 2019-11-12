@@ -1,6 +1,5 @@
 package m19.core;
 
-import java.util.Set;
 import java.util.ArrayList;
 import java.util.Collections;
 import m19.app.exception.UserRegistrationFailedException;
@@ -12,7 +11,7 @@ public class User implements Comparable<User>{
     private final String _name;
     private final String _email;
     private UserBehavior _behavior;
-    private Set<Notification> _notifications;
+    private ArrayList<Notification> _notifications;
 
     public User(String name, String email) throws UserRegistrationFailedException{
         if(name.isEmpty() || email.isEmpty())
@@ -21,6 +20,7 @@ public class User implements Comparable<User>{
         _name = name;
         _email = email;
         _behavior = UserBehavior.valueOf("NORMAL");
+        _notifications = new ArrayList<>();
         _id = -1;
     }
 
@@ -36,7 +36,7 @@ public class User implements Comparable<User>{
 
     private String statusMessage(){
         if(this.isActive())
-            return "ATIVO";
+            return "ACTIVO";
         return "SUSPENSO - EUR ";//TODO: incert divida 
     }
 
@@ -102,6 +102,7 @@ public class User implements Comparable<User>{
 
     /**
      * Compares User a to User b by name then ID
+     * @see https://www.codebyamir.com/blog/sort-list-of-objects-by-field-java
      */
     @Override
     public int compareTo(User b){
@@ -111,9 +112,15 @@ public class User implements Comparable<User>{
         return res;
     } 
 
+    /**
+     * Retrieve User's Notification and sort
+     * @return User's Notification as ArrayList String
+     */
     protected ArrayList<String> getNotifications(){
-		ArrayList<String> myNoti = new ArrayList<>(); 
-        //TODO: get and sort notifications @see Library.getAllUsers
-		return myNoti;
+		ArrayList<String> res = new ArrayList<>(); 
+        for(Notification myNoti : _notifications){
+            res.add(myNoti.getMessage());
+        }
+		return res;
 	}
 }
