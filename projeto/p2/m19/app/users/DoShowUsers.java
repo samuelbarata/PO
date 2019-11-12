@@ -23,7 +23,7 @@ public class DoShowUsers extends Command<LibraryManager> {
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
-	public final void execute() {
+	public final void execute() throws DialogException{
 		_display.clear();
 		for(User myUser : LibraryManager.getAllUsers()){
 			_display.addLine(myUser.getDescription());

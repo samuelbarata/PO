@@ -6,6 +6,7 @@ import m19.app.works.Message;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Input;
 import pt.tecnico.po.ui.Display;
+import pt.tecnico.po.ui.DialogException;
 
 /**
  * 4.3.3. Perform search according to miscellaneous criteria.
@@ -26,7 +27,7 @@ public class DoPerformSearch extends Command<LibraryManager> {
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
-	public final void execute() {
+	public final void execute() throws DialogException{
 		String searchQuery;
 		_display.clear();
 		_form.parse(true);

@@ -4,6 +4,7 @@ import m19.core.LibraryManager;
 import m19.app.main.Message;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Input;
+import pt.tecnico.po.ui.DialogException;
 
 // FIXME import iother core concepts
 // FIXME import ui concepts
@@ -25,7 +26,7 @@ public class DoAdvanceDate extends Command<LibraryManager>{
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
-	public final void execute() {
+	public final void execute() throws DialogException{
 		int days;
 		_form.parse();
 		days = _days.value();

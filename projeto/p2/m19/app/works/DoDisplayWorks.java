@@ -4,7 +4,7 @@ import m19.core.LibraryManager;
 import m19.core.Work;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Display;
-// FIXME import ui concepts
+import pt.tecnico.po.ui.DialogException;
 
 /**
  * 4.3.2. Display all works.
@@ -23,7 +23,7 @@ public class DoDisplayWorks extends Command<LibraryManager> {
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
-	public final void execute() {
+	public final void execute() throws DialogException{
 		_display.clear();
 		for(Work myWork : LibraryManager.getAllWorks()){
 			_display.addLine(myWork.getDescription());

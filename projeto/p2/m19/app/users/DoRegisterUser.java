@@ -3,7 +3,6 @@ package m19.app.users;
 import m19.core.LibraryManager;
 import m19.core.User;
 import m19.app.users.Message;
-import m19.app.exception.UserRegistrationFailedException;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Display;
@@ -30,7 +29,7 @@ public class DoRegisterUser extends Command<LibraryManager> implements Message{
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
-	public final void execute() throws DialogException, UserRegistrationFailedException{
+	public final void execute() throws DialogException{
 		String _name, _email;
 		int uId;
 		_display.clear();

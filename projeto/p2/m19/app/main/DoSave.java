@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import m19.core.LibraryManager;
 import m19.core.exception.MissingFileAssociationException;
-
+import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Input;
 
@@ -28,7 +28,7 @@ public class DoSave extends Command<LibraryManager> implements Message{
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
-	public final void execute() {
+	public final void execute() throws DialogException{
 		String _filename;
 		_form.parse(false);
 		//TODO: ha outra mensagem pra usar quando o form ja tem valor?? idk mas algo aqui ainda n ta certo

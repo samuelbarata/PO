@@ -4,6 +4,7 @@ import m19.core.LibraryManager;
 
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Display;
+import pt.tecnico.po.ui.DialogException;
 
 // FIXME import other core concepts
 // FIXME import other ui concepts
@@ -25,7 +26,7 @@ public class DoDisplayDate extends Command<LibraryManager> implements Message {
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
-	public final void execute() {
+	public final void execute() throws DialogException{
 		_display.clear();
 		_display.add(Message.currentDate(LibraryManager.getCurrentDate()));
 		_display.display();
