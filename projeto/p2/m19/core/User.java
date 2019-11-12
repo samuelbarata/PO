@@ -93,6 +93,14 @@ public class User implements Comparable<User>{
     }
 
     /**
+     * Adds a Notification to the user
+     * @param noti
+     */
+    protected void addNotification(Notification noti){
+        _notifications.add(noti);
+    }
+
+    /**
      * Compares User a to User b by name then ID
      */
     @Override
