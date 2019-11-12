@@ -32,13 +32,18 @@ public class User implements Comparable<User>{
         return _isActive;
     }
 
+    private String statusMessage(){
+        if(this.isActive())
+            return "ATIVO";
+        return "SUSPENSO - EUR ";//TODO: incert divida 
+    }
 
     /**
      * 
      * @return User's Description
      */
     public String getDescription(){
-        return _id + " - " + _name + " - " + _email + " - " + _behavior + " - " + _isActive;
+        return _id + " - " + _name + " - " + _email + " - " + _behavior + " - " + this.statusMessage();
     }
     
     /**
