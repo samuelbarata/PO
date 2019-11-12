@@ -19,6 +19,10 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
         _id=-1;
     }
 
+    /**
+     * 
+     * @return if it has been delivered or not
+     */
     protected boolean requestWork(){
         if (_available>0){
             _available--;
