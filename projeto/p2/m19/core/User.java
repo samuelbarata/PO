@@ -1,6 +1,8 @@
 package m19.core;
 
 import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collections;
 import m19.app.exception.UserRegistrationFailedException;
 import java.lang.Integer;
 
@@ -100,4 +102,10 @@ public class User implements Comparable<User>{
             return Integer.compare(this.getId(), b.getId());
         return res;
     } 
+
+    protected ArrayList<String> getNotifications(){
+		ArrayList<String> myNoti = new ArrayList<>(); 
+        //TODO: get and sort notifications @see Library.getAllUsers
+		return myNoti;
+	}
 }

@@ -120,13 +120,7 @@ public class Library implements Serializable {
 	 * @throws NoSuchWorkException
 	 */
 	protected String getWorkDescription(int id) throws NoSuchWorkException{
-		if(id < 0 || id >= _nextWorkId)
-			throw new NoSuchWorkException(id);
-		for(Work myWork:_works){
-			if(myWork.getId()==id)
-				return myWork.getDescription();			
-		}
-		throw new NoSuchWorkException(id);
+		return getWorkById(id).getDescription();
 	}
 
 	/**
@@ -136,19 +130,12 @@ public class Library implements Serializable {
 	 * @throws NoSuchUserException
 	 */
 	protected String getUserDescription(int id) throws NoSuchUserException{
-		if(id < 0 || id >= _nextUserId)
-			throw new NoSuchUserException(id);
-		for(User myUser:_users){
-			if(myUser.getId()==id)
-				return myUser.getDescription();			
-		}
-		throw new NoSuchUserException(id);
+		return getUserById(id).getDescription();
 	}
 
 	/**
 	 * 
 	 * @return Sorted Users List
-	 * @see https://github.com/PedroTheAxe/PO-IST/tree/master/Fichas/Ficha5/src/Ex2
 	 */
 	protected ArrayList<User> getAllUsers(){
 		ArrayList<User> sorted = new ArrayList<>();
@@ -162,7 +149,6 @@ public class Library implements Serializable {
 	/**
 	 * 
 	 * @return Sorted Works List
-	 * @see https://github.com/PedroTheAxe/PO-IST/tree/master/Fichas/Ficha5/src/Ex2
 	 */
 	protected ArrayList<Work> getAllWorks(){
 		ArrayList<Work> sorted = new ArrayList<>();
@@ -181,5 +167,30 @@ public class Library implements Serializable {
 		}
 		Collections.sort(sorted);
 		return sorted;
+	}
+
+	protected ArrayList<String> getUserNotifications(int id) throws NoSuchUserException{
+		User myUser = getUserById(id);
+		return myUser.getNotifications();
+	}
+
+	private User getUserById(int id) throws NoSuchUserException{
+		if(id < 0 || id >= _nextUserId)
+			throw new NoSuchUserException(id);
+		for(User myUser:_users){
+			if(myUser.getId()==id)
+				return myUser;			
+		}
+		throw new NoSuchUserException(id);
+	}
+
+	private Work getWorkById(int id) throws NoSuchWorkException{
+		if(id < 0 || id >= _nextWorkId)
+			throw new NoSuchWorkException(id);
+		for(Work myWork:_works){
+			if(myWork.getId()==id)
+				return myWork;			
+		}
+		throw new NoSuchWorkException(id);
 	}
 }

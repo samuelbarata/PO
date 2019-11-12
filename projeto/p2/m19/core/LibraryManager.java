@@ -132,4 +132,8 @@ public class LibraryManager {
 	public static ArrayList<Work> searchWork(String searchQuery){
 		return _library.searchWork(searchQuery);
 	}
+
+	public static ArrayList<String> getUserNotifications(int id) throws NoSuchUserException{
+		return _library.getUserNotifications(id);
+	}
 }

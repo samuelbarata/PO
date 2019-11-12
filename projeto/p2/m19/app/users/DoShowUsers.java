@@ -5,8 +5,6 @@ import m19.core.User;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Display;
-// FIXME import other core concepts
-// FIXME import other ui concepts
 
 /**
  * 4.2.4. Show all users.

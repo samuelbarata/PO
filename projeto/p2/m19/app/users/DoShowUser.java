@@ -27,7 +27,7 @@ public class DoShowUser extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException {
 		int userId;
-		_form.parse();
+		_form.parse(true);
 		userId = _userId.value();
 		_display.clear();
 		_display.add(LibraryManager.getUserDescription(userId));
