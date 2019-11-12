@@ -3,8 +3,6 @@
 let total=0;
 let correct=0;
 
-make
-
 for x in tests/*.in; do
     if [ -e ${x%.in}.import ]; then
         java -cp :lib/po-uilib.jar:. -Dimport=${x%.in}.import -Din=$x -Dout=${x%.in}.outhyp m19.app.App;

@@ -11,3 +11,6 @@ run: all #usa o ficheiro ficheiro.im para inicializar a library
 clean:
 	rm -rf `find m19 -name *.class` tests/*.outhyp tests/*.diff
 	clear
+
+test: all
+	./runtests.sh
