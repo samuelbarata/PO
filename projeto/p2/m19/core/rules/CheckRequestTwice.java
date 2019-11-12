@@ -1,5 +1,5 @@
 package m19.core.rules;
 
-public abstract class CheckRequestTwice extends Rule{
+public class CheckRequestTwice extends Rule{
 
 }
