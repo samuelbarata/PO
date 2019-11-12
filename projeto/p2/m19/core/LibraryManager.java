@@ -20,7 +20,7 @@ import m19.core.exception.ImportFileException;
  */
 public class LibraryManager {
 
-	private static Library _library;
+	private Library _library;
 
 	// FIXME define other attributes
 
@@ -38,7 +38,7 @@ public class LibraryManager {
 	 * @throws IOException if some error happen during the serialization of the persistent state
 	 * 
 	*/
-	public static void save() throws MissingFileAssociationException, IOException {
+	public void save() throws MissingFileAssociationException, IOException {
 		//TODO: gravar por cima do nome anterior?
 	}
 
@@ -53,7 +53,7 @@ public class LibraryManager {
 	 * 
 	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 29;31
 	 */
-	public static void saveAs(String filename) throws MissingFileAssociationException, IOException {
+	public void saveAs(String filename) throws MissingFileAssociationException, IOException {
 		ObjectOutputStream obOut = null;
 		try {
 			FileOutputStream fpout = new FileOutputStream(filename);
@@ -74,7 +74,7 @@ public class LibraryManager {
 	 * @throws FileNotFoundException if the file does not exist
 	 * @throws ClassNotFoundException 
 	 */
-	public static void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream obIn = null;
 		try {
 			FileInputStream fpin = new FileInputStream(filename);

@@ -6,9 +6,6 @@ import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Input;
 import pt.tecnico.po.ui.DialogException;
 
-// FIXME import iother core concepts
-// FIXME import ui concepts
-
 /**
  * 4.1.3. Advance the current date.
  */
