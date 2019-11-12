@@ -35,7 +35,7 @@ public class DoSave extends Command<LibraryManager> implements Message{
 		_filename=_inputForm.value();
 
 		try{
-			LibraryManager.saveAs(_filename);
+			_receiver.saveAs(_filename);
 		} catch(MissingFileAssociationException | IOException ex) {
 
 		}

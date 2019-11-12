@@ -34,7 +34,7 @@ public class DoDisplayWork extends Command<LibraryManager> {
 		_form.parse();
 		workId = _workId.value();
 		_display.clear();
-		_display.add(LibraryManager.getWorkDescription(workId));
+		_display.add(_receiver.getWorkDescription(workId));
 		_display.display();
 	}
 }

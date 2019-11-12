@@ -28,7 +28,7 @@ public class DoDisplayDate extends Command<LibraryManager> implements Message {
 	@Override
 	public final void execute() throws DialogException{
 		_display.clear();
-		_display.add(Message.currentDate(LibraryManager.getCurrentDate()));
+		_display.add(Message.currentDate(_receiver.getCurrentDate()));
 		_display.display();
 	}
   

@@ -14,3 +14,6 @@ clean:
 
 test: all
 	./runtests.sh
+
+deliver: all
+	jar -cf proj2.jar `find m19 -name *.class`

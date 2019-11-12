@@ -39,7 +39,7 @@ public class LibraryManager {
 	 * 
 	*/
 	public static void save() throws MissingFileAssociationException, IOException {
-		//TODO: gravar por cima do nome anterior
+		//TODO: gravar por cima do nome anterior?
 	}
 
 	/**
@@ -101,39 +101,39 @@ public class LibraryManager {
 		}
 	}
 
-	public static int getCurrentDate(){
+	public int getCurrentDate(){
 		return _library.getCurrentDate();
 	}
 
-	public static void advanceDay(int nDays){
+	public void advanceDay(int nDays){
 		_library.advanceDay(nDays);
 	}
 
-	public static int addUser(User user) throws UserRegistrationFailedException{
+	public int addUser(User user) throws UserRegistrationFailedException{
 		return _library.addUser(user);
 	}
 
-	public static String getWorkDescription(int id) throws NoSuchWorkException{
+	public String getWorkDescription(int id) throws NoSuchWorkException{
 		return _library.getWorkDescription(id);
 	}
 
-	public static String getUserDescription(int id) throws NoSuchUserException{
+	public String getUserDescription(int id) throws NoSuchUserException{
 		return _library.getUserDescription(id);
 	}
 
-	public static ArrayList<User> getAllUsers(){
+	public ArrayList<User> getAllUsers(){
 		return _library.getAllUsers();
 	}
 
-	public static ArrayList<Work> getAllWorks(){
+	public ArrayList<Work> getAllWorks(){
 		return _library.getAllWorks();
 	}
 
-	public static ArrayList<Work> searchWork(String searchQuery){
+	public ArrayList<Work> searchWork(String searchQuery){
 		return _library.searchWork(searchQuery);
 	}
 
-	public static ArrayList<String> getUserNotifications(int id) throws NoSuchUserException{
+	public ArrayList<String> getUserNotifications(int id) throws NoSuchUserException{
 		return _library.getUserNotifications(id);
 	}
 }

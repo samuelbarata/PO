@@ -25,7 +25,7 @@ public class DoDisplayWorks extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException{
 		_display.clear();
-		for(Work myWork : LibraryManager.getAllWorks()){
+		for(Work myWork : _receiver.getAllWorks()){
 			_display.addLine(myWork.getDescription());
 		}
 		_display.display();

@@ -25,7 +25,7 @@ public class DoShowUsers extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException{
 		_display.clear();
-		for(User myUser : LibraryManager.getAllUsers()){
+		for(User myUser : _receiver.getAllUsers()){
 			_display.addLine(myUser.getDescription());
 		}
 		_display.display();

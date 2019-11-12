@@ -146,4 +146,9 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
     protected static boolean containsIgnoreCase(String str, String subString) {
         return str.toLowerCase().contains(subString.toLowerCase());
     }
+
+    @Override
+    public String toString(){
+        return this.getDescription();
+    }
 }

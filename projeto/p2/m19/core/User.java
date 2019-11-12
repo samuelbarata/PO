@@ -122,5 +122,10 @@ public class User implements Comparable<User>{
             res.add(myNoti.getMessage());
         }
 		return res;
-	}
+    }
+    
+    @Override
+    public String toString(){
+        return this.getDescription();
+    }
 }

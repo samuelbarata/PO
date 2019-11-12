@@ -33,7 +33,7 @@ public class DoOpen extends Command<LibraryManager> implements Message{
 		_filename=_inputForm.value();	//devolve o primeiro valor lido pelo form
 
 		try {
-			LibraryManager.load(_filename);
+			_receiver.load(_filename);
 		} catch (FileNotFoundException fnfe) {
 			throw new FileOpenFailedException(_filename);
 		} catch (ClassNotFoundException | IOException e) {

@@ -30,7 +30,7 @@ public class DoShowUser extends Command<LibraryManager> {
 		_form.parse(true);
 		userId = _userId.value();
 		_display.clear();
-		_display.add(LibraryManager.getUserDescription(userId));
+		_display.add(_receiver.getUserDescription(userId));
 		_display.display();
 	}
 }

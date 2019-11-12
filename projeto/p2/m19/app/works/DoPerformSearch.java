@@ -33,7 +33,7 @@ public class DoPerformSearch extends Command<LibraryManager> {
 		_form.parse(true);
 		searchQuery = _searchQuery.value();
 		_display.clear();
-		for(Work myWork : LibraryManager.searchWork(searchQuery)){
+		for(Work myWork : _receiver.searchWork(searchQuery)){
 			_display.addLine(myWork.getDescription());
 		}
 		_display.display();

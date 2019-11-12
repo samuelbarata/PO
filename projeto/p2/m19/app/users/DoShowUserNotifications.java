@@ -30,7 +30,7 @@ public class DoShowUserNotifications extends Command<LibraryManager> {
 		_form.parse(true);
 		userId = _userId.value();
 		_display.clear();
-		for(String myNoti: LibraryManager.getUserNotifications(userId)){
+		for(String myNoti: _receiver.getUserNotifications(userId)){
 			_display.addLine(myNoti);
 		}
 		_display.display();

@@ -30,7 +30,7 @@ public class DoAdvanceDate extends Command<LibraryManager>{
 		int days;
 		_form.parse();
 		days = _days.value();
-		LibraryManager.advanceDay(days);
+		_receiver.advanceDay(days);
 		//TODO: verificar tudo com nova data
 	}
   
