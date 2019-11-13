@@ -80,8 +80,7 @@ public class Library implements Serializable {
 	 * @throws IOException
 	 */
 	void importFile(String filename) throws BadEntrySpecificationException, IOException {
-		Parser _parser = new Parser(this);
-		_parser.parseFile(filename);
+		new Parser(this).parseFile(filename);
 	}
 	
 	/**
