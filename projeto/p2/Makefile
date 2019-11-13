@@ -15,5 +15,5 @@ clean:
 test: all
 	./runtests.sh
 
-deliver: all
-	jar -cvf proj2.jar `find m19 -name *.java`
+deliver:
+	jar -cvf proj2.jar `find m19 -name "*.java"`

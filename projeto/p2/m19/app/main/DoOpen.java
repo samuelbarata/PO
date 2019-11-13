@@ -12,7 +12,7 @@ import m19.app.exception.FileOpenFailedException;
 /**
  * 4.1.1. Open existing document.
  */
-public class DoOpen extends Command<LibraryManager> implements Message{
+public class DoOpen extends Command<LibraryManager>{
 
 	private Input<String> _inputForm;
 

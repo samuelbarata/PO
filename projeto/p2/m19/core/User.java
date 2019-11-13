@@ -1,6 +1,7 @@
 package m19.core;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import m19.app.exception.UserRegistrationFailedException;
 import java.lang.Integer;
@@ -11,7 +12,7 @@ public class User implements Comparable<User>{
     private final String _name;
     private final String _email;
     private UserBehavior _behavior;
-    private ArrayList<Notification> _notifications;
+    private List<Notification> _notifications;
 
     public User(String name, String email) throws UserRegistrationFailedException{
         if(name.isEmpty() || email.isEmpty())
@@ -24,16 +25,22 @@ public class User implements Comparable<User>{
         _id = -1;
     }
 
-    //@Override
     public int hashCode(){
         return _id;
     }
 
+    /**
+     * 
+     * @return if user is active
+     */
     protected boolean isActive(){
-        //TODO: javadoc funcao
         return _isActive;
     }
 
+    /**
+     * Gets the User status message
+     * @return status as String
+     */
     private String statusMessage(){
         if(this.isActive())
             return "ACTIVO";
@@ -84,10 +91,18 @@ public class User implements Comparable<User>{
         return this.getName().equals(otherUser.getName());
     }
 
+    /**
+     * Set User's Id
+     * @param id
+     */
     protected void setId(int id){
         _id=id;
     }
 
+    /**
+     * 
+     * @return User's Id
+     */
     protected int getId(){
         return _id;
     }
@@ -114,16 +129,19 @@ public class User implements Comparable<User>{
 
     /**
      * Retrieve User's Notification and sort
-     * @return User's Notification as ArrayList String
+     * @return User's Notification as List String
      */
-    protected ArrayList<String> getNotifications(){
-		ArrayList<String> res = new ArrayList<>(); 
+    protected List<String> getNotifications(){
+		List<String> res = new ArrayList<>(); 
         for(Notification myNoti : _notifications){
             res.add(myNoti.getMessage());
         }
 		return res;
     }
     
+    /**
+     * @return User's Description
+     */
     @Override
     public String toString(){
         return this.getDescription();

@@ -160,6 +160,11 @@ public class Library implements Serializable {
 		return listToString(sorted);
 	}
 
+	/**
+	 * Recebe uma string e pesquisa nos campos relevantes do work
+	 * @param searchQuery
+	 * @return 
+	 */
 	protected List<String> searchWork(String searchQuery){
 		List<Work> sorted = new ArrayList<>();
 		for(Work myWork:_works){

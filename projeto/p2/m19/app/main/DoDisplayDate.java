@@ -12,7 +12,7 @@ import pt.tecnico.po.ui.DialogException;
 /**
  * 4.1.2. Display the current date.
  */
-public class DoDisplayDate extends Command<LibraryManager> implements Message {
+public class DoDisplayDate extends Command<LibraryManager>{
 
 	private Display _display;
 

@@ -2,7 +2,6 @@ package m19.core;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 
@@ -13,24 +12,22 @@ import m19.app.exception.NoSuchWorkException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.core.exception.ImportFileException;
 
-// FIXME import other system types
-// FIXME import other project (core) types
-
 /**
  * The façade class.
  */
 public class LibraryManager {
 
 	private Library _library;
+	private String _filename;
 
-	// FIXME define other attributes
-
+	/**
+	 * Initializes Library Manager with empty Library and empty FileName
+	 */
 	public LibraryManager(){
 		_library = new Library();
+		_filename = new String();	//defaults to ""
 	}
 	
-	// FIXME define methods
-
 	/**
 	 * Serialize the persistent state of this application.
 	 * 
@@ -40,7 +37,7 @@ public class LibraryManager {
 	 * 
 	*/
 	public void save() throws MissingFileAssociationException, IOException {
-		//TODO: gravar por cima do nome anterior?
+		saveAs(_filename);
 	}
 
 	/**
@@ -55,9 +52,13 @@ public class LibraryManager {
 	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 29;31
 	 */
 	public void saveAs(String filename) throws MissingFileAssociationException, IOException {
+		_filename=filename;
+		if(_filename.isEmpty() || _filename.isBlank()){
+			throw new MissingFileAssociationException();
+		}
 		ObjectOutputStream obOut = null;
 		try {
-			FileOutputStream fpout = new FileOutputStream(filename);
+			FileOutputStream fpout = new FileOutputStream(_filename);
 			obOut = new ObjectOutputStream(fpout);
 			obOut.writeObject(_library);
 		} finally {
@@ -74,6 +75,8 @@ public class LibraryManager {
 	 * @throws IOException if there is a reading error while processing the file
 	 * @throws FileNotFoundException if the file does not exist
 	 * @throws ClassNotFoundException 
+	 * 
+	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 30;32
 	 */
 	public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream obIn = null;
@@ -102,38 +105,89 @@ public class LibraryManager {
 		}
 	}
 
+	/**
+	 * @return Associated filename
+	 */
+	public String getFilename(){
+		return _filename;
+	}
+
+	/**
+	 * @return current date as int
+	 */
 	public int getCurrentDate(){
 		return _library.getCurrentDate();
 	}
 
+	/**
+	 * Recives the Number of days to advance and forwards it to the Library
+	 * @param nDays
+	 */
 	public void advanceDay(int nDays){
 		_library.advanceDay(nDays);
 	}
 
+	/**
+	 * Recices a User and send's it to the library to be added
+	 * @param user
+	 * @return User's Id
+	 * @throws UserRegistrationFailedException
+	 */
 	public int addUser(User user) throws UserRegistrationFailedException{
 		return _library.addUser(user);
 	}
 
+	/**
+	 * Finds the Work with a given Id and returns its Description
+	 * @param id Work Id
+	 * @return Work's Description
+	 * @throws NoSuchWorkException
+	 */
 	public String getWorkDescription(int id) throws NoSuchWorkException{
 		return _library.getWorkDescription(id);
 	}
 
+	/**
+	 * Finds the User with a given Id and returns its Description
+	 * @param id Work Id
+	 * @return User's Description
+	 * @throws NoSuchUserException
+	 */
 	public String getUserDescription(int id) throws NoSuchUserException{
 		return _library.getUserDescription(id);
 	}
 
+	/**
+	 * Get's all user's descriptions ordered by alphabetical order
+	 * @return List of Strings
+	 */
 	public List<String> getAllUsers(){
 		return _library.getAllUsers();
 	}
 
+	/**
+	 * Get's all work's descriptions ordered by id
+	 * @returnList of Strings
+	 */
 	public List<String> getAllWorks(){
 		return _library.getAllWorks();
 	}
 
+	/**
+	 * Get's all the works that match the given searchQuery
+	 * @param searchQuery
+	 * @return List of Strings
+	 */
 	public List<String> searchWork(String searchQuery){
 		return _library.searchWork(searchQuery);
 	}
 
+	/**
+	 * Get's User's notifications
+	 * @param id User id
+	 * @return List of Strings
+	 * @throws NoSuchUserException
+	 */
 	public List<String> getUserNotifications(int id) throws NoSuchUserException{
 		return _library.getUserNotifications(id);
 	}

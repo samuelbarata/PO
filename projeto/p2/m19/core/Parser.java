@@ -12,6 +12,10 @@ public class Parser {
 
 	private Library _library;
 
+	/**
+	 * Populates a given Library
+	 * @param lib Library
+	 */
 	Parser(Library lib) {
 		_library = lib;
 	}
@@ -102,7 +106,7 @@ public class Parser {
 			User user = new User(components[1], components[2]);
 			_library.addUser(user);
 		} catch (UserRegistrationFailedException e) {
-			//TODO: what to do here?? just ignore it??
+			//TODO: what to do here??
 		}
 	}
 
