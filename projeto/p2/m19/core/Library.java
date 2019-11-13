@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.io.IOException;
 
@@ -137,39 +138,39 @@ public class Library implements Serializable {
 	 * 
 	 * @return Sorted Users List
 	 */
-	protected ArrayList<User> getAllUsers(){
-		ArrayList<User> sorted = new ArrayList<>();
+	protected List<String> getAllUsers(){
+		List<User> sorted = new ArrayList<>();
 		for(User myUser:_users){
 			sorted.add(myUser);
 		}
 		Collections.sort(sorted);
-		return sorted;
+		return listToString(sorted);
 	}
 
 	/**
 	 * 
 	 * @return Sorted Works List
 	 */
-	protected ArrayList<Work> getAllWorks(){
-		ArrayList<Work> sorted = new ArrayList<>();
+	protected List<String> getAllWorks(){
+		List<Work> sorted = new ArrayList<>();
 		for(Work myWork:_works){
 			sorted.add(myWork);
 		}
 		Collections.sort(sorted);
-		return sorted;
+		return listToString(sorted);
 	}
 
-	protected ArrayList<Work> searchWork(String searchQuery){
-		ArrayList<Work> sorted = new ArrayList<>();
+	protected List<String> searchWork(String searchQuery){
+		List<Work> sorted = new ArrayList<>();
 		for(Work myWork:_works){
 			if(myWork.search(searchQuery))
 				sorted.add(myWork);
 		}
 		Collections.sort(sorted);
-		return sorted;
+		return listToString(sorted);
 	}
 
-	protected ArrayList<String> getUserNotifications(int id) throws NoSuchUserException{
+	protected List<String> getUserNotifications(int id) throws NoSuchUserException{
 		User myUser = getUserById(id);
 		return myUser.getNotifications();
 	}
@@ -192,5 +193,13 @@ public class Library implements Serializable {
 				return myWork;			
 		}
 		throw new NoSuchWorkException(id);
+	}
+
+	private List<String> listToString(List<?> myList){
+		List<String> res = new ArrayList<>();
+		for(Object myObject:myList){
+			res.add(myObject.toString());
+		}
+		return res;
 	}
 }

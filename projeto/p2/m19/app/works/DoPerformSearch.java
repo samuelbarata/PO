@@ -1,7 +1,6 @@
 package m19.app.works;
 
 import m19.core.LibraryManager;
-import m19.core.Work;
 import m19.app.works.Message;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Input;
@@ -33,8 +32,8 @@ public class DoPerformSearch extends Command<LibraryManager> {
 		_form.parse(true);
 		searchQuery = _searchQuery.value();
 		_display.clear();
-		for(Work myWork : _receiver.searchWork(searchQuery)){
-			_display.addLine(myWork.getDescription());
+		for(String myString : _receiver.searchWork(searchQuery)){
+			_display.addLine(myString);
 		}
 		_display.display();
 	}

@@ -3,6 +3,7 @@ package m19.core;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.io.*;
 
 import m19.core.exception.MissingFileAssociationException;
@@ -121,19 +122,19 @@ public class LibraryManager {
 		return _library.getUserDescription(id);
 	}
 
-	public ArrayList<User> getAllUsers(){
+	public List<String> getAllUsers(){
 		return _library.getAllUsers();
 	}
 
-	public ArrayList<Work> getAllWorks(){
+	public List<String> getAllWorks(){
 		return _library.getAllWorks();
 	}
 
-	public ArrayList<Work> searchWork(String searchQuery){
+	public List<String> searchWork(String searchQuery){
 		return _library.searchWork(searchQuery);
 	}
 
-	public ArrayList<String> getUserNotifications(int id) throws NoSuchUserException{
+	public List<String> getUserNotifications(int id) throws NoSuchUserException{
 		return _library.getUserNotifications(id);
 	}
 }

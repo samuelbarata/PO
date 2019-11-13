@@ -2,7 +2,7 @@ package m19.core;
 
 public class Book extends Work{
 	private String _author;
-	private int _isbn;
+	private int _isbn;      //enunciado diz String; parser diz int
 
 	protected Book(String titulo, String autor, int preco, Category categoria, int isbn, int exemplares){
 		super(titulo, preco, categoria, exemplares);

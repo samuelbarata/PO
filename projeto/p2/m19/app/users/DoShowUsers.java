@@ -1,7 +1,6 @@
 package m19.app.users;
 
 import m19.core.LibraryManager;
-import m19.core.User;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Display;
@@ -25,8 +24,8 @@ public class DoShowUsers extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException{
 		_display.clear();
-		for(User myUser : _receiver.getAllUsers()){
-			_display.addLine(myUser.getDescription());
+		for(String myString : _receiver.getAllUsers()){
+			_display.addLine(myString);
 		}
 		_display.display();
 	}

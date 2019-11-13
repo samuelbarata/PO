@@ -1,7 +1,6 @@
 package m19.app.works;
 
 import m19.core.LibraryManager;
-import m19.core.Work;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Display;
 import pt.tecnico.po.ui.DialogException;
@@ -25,8 +24,8 @@ public class DoDisplayWorks extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException{
 		_display.clear();
-		for(Work myWork : _receiver.getAllWorks()){
-			_display.addLine(myWork.getDescription());
+		for(String myString : _receiver.getAllWorks()){
+			_display.addLine(myString);
 		}
 		_display.display();
 	}
