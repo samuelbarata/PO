@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import m19.app.exception.UserRegistrationFailedException;
-import java.lang.Integer;
 
 public class User implements Comparable<User>{
     private int _id;
