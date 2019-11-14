@@ -116,12 +116,12 @@ public class User implements Comparable<User>{
     }
 
     /**
-     * Compares User a to User b by name then ID
+     * Compares User to User b by name then ID
      * @see https://www.codebyamir.com/blog/sort-list-of-objects-by-field-java
      */
     @Override
     public int compareTo(User b){
-        int res = this.getName().compareTo(b.getName());;
+        int res = this.getName().compareTo(b.getName());
         if(res==0)
             return Integer.compare(this.getId(), b.getId());
         return res;

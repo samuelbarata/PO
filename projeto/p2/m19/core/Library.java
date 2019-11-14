@@ -11,6 +11,7 @@ import java.io.IOException;
 import m19.core.exception.MissingFileAssociationException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.app.exception.UserRegistrationFailedException;
+import m19.app.exception.WorkNotBorrowedByUserException;
 import m19.app.exception.NoSuchUserException;
 import m19.app.exception.NoSuchWorkException;
 
@@ -206,5 +207,11 @@ public class Library implements Serializable {
 			res.add(myObject.toString());
 		}
 		return res;
+	}
+
+	/**NAO IMPLEMENTADO */
+	protected void requestWork(User user, Work work, int deadline) throws WorkNotBorrowedByUserException{
+		Request request = new Request(deadline, work, user);
+		_requests.add(request);
 	}
 }

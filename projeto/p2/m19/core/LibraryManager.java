@@ -1,9 +1,7 @@
 package m19.core;
 
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import java.util.List;
 import java.io.*;
+import java.util.List;
 
 import m19.core.exception.MissingFileAssociationException;
 import m19.app.exception.UserRegistrationFailedException;

@@ -20,30 +20,6 @@ public class Dvd extends Work{
 		return _igac;
 	}
 
-    protected int getId() {
-        return super.getId();
-    }
-
-    protected int getPrice() {
-        return super.getPrice();
-    }
-
-    protected int getNumberOfCopies() {
-        return super.getNumberOfCopies();
-    }
-
-    protected int getAvailable() {
-        return super.getAvailable();
-    }
-
-    protected String getTitle() {
-        return super.getTitle();
-    }
-
-    protected Category getCategory() {
-        return super.getCategory();
-    }
-
     /**
      * 
      * @return Dvd's Description
@@ -59,10 +35,7 @@ public class Dvd extends Work{
      * @return boolean
      */
     protected boolean search(String searchQuery){
-        if(super.search(searchQuery) || super.containsIgnoreCase(_director, searchQuery)){
-            return true;
-        }
-        return false;
+        return super.search(searchQuery) || super.containsIgnoreCase(_director, searchQuery);
     }
 
 }

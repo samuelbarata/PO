@@ -131,10 +131,7 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
      * @return boolean
      */
     protected boolean search(String searchQuery){
-        if(containsIgnoreCase(_title, searchQuery)){
-            return true;
-        }
-        return false;
+        return containsIgnoreCase(_title, searchQuery);
     }
 
     /**
