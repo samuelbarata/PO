@@ -54,14 +54,8 @@ public class LibraryManager {
 		if(_filename.isEmpty()){
 			throw new MissingFileAssociationException();
 		}
-		ObjectOutputStream obOut = null;
-		try {
-			FileOutputStream fpout = new FileOutputStream(_filename);
-			obOut = new ObjectOutputStream(fpout);
+		try (ObjectOutputStream obOut = new ObjectOutputStream(new FileOutputStream(_filename))) {
 			obOut.writeObject(_library);
-		} finally {
-			if (obOut != null)
-				obOut.close();
 		}
 	}
 
@@ -77,15 +71,10 @@ public class LibraryManager {
 	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 30;32
 	 */
 	public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
-		ObjectInputStream obIn = null;
-		try {
-			FileInputStream fpin = new FileInputStream(filename);
-			obIn = new ObjectInputStream(fpin);
+		//ObjectInputStream obIn = null;
+		try (ObjectInputStream obIn = new ObjectInputStream(new FileInputStream(filename))){
 			Object in = obIn.readObject();
 			_library = (Library)in;
-		} finally {
-			if (obIn != null)
-				obIn.close();
 		}
 	}
 

@@ -17,5 +17,5 @@ test: all
 	@make clean
 
 deliver:
-	@jar -cvf proj2.jar `find m19 -name "*.java"`
+	@jar -cvf proj.jar `find m19 -name "*.java"`
 	
