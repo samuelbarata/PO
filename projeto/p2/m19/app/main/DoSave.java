@@ -31,7 +31,7 @@ public class DoSave extends Command<LibraryManager>{
 	@Override
 	public final void execute() throws DialogException{
 		String _filename=_receiver.getFilename();
-		if(_filename.isEmpty() || _filename.isBlank()){
+		if(_filename.isEmpty()){
 			_form.parse();
 			_filename=_inputForm.value();
 		} else {

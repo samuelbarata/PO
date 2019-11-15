@@ -51,7 +51,7 @@ public class LibraryManager {
 	 */
 	public void saveAs(String filename) throws MissingFileAssociationException, IOException {
 		_filename=filename;
-		if(_filename.isEmpty() || _filename.isBlank()){
+		if(_filename.isEmpty()){
 			throw new MissingFileAssociationException();
 		}
 		ObjectOutputStream obOut = null;
