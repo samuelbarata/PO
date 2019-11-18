@@ -43,7 +43,7 @@ public class User implements Comparable<User>{
     private String statusMessage(){
         if(this.isActive())
             return "ACTIVO";
-        return "SUSPENSO - EUR ";//TODO: incert divida 
+        return "SUSPENSO - EUR ";//TODO: insert divida 
     }
 
     /**

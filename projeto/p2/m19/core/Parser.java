@@ -21,7 +21,7 @@ public class Parser {
 	}
 
 	/**
-	 * Recives initial state textual representation and populates de library
+	 * Receives initial state textual representation and populates the library
 	 * @param filename textual input
 	 * @throws IOException
 	 * @throws BadEntrySpecificationException
@@ -94,7 +94,7 @@ public class Parser {
 	}
 
 	/**
-	 * Creates and ads User to library
+	 * Creates and adds User to library
 	 * @param components
 	 * @param line
 	 * @throws BadEntrySpecificationException

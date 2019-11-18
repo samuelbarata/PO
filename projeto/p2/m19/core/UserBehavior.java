@@ -3,7 +3,7 @@ package m19.core;
 public enum UserBehavior{
 	NORMAL("NORMAL"), CUMPRIDOR("CUMPRIDOR"), FALTOSO("FALTOSO");
 
-	//TODO: preceber esta cena
+	//TODO: perceber esta cena
 
 	private String _behavior;
 
