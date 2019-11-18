@@ -24,6 +24,7 @@ public class DoSave extends Command<LibraryManager>{
 	public DoSave(LibraryManager receiver) {
 		super(Label.SAVE, receiver);
 		_display = new Display();
+		_display.addLine(Message.saveAs());
 		_inputForm = _form.addStringInput(Message.newSaveAs());
 	}
 
@@ -35,7 +36,6 @@ public class DoSave extends Command<LibraryManager>{
 			_form.parse();
 			_filename=_inputForm.value();
 		} else {
-			_display.addLine(Message.saveAs());
 			_display.display();
 		}		
 		try{

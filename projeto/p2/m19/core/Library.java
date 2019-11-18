@@ -63,15 +63,19 @@ public class Library implements Serializable {
 		return _date.getCurrentDate();
 	}
 
+	/**
+	 * 
+	 * @param nDays Days to advance
+	 * @return current date
+	 */
 	protected int advanceDay(int nDays){
 		try {
 			return _date.advanceDay(nDays);
 		} catch(BadEntrySpecificationException e) {
-			return 0;
+			return _date.getCurrentDate();
 		}
 	}
 	
-
 	/**
 	 * Read the text input file at the beginning of the program and populates the
 	 * instances of the various possible types (books, DVDs, users).
@@ -92,7 +96,7 @@ public class Library implements Serializable {
 	 */
 	void addWork(Work work){
 		for(Work myWork:_works){
-			if(myWork==work)
+			if(myWork.equals(work))
 				return;
 		}
 		work.setId(Library.getNextWId());
@@ -107,7 +111,7 @@ public class Library implements Serializable {
 	 */
 	protected int addUser(User user) throws UserRegistrationFailedException{
 		for(User myUser:_users){
-			if(myUser==user)
+			if(myUser.equals(user))
 				throw new UserRegistrationFailedException(user.getName(), user.getEmail());
 		}
 		user.setId(Library.getNextUId());
@@ -137,7 +141,7 @@ public class Library implements Serializable {
 
 	/**
 	 * 
-	 * @return Sorted Users List
+	 * @return Sorted Users String List
 	 */
 	protected List<String> getAllUsers(){
 		List<User> sorted = new ArrayList<>();
@@ -150,7 +154,7 @@ public class Library implements Serializable {
 
 	/**
 	 * 
-	 * @return Sorted Works List
+	 * @return Sorted Works String List
 	 */
 	protected List<String> getAllWorks(){
 		List<Work> sorted = new ArrayList<>();
@@ -176,11 +180,23 @@ public class Library implements Serializable {
 		return listToString(sorted);
 	}
 
+	/**
+	 * 
+	 * @param id User
+	 * @return Notifications as String List
+	 * @throws NoSuchUserException
+	 */
 	protected List<String> getUserNotifications(int id) throws NoSuchUserException{
 		User myUser = getUserById(id);
 		return myUser.getNotifications();
 	}
 
+	/**
+	 * 
+	 * @param id User
+	 * @return User with given Id
+	 * @throws NoSuchUserException
+	 */
 	private User getUserById(int id) throws NoSuchUserException{
 		if(id < 0 || id >= _nextUserId)
 			throw new NoSuchUserException(id);
@@ -191,6 +207,12 @@ public class Library implements Serializable {
 		throw new NoSuchUserException(id);
 	}
 
+	/**
+	 * 
+	 * @param id Work
+	 * @return Work with given Id
+	 * @throws NoSuchWorkException
+	 */
 	private Work getWorkById(int id) throws NoSuchWorkException{
 		if(id < 0 || id >= _nextWorkId)
 			throw new NoSuchWorkException(id);
@@ -201,6 +223,11 @@ public class Library implements Serializable {
 		throw new NoSuchWorkException(id);
 	}
 
+	/**
+	 * Convert a list of Objects to a list of Strings
+	 * @param myList
+	 * @return List of Strings using toString() method
+	 */
 	private List<String> listToString(List<?> myList){
 		List<String> res = new ArrayList<>();
 		for(Object myObject:myList){

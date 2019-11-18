@@ -39,6 +39,10 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
         return _id;
     }
 
+    /**
+     * Sets the work id to a given id
+     * @param id
+     */
     protected void setId(int id){
         _id = id;
     }
@@ -144,6 +148,9 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
         return str.toLowerCase().contains(subString.toLowerCase());
     }
 
+    /**
+     * @return Work's Description
+     */
     @Override
     public String toString(){
         return this.getDescription();
