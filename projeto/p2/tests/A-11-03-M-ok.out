@@ -7,15 +7,14 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: Menu de obras
-1 - Mostrar obra
-2 - Mostrar todas as obras
-3 - Efectuar pesquisa de termos
+Escolha uma opção: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
 0 - Sair
-Escolha uma opção: Menu de obras
-1 - Mostrar obra
-2 - Mostrar todas as obras
-3 - Efectuar pesquisa de termos
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 7 deve ser devolvida no dia 3.
+Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
 0 - Sair
 Escolha uma opção: Menu Principal
 1 - Abrir dados
