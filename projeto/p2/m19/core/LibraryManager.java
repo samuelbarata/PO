@@ -35,7 +35,12 @@ public class LibraryManager {
 	 * 
 	*/
 	public void save() throws MissingFileAssociationException, IOException {
-		saveAs(_filename);
+		if(_filename.isEmpty()){
+			throw new MissingFileAssociationException();
+		}
+		try (ObjectOutputStream obOut = new ObjectOutputStream(new FileOutputStream(_filename))) {
+			obOut.writeObject(_library);
+		}
 	}
 
 	/**
@@ -51,12 +56,7 @@ public class LibraryManager {
 	 */
 	public void saveAs(String filename) throws MissingFileAssociationException, IOException {
 		_filename=filename;
-		if(_filename.isEmpty()){
-			throw new MissingFileAssociationException();
-		}
-		try (ObjectOutputStream obOut = new ObjectOutputStream(new FileOutputStream(_filename))) {
-			obOut.writeObject(_library);
-		}
+		save();
 	}
 
 	/**

@@ -1,7 +1,9 @@
 package m19.core;
 
+import java.io.Serializable;
 
-public class Dvd extends Work{
+
+public class Dvd extends Work implements Serializable{
 	private String _director;
 	private int _igac;      //enunciado diz String; parser diz int
 

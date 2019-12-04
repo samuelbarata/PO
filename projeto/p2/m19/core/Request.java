@@ -1,8 +1,9 @@
 package m19.core;
 
 import m19.app.exception.WorkNotBorrowedByUserException;;
+import java.io.Serializable;
 
-public class Request{
+public class Request implements Serializable{
     private int _deadline;  //dia
     private Work _work;
     private User _user;

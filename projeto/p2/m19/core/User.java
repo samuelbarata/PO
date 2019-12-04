@@ -4,145 +4,146 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import m19.app.exception.UserRegistrationFailedException;
+import java.io.Serializable;
 
-public class User implements Comparable<User>{
-    private int _id;
-    private boolean _isActive;
-    private final String _name;
-    private final String _email;
-    private UserBehavior _behavior;
-    private List<Notification> _notifications;
+public class User implements Comparable<User>, Serializable{
+	private int _id;
+	private boolean _isActive;
+	private final String _name;
+	private final String _email;
+	private UserBehavior _behavior;
+	private List<Notification> _notifications;
 
-    public User(String name, String email) throws UserRegistrationFailedException{
-        if(name.isEmpty() || email.isEmpty())
-            throw new UserRegistrationFailedException(name, email);
-        _isActive = true;
-        _name = name;
-        _email = email;
-        _behavior = UserBehavior.valueOf("NORMAL");
-        _notifications = new ArrayList<>();
-        _id = -1;
-    }
+	public User(String name, String email) throws UserRegistrationFailedException{
+		if(name.isEmpty() || email.isEmpty())
+			throw new UserRegistrationFailedException(name, email);
+		_isActive = true;
+		_name = name;
+		_email = email;
+		_behavior = UserBehavior.valueOf("NORMAL");
+		_notifications = new ArrayList<>();
+		_id = -1;
+	}
 
-    public int hashCode(){
-        return _id;
-    }
+	public int hashCode(){
+		return _id;
+	}
 
-    /**
-     * 
-     * @return if user is active
-     */
-    protected boolean isActive(){
-        return _isActive;
-    }
+	/**
+	 * 
+	 * @return if user is active
+	 */
+	protected boolean isActive(){
+		return _isActive;
+	}
 
-    /**
-     * Gets the User status message
-     * @return status as String
-     */
-    private String statusMessage(){
-        if(this.isActive())
-            return "ACTIVO";
-        return "SUSPENSO - EUR ";//TODO: insert divida 
-    }
+	/**
+	 * Gets the User status message
+	 * @return status as String
+	 */
+	private String statusMessage(){
+		if(this.isActive())
+			return "ACTIVO";
+		return "SUSPENSO - EUR ";//TODO: insert divida 
+	}
 
-    /**
-     * 
-     * @return User's Description
-     */
-    public String getDescription(){
-        return _id + " - " + _name + " - " + _email + " - " + _behavior + " - " + this.statusMessage();
-    }
-    
-    /**
-     * 
-     * @return name
-     */
-    protected String getName(){
-        return _name;
-    }
+	/**
+	 * 
+	 * @return User's Description
+	 */
+	public String getDescription(){
+		return _id + " - " + _name + " - " + _email + " - " + _behavior + " - " + this.statusMessage();
+	}
 
-    /**
-     * 
-     * @return email
-     */
-    protected String getEmail(){
-        return _email;
-    }
+	/**
+	 * 
+	 * @return name
+	 */
+	protected String getName(){
+		return _name;
+	}
 
-    /**
-     * 
-     * @return user behavior
-     */
-    protected UserBehavior getBehaviour(){
-        return _behavior;
-    }
+	/**
+	 * 
+	 * @return email
+	 */
+	protected String getEmail(){
+		return _email;
+	}
 
-    /**
-     * Compares if 2 works have the same name
-     * @param work
-     * @return boolean
-     */
-    @Override
-    public boolean equals(Object other){
-        if(!(other instanceof User)) return false;
-        User otherUser = (User)other;
-        return this.getName().equals(otherUser.getName()) && this.getEmail().equals(otherUser.getEmail());
-    }
+	/**
+	 * 
+	 * @return user behavior
+	 */
+	protected UserBehavior getBehaviour(){
+		return _behavior;
+	}
 
-    /**
-     * Set User's Id
-     * @param id
-     */
-    protected void setId(int id){
-        _id=id;
-    }
+	/**
+	 * Compares if 2 works have the same name
+	 * @param work
+	 * @return boolean
+	 */
+	@Override
+	public boolean equals(Object other){
+		if(!(other instanceof User)) return false;
+		User otherUser = (User)other;
+		return this.getName().equals(otherUser.getName()) && this.getEmail().equals(otherUser.getEmail());
+	}
 
-    /**
-     * 
-     * @return User's Id
-     */
-    protected int getId(){
-        return _id;
-    }
+	/**
+	 * Set User's Id
+	 * @param id
+	 */
+	protected void setId(int id){
+		_id=id;
+	}
 
-    /**
-     * Adds a Notification to the user
-     * @param noti
-     */
-    protected void addNotification(Notification noti){
-        _notifications.add(noti);
-    }
+	/**
+	 * 
+	 * @return User's Id
+	 */
+	protected int getId(){
+		return _id;
+	}
 
-    /**
-     * Compares User to User b by name then ID
-     * @see https://www.codebyamir.com/blog/sort-list-of-objects-by-field-java
-     */
-    @Override
-    public int compareTo(User b){
-        int res = this.getName().compareTo(b.getName());
-        if(res==0)
-            return Integer.compare(this.getId(), b.getId());
-        return res;
-    } 
+	/**
+	 * Adds a Notification to the user
+	 * @param noti
+	 */
+	protected void addNotification(Notification noti){
+		_notifications.add(noti);
+	}
 
-    /**
-     * Retrieve User's Notification and sort
-     * @return User's Notification as List String
-     */
-    protected List<String> getNotifications(){
-		List<String> res = new ArrayList<>(); 
-        for(Notification myNoti : _notifications){
-            res.add(myNoti.getMessage());
-        }
+	/**
+	 * Compares User to User b by name then ID
+	 * @see https://www.codebyamir.com/blog/sort-list-of-objects-by-field-java
+	 */
+	@Override
+	public int compareTo(User b){
+		int res = this.getName().compareTo(b.getName());
+		if(res==0)
+			return Integer.compare(this.getId(), b.getId());
 		return res;
-    }
-    
-    /**
-     * @return User's Description
-     */
-    @Override
-    public String toString(){
-        return this.getDescription();
-    }
+	} 
+
+	/**
+	 * Retrieve User's Notification and sort
+	 * @return User's Notification as List String
+	 */
+	protected List<String> getNotifications(){
+		List<String> res = new ArrayList<>(); 
+		for(Notification myNoti : _notifications){
+			res.add(myNoti.getMessage());
+		}
+		return res;
+	}
+
+	/**
+	 * @return User's Description
+	 */
+	@Override
+	public String toString(){
+		return this.getDescription();
+	}
 }

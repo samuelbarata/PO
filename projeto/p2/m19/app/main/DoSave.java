@@ -35,13 +35,13 @@ public class DoSave extends Command<LibraryManager>{
 		if(_filename.isEmpty()){
 			_form.parse();
 			_filename=_inputForm.value();
-		} else {
+		} /*else {	//TODO: apagar isto if not needed
 			_display.display();
-		}		
+		}	*/	
 		try{
 			_receiver.saveAs(_filename);
 		} catch(MissingFileAssociationException | IOException ex) {
-			throw new FileOpenFailedException(_filename);
+			;//throw new FileOpenFailedException(_filename);//TODO: apagar isto if not nedded
 		}
 	}
 }

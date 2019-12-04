@@ -1,6 +1,8 @@
 package m19.core;
 
-public enum Category {
+import java.io.Serializable;
+
+public enum Category implements Serializable{
 	FICTION("Ficção"), SCITECH("Técnica e Científica"), REFERENCE("Referência");
 
 	//TODO: preceber esta cena

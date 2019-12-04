@@ -1,9 +1,10 @@
 package m19.core;
 
 import m19.core.exception.BadEntrySpecificationException;
+import java.io.Serializable;
 
-public class Date{
-	private static int _currentDate;
+public class Date implements Serializable{
+	private int _currentDate;
 
 	public Date(){
 		_currentDate=0;

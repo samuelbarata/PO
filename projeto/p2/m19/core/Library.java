@@ -23,9 +23,9 @@ public class Library implements Serializable {
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = 201901101348L;
 	
-	private static int _nextWorkId;
-	private static int _nextUserId;
-	private static Date _date;
+	private int _nextWorkId;
+	private int _nextUserId;
+	private Date _date;
 	private Set<User> _users;
 	private Set<Work> _works;
 	private Set<Request> _requests;
@@ -45,14 +45,14 @@ public class Library implements Serializable {
 	/**
 	 * @return next user's id
 	 */
-	protected static int getNextUId(){
+	protected int getNextUId(){
 		return _nextUserId++;
 	}
 
 	/**
 	 * @return next work's id
 	 */
-	protected static int getNextWId(){
+	protected int getNextWId(){
 		return _nextWorkId++;
 	}
 	
@@ -99,7 +99,7 @@ public class Library implements Serializable {
 			if(myWork.equals(work))
 				return;
 		}
-		work.setId(Library.getNextWId());
+		work.setId(getNextWId());
 		_works.add(work);
 	}
 
@@ -114,7 +114,7 @@ public class Library implements Serializable {
 			if(myUser.equals(user))
 				throw new UserRegistrationFailedException(user.getName(), user.getEmail());
 		}
-		user.setId(Library.getNextUId());
+		user.setId(getNextUId());
 		_users.add(user);
 		return user.getId();
 	}

@@ -1,6 +1,8 @@
 package m19.core.rules;
 
-public abstract class Rule{
+import java.io.Serializable;
+
+public abstract class Rule implements Serializable{
 	private int _id;
 
 	public Rule(){

@@ -8,7 +8,7 @@ import pt.tecnico.po.ui.DialogException;
 import m19.core.exception.BadEntrySpecificationException;
 import m19.app.exception.UserRegistrationFailedException;
 
-public class Parser {
+public class Parser{
 
 	private Library _library;
 

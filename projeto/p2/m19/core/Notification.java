@@ -1,6 +1,8 @@
 package m19.core;
 
-public class Notification{
+import java.io.Serializable;
+
+public class Notification implements Serializable{
 	private final String _message;
 
 	public Notification(String label, Work work){
