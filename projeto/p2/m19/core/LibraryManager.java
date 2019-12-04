@@ -100,6 +100,14 @@ public class LibraryManager {
 	}
 
 	/**
+	 * Set's the Library associated file
+	 * @param filename
+	 */
+	public void setFileName(String filename){
+		_filename = filename;
+	}
+
+	/**
 	 * @return current date as int
 	 */
 	public int getCurrentDate(){

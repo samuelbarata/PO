@@ -33,6 +33,7 @@ public class DoOpen extends Command<LibraryManager>{
 		_filename=_inputForm.value();	//devolve o primeiro valor lido pelo form
 
 		try {
+			_receiver.setFileName(_filename);
 			_receiver.load(_filename);
 		} catch (FileNotFoundException fnfe) {
 			throw new FileOpenFailedException(_filename);
