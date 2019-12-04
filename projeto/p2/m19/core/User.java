@@ -81,13 +81,13 @@ public class User implements Comparable<User>{
     /**
      * Compares if 2 works have the same name
      * @param work
-     * @return
+     * @return boolean
      */
     @Override
     public boolean equals(Object other){
         if(!(other instanceof User)) return false;
         User otherUser = (User)other;
-        return this.getName().equals(otherUser.getName());
+        return this.getName().equals(otherUser.getName()) && this.getEmail().equals(otherUser.getEmail());
     }
 
     /**

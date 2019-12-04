@@ -1,7 +1,7 @@
 
-.PHONY: all clean
+.PHONY: all clean run test jar
 
-all:
+all: lib/po-uilib.jar
 	@clear
 	javac -cp lib/po-uilib.jar:. `find m19 -name *.java`
 
@@ -16,6 +16,5 @@ test: all
 	@./runtests.sh
 	@make clean
 
-deliver:
+jar:
 	@jar -cvf proj.jar `find m19 -name "*.java"`
-	
