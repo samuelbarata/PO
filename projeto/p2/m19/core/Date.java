@@ -3,6 +3,10 @@ package m19.core;
 import m19.core.exception.BadEntrySpecificationException;
 import java.io.Serializable;
 
+//https://www.youtube.com/watch?v=wiQdrH2YpT4&feature=youtu.be
+//Data envia updates para os Requests
+
+
 public class Date implements Serializable{
 	private int _currentDate;
 
