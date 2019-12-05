@@ -13,6 +13,7 @@ public class User implements Comparable<User>, Serializable{
 	private final String _email;
 	private UserBehavior _behavior;
 	private List<Notification> _notifications;
+	private int _divida;
 
 	public User(String name, String email) throws UserRegistrationFailedException{
 		if(name.isEmpty() || email.isEmpty())
@@ -23,6 +24,7 @@ public class User implements Comparable<User>, Serializable{
 		_behavior = UserBehavior.valueOf("NORMAL");
 		_notifications = new ArrayList<>();
 		_id = -1;
+		_divida = 0;
 	}
 
 	public int hashCode(){
@@ -38,13 +40,28 @@ public class User implements Comparable<User>, Serializable{
 	}
 
 	/**
+	 * @return User's debt
+	 */
+	protected int getDivida(){
+		return _divida;
+	}
+
+	/**
+	 * Adds User Debt
+	 * @param payment
+	 */
+	protected void addDivida(int payment){
+		_divida += (_divida+payment < 0) ? 0 : payment;
+	}
+
+	/**
 	 * Gets the User status message
 	 * @return status as String
 	 */
 	private String statusMessage(){
 		if(this.isActive())
 			return "ACTIVO";
-		return "SUSPENSO - EUR ";//TODO: insert divida 
+		return "SUSPENSO - EUR " + _divida;
 	}
 
 	/**

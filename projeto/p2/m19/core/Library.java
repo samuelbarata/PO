@@ -236,9 +236,15 @@ public class Library implements Serializable {
 		return res;
 	}
 
-	/**NAO IMPLEMENTADO */
-	protected void requestWork(User user, Work work, int deadline) throws WorkNotBorrowedByUserException{
+
+
+	protected void requestWork(User user, Work work, int deadline) throws Exception{
 		Request request = new Request(deadline, work, user);
 		_requests.add(request);
+	}
+
+	protected void returnWork(Request reqi){
+		reqi.returnWork();
+		_requests.remove(reqi);
 	}
 }

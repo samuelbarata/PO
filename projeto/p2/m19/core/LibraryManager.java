@@ -162,7 +162,7 @@ public class LibraryManager {
 
 	/**
 	 * Get's all work's descriptions ordered by id
-	 * @returnList of Strings
+	 * @return List of Strings
 	 */
 	public List<String> getAllWorks(){
 		return _library.getAllWorks();

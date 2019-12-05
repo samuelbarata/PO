@@ -2,16 +2,20 @@ package m19.core;
 
 import m19.core.exception.BadEntrySpecificationException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-//https://www.youtube.com/watch?v=wiQdrH2YpT4&feature=youtu.be
-//Data envia updates para os Requests
 
-
-public class Date implements Serializable{
+/**
+ * @see http://www.newthinktank.com/2012/08/observer-design-pattern-tutorial/
+ */
+public class Date implements Serializable, Subject{
 	private int _currentDate;
+	private List<Observer> _observers;
 
 	public Date(){
 		_currentDate=0;
+		_observers = new ArrayList<>();
 	}
 
 	/**
@@ -19,6 +23,23 @@ public class Date implements Serializable{
 	 */
 	protected int getCurrentDate(){
 		return _currentDate;
+	}
+
+	@Override
+	public void addObserver(Observer obs){
+		_observers.add(obs);
+	}
+
+	@Override
+	public void rmObserver(Observer obs){
+		_observers.remove(obs);
+	}
+
+	@Override
+	public void update(int date){
+		for(Observer obs: _observers){
+			obs.update(_currentDate);
+		}
 	}
 
 	/**
@@ -30,6 +51,8 @@ public class Date implements Serializable{
 		if(nDays < 0){
 			throw new BadEntrySpecificationException("number of days to advance < 0");
 		}
-		return _currentDate+=nDays;
+		_currentDate+=nDays;
+		update(_currentDate);
+		return _currentDate;
 	}
 }
