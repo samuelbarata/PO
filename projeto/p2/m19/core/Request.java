@@ -18,7 +18,9 @@ public class Request implements Serializable, Observer{
 
 		if(_work.requestWork()){
 			_user.addNotification(new Notification("REQUISIÇÃO", _work));
-		} throw new WorkNotBorrowedByUserException(work.getId(), user.getId());
+		} else {
+			throw new WorkNotBorrowedByUserException(work.getId(), user.getId());
+		}
 	}
 
 	/**

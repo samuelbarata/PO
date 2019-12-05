@@ -1,30 +1,53 @@
 package m19.app.requests;
 
+import m19.app.exception.WorkNotBorrowedByUserException;
 import m19.core.LibraryManager;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
-// FIXME import other core concepts
-// FIXME import other ui concepts
+import pt.tecnico.po.ui.Display;
+import pt.tecnico.po.ui.Input;
 
 /**
  * 4.4.1. Request work.
  */
 public class DoRequestWork extends Command<LibraryManager> {
 
-	// FIXME define input fields
+	private Input<Integer> _userIdForm;
+	private Input<Integer> _workIdForm;
+	private Input<String> _notiPref;
+	private Display _display;
 
 	/**
 	 * @param receiver
 	 */
 	public DoRequestWork(LibraryManager receiver) {
 		super(Label.REQUEST_WORK, receiver);
-		// FIXME initialize input fields
+		_display = new Display();
 	}
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException {
-		// FIXME implement command
+		int _userId, _workId, returnDate;
+		_form.clear();
+		_userIdForm = _form.addIntegerInput(Message.requestUserId());
+		_workIdForm = _form.addIntegerInput(Message.requestWorkId());
+		_form.parse();
+		_userId = _userIdForm.value();
+		_workId = _workIdForm.value();
+		_display.clear();
+		try{
+			returnDate = _receiver.makeRequest(_userId, _workId);
+			_display.addLine(Message.workReturnDay(_workId, returnDate));
+			_display.display();
+		} catch(WorkNotBorrowedByUserException e) {
+			_form.clear();
+			_notiPref = _form.addStringInput(Message.requestReturnNotificationPreference());
+			_form.parse();
+			if(_notiPref.value().equals("s")){
+				//TODO: adicionar notificação
+			}
+		}
 	}
 
 }

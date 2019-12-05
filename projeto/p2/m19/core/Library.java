@@ -232,10 +232,15 @@ public class Library implements Serializable {
 		return res;
 	}
 
-	protected void requestWork(User user, Work work, int deadline) throws WorkNotBorrowedByUserException{
+	protected int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException{
+		return requestWork(this.getUserById(userId), this.getWorkById(workId), _date.getCurrentDate()+5/*FIXME: DEADLINE*/);
+	}
+
+	protected int requestWork(User user, Work work, int deadline) throws WorkNotBorrowedByUserException{
 		Request request = new Request(deadline, work, user, _date.getCurrentDate());
 		_requests.add(request);
 		_date.addObserver(request);
+		return request.getDeadline();
 	}
 
 	protected void returnWork(Request reqi){
