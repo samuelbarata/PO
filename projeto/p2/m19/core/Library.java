@@ -239,7 +239,7 @@ public class Library implements Serializable {
 
 
 	protected void requestWork(User user, Work work, int deadline) throws Exception{
-		Request request = new Request(deadline, work, user);
+		Request request = new Request(deadline, work, user, _date.getCurrentDate());
 		_requests.add(request);
 	}
 
