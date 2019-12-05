@@ -4,177 +4,183 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Work implements Comparable<Work>, Serializable{  // Obra    
-    private int _id;
-    private final int _price;
-    private final int _numberOfCopies;
-    private int _available;
-    private String _title;
-    private Category _category;
-    private List<User> _observers = new ArrayList<User>();
+import m19.app.requests.Message;
 
-    public Work(String titulo, int preco, Category categoria, int exemplares){
-        _price = preco;
-        _numberOfCopies = exemplares;
-        _available = _numberOfCopies;
-        _title = titulo;
-        _category = categoria;
-        _id=-1;
-    }
+public abstract class Work implements Comparable<Work>, Serializable, Subject{
+	private int _id;
+	private final int _price;
+	private final int _numberOfCopies;
+	private int _available;
+	private String _title;
+	private Category _category;
+	private List<Observer> _observers = new ArrayList<>();
 
-    /**
-     * 
-     * @return if it has been delivered or not
-     */
-    protected boolean requestWork(){
-        if (_available>0){
-            _available--;
-            return true;
-        }
-        //perguntar se quer receber notificaçoes?
-        //como obtenho o user?? das requisiçoes maybe
-        _observers.add(user);
-        return false;
-    }
+	public Work(String titulo, int preco, Category categoria, int exemplares){
+		_price = preco;
+		_numberOfCopies = exemplares;
+		_available = _numberOfCopies;
+		_title = titulo;
+		_category = categoria;
+		_id=-1;
+	}
 
-    /**
-     * 
-     * @return work's id
-     */
-    protected int getId() {
-        return _id;
-    }
+	/**
+	 * 
+	 * @return if it has been delivered or not
+	 */
+	protected boolean requestWork(){
+		if (_available>0){
+			_available--;
+			return true;
+		}
+		return false;
+	}
 
-    /**
-     * Sets the work id to a given id
-     * @param id
-     */
-    protected void setId(int id){
-        _id = id;
-    }
+	/**
+	 * 
+	 * @return work's id
+	 */
+	protected int getId() {
+		return _id;
+	}
 
-    /**
-     * 
-     * @return work's price
-     */
-    protected int getPrice() {
-        return _price;
-    }
+	/**
+	 * Sets the work id to a given id
+	 * @param id
+	 */
+	protected void setId(int id){
+		_id = id;
+	}
 
-    /**
-     * 
-     * @return total number of copies
-     */
-    protected int getNumberOfCopies() {
-        return _numberOfCopies;
-    }
+	/**
+	 * 
+	 * @return work's price
+	 */
+	protected int getPrice() {
+		return _price;
+	}
 
-    /**
-     * 
-     * @return number of available copies
-     */
-    protected int getAvailable() {
-        return _available;
-    }
+	/**
+	 * 
+	 * @return total number of copies
+	 */
+	protected int getNumberOfCopies() {
+		return _numberOfCopies;
+	}
 
-    /**
-     * 
-     * @return Work's title
-     */
-    protected String getTitle() {
-        return _title;
-    }
+	/**
+	 * 
+	 * @return number of available copies
+	 */
+	protected int getAvailable() {
+		return _available;
+	}
 
-    /**
-     * 
-     * @return Work's category
-     */
-    protected Category getCategory() {
-        return _category;
-    }
+	/**
+	 * 
+	 * @return Work's title
+	 */
+	protected String getTitle() {
+		return _title;
+	}
 
-    /**
-     * Set Work's category to
-     * @param category
-     */
-    protected void setCategory(Category category) {
-        _category = category;
-    }
+	/**
+	 * 
+	 * @return Work's category
+	 */
+	protected Category getCategory() {
+		return _category;
+	}
 
-    /**
-     * 
-     * @return Work's Description
-     */
-    public abstract String getDescription();
+	/**
+	 * Set Work's category to
+	 * @param category
+	 */
+	protected void setCategory(Category category) {
+		_category = category;
+	}
 
-    /**
-     * 
-     * @return Work's Description
-     */
-    public String getDescription(String type, String addInfo){
-        return _id + " - " + _available + " de " + _numberOfCopies + " - " + type + " - " + _title + " - " + _price + " - " + _category + addInfo;
-    }
+	/**
+	 * 
+	 * @return Work's Description
+	 */
+	public abstract String getDescription();
 
-    /**
-     * Compares if 2 works have the same title
-     * @param work
-     * @return
-     */
-    @Override
-    public boolean equals(Object other){
-        if(!(other instanceof Work)) return false;
-        Work otherWork = (Work)other;
-        return this.getTitle().equals(otherWork.getTitle());
-    }
+	/**
+	 * 
+	 * @return Work's Description
+	 */
+	public String getDescription(String type, String addInfo){
+		return _id + " - " + _available + " de " + _numberOfCopies + " - " + type + " - " + _title + " - " + _price + " - " + _category + addInfo;
+	}
 
-    /**
-     * Compares Work a to Work b by ID
-     */
-    @Override
-    public int compareTo(Work b){
-        return Integer.compare(this.getId(), b.getId());
-    }
+	/**
+	 * Compares if 2 works have the same title
+	 * @param work
+	 * @return
+	 */
+	@Override
+	public boolean equals(Object other){
+		if(!(other instanceof Work)) return false;
+		Work otherWork = (Work)other;
+		return this.getTitle().equals(otherWork.getTitle());
+	}
 
-    /**
-     * Check's if the Work's title matches the searchQuery
-     * @param searchQuery
-     * @return boolean
-     */
-    protected boolean search(String searchQuery){
-        return containsIgnoreCase(_title, searchQuery);
-    }
+	/**
+	 * Compares Work a to Work b by ID
+	 */
+	@Override
+	public int compareTo(Work b){
+		return Integer.compare(this.getId(), b.getId());
+	}
 
-    /**
-     * Checks if subString is in str
-     * @param str
-     * @param subString
-     * @return boolean
-     */
-    protected static boolean containsIgnoreCase(String str, String subString) {
-        return str.toLowerCase().contains(subString.toLowerCase());
-    }
+	/**
+	 * Check's if the Work's title matches the searchQuery
+	 * @param searchQuery
+	 * @return boolean
+	 */
+	protected boolean search(String searchQuery){
+		return containsIgnoreCase(_title, searchQuery);
+	}
 
-    /**
-     * @return Work's Description
-     */
-    @Override
-    public String toString(){
-        return this.getDescription();
-    }
+	/**
+	 * Checks if subString is in str
+	 * @param str
+	 * @param subString
+	 * @return boolean
+	 */
+	protected static boolean containsIgnoreCase(String str, String subString) {
+		return str.toLowerCase().contains(subString.toLowerCase());
+	}
 
-//falta obter os users
-    protected void addObserver(User user){
-      _observers.add(user);      
-   }
+	/**
+	 * @return Work's Description
+	 */
+	@Override
+	public String toString(){
+		return this.getDescription();
+	}
 
-    protected void removeObserver(User user){
-      _observers.remove(user);
-   }
+	
+	@Override
+	public void addObserver(Observer user){
+		_observers.add(user);
+	}
 
-    protected void notifyAllObservers(){
-        for (User observer : _observers) {
-            observer.update(getAvailable());
-        }
-    }
+	@Override
+	public void rmObserver(Observer user){
+		_observers.remove(user);
+	}
 
+	/**
+	 * Sends Notification to every User that asked to be notified
+	 */
+	@Override
+	public void update(){
+		User _user;
+		for (Observer obs : _observers) {
+			_user = (User) obs;
+			_user.addNotification(new Notification("ENTREGUE", this));
+		}
+	}
 }

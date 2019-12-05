@@ -36,7 +36,7 @@ public class Date implements Serializable, Subject{
 	}
 
 	@Override
-	public void update(int date){
+	public void update(){
 		for(Observer obs: _observers){
 			obs.update(_currentDate);
 		}
@@ -52,7 +52,7 @@ public class Date implements Serializable, Subject{
 			throw new BadEntrySpecificationException("number of days to advance < 0");
 		}
 		_currentDate+=nDays;
-		update(_currentDate);
+		update();
 		return _currentDate;
 	}
 }

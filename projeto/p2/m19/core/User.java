@@ -6,7 +6,7 @@ import java.util.Collections;
 import m19.app.exception.UserRegistrationFailedException;
 import java.io.Serializable;
 
-public class User implements Comparable<User>, Serializable{
+public class User implements Comparable<User>, Serializable, Observer{
 	private int _id;
 	private boolean _isActive;
 	private final String _name;
@@ -163,4 +163,15 @@ public class User implements Comparable<User>, Serializable{
 	public String toString(){
 		return this.getDescription();
 	}
+
+	/**
+	 * Recives a Notification when a work that hasn't available was returned
+	 * by another user
+	 */
+	@Override
+	public void update(Notification noti){
+		this.addNotification(noti);
+	}
+
+	@Override public void update(int novoDia){}
 }

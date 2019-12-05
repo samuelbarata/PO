@@ -15,7 +15,6 @@ public interface Subject{
 
 	/**
 	 * Sends update to observers
-	 * @param param
 	 */
-	public void update(int param);
+	public void update();
 }

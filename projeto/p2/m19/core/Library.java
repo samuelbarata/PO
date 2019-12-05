@@ -8,12 +8,8 @@ import java.util.List;
 import java.util.Collections;
 import java.io.IOException;
 
-import m19.core.exception.MissingFileAssociationException;
-import m19.core.exception.BadEntrySpecificationException;
-import m19.app.exception.UserRegistrationFailedException;
-import m19.app.exception.WorkNotBorrowedByUserException;
-import m19.app.exception.NoSuchUserException;
-import m19.app.exception.NoSuchWorkException;
+import m19.app.exception.*;
+import m19.core.exception.*;
 
 /**
  * Class that represents the library as a whole.
@@ -236,15 +232,23 @@ public class Library implements Serializable {
 		return res;
 	}
 
-
-
-	protected void requestWork(User user, Work work, int deadline) throws Exception{
+	protected void requestWork(User user, Work work, int deadline) throws WorkNotBorrowedByUserException{
 		Request request = new Request(deadline, work, user, _date.getCurrentDate());
 		_requests.add(request);
+		_date.addObserver(request);
 	}
 
 	protected void returnWork(Request reqi){
 		reqi.returnWork();
 		_requests.remove(reqi);
+		_date.rmObserver(reqi);
+	}
+
+	protected void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
+		User _myUser = this.getUserById(_userId);
+		if(!_myUser.isActive()){
+			throw new UserIsActiveException(_userId);
+		}
+		//pagarMulta
 	}
 }

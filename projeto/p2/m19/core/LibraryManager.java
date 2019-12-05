@@ -3,12 +3,8 @@ package m19.core;
 import java.io.*;
 import java.util.List;
 
-import m19.core.exception.MissingFileAssociationException;
-import m19.app.exception.UserRegistrationFailedException;
-import m19.app.exception.NoSuchUserException;
-import m19.app.exception.NoSuchWorkException;
-import m19.core.exception.BadEntrySpecificationException;
-import m19.core.exception.ImportFileException;
+import m19.core.exception.*;
+import m19.app.exception.*;
 
 /**
  * The façade class.
@@ -186,4 +182,9 @@ public class LibraryManager {
 	public List<String> getUserNotifications(int id) throws NoSuchUserException{
 		return _library.getUserNotifications(id);
 	}
+
+	public void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
+		_library.payFine(_userId);
+	}
+
 }
