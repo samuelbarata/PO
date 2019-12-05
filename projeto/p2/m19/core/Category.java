@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public enum Category implements Serializable{
 	FICTION("Ficção"), SCITECH("Técnica e Científica"), REFERENCE("Referência");
-
+	//falta adicionar categorias;
 	//TODO: preceber esta cena
-
+	
 	private String _categoria;
 
 

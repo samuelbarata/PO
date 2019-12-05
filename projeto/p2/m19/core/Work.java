@@ -1,6 +1,8 @@
 package m19.core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Work implements Comparable<Work>, Serializable{  // Obra    
     private int _id;
@@ -9,6 +11,7 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
     private int _available;
     private String _title;
     private Category _category;
+    private List<User> _observers = new ArrayList<User>();
 
     public Work(String titulo, int preco, Category categoria, int exemplares){
         _price = preco;
@@ -28,6 +31,9 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
             _available--;
             return true;
         }
+        //perguntar se quer receber notificaçoes?
+        //como obtenho o user?? das requisiçoes maybe
+        _observers.add(user);
         return false;
     }
 
@@ -155,4 +161,20 @@ public abstract class Work implements Comparable<Work>, Serializable{  // Obra
     public String toString(){
         return this.getDescription();
     }
+
+//falta obter os users
+    protected void addObserver(User user){
+      _observers.add(user);      
+   }
+
+    protected void removeObserver(User user){
+      _observers.remove(user);
+   }
+
+    protected void notifyAllObservers(){
+        for (User observer : _observers) {
+            observer.update(getAvailable());
+        }
+    }
+
 }
