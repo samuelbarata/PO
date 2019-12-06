@@ -8,6 +8,8 @@ all: lib/po-uilib.jar
 run: all #usa o ficheiro ficheiro.im para inicializar a library
 	@java -Dimport=ficheiro.im -cp lib/po-uilib.jar:. m19.app.App
 
+runy: all
+	@java -cp lib/po-uilib.jar:. m19.app.App
 clean:
 	@rm -rf `find m19 -name *.class` tests/*.outhyp tests/*.diff proj2.jar 0 1 2 3 4 5 6 7 8 9 10 s requisicao cumpridor faltoso user work works tests/*.out2 notificacao
 

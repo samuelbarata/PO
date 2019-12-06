@@ -263,7 +263,6 @@ public class Library implements Serializable {
 			throw new UserIsActiveException(_userId);
 		}
 		_myUser.addDivida(-_myUser.getDivida());
-		//TODO: verificar estado do utente
 	}
 
 	private void ruleChecker(User user, Work work) throws RuleFailedException{
@@ -286,9 +285,9 @@ public class Library implements Serializable {
 		for(Request reqi : user.getRequests()){
 			if(reqi.getWork().equals(work)){
 				returnWork(reqi);
-				break;
+				return user.getDivida();
 			}
 		}
-		return user.getDivida();
+		throw new WorkNotBorrowedByUserException(workId, userId);
 	}
 }

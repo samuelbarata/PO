@@ -59,14 +59,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 */
 	protected void addDivida(int payment){
 		_divida += (_divida+payment < 0) ? 0 : payment;
-		if(_divida == 0){
-			//verifica se pode mudar o estado do utente
-			for(Request reqi : _requests){
-				if(reqi.isLate()){
-					//verifica se pode passar de faltoso a normal
-				}
-			}
-		}
+		updateEstado();
 	}
 
 	/**
@@ -196,25 +189,54 @@ public class User implements Comparable<User>, Serializable, Observer{
 
 	protected void workReturned(Request reqi){
 		if(reqi.isLate()){
-			_behaviorCounter=0;
+			_behaviorCounter= _behaviorCounter>0 ? -1 : _behaviorCounter-1;
 		}
 		else {
-			_behaviorCounter++;
+			_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
 		}
 		_requests.remove(reqi);
+		updateEstado();
 	}
 
 	protected Set<Request> getRequests(){
 		return _requests;
 	}
 
-	protected void setBehavior(UserBehavior b){
-		if(b == UserBehavior.FALTOSO){
+	private void updateEstado(){
+		switch(this.getBehaviour()){
+			case FALTOSO:
+				if(_behaviorCounter>=3){
+					_behavior = UserBehavior.NORMAL;
+				}
+				break;
+			case NORMAL:
+				if(_behaviorCounter>=5){
+					_behavior = UserBehavior.CUMPRIDOR;
+				} else if(_behaviorCounter<=-3){
+					_behavior = UserBehavior.FALTOSO;
+				}
+				break;
+			case CUMPRIDOR:
+				if(_behaviorCounter<=-3){
+					_behavior = UserBehavior.FALTOSO;
+				}
+				break;
+		}
+		if(_divida > 0){	//divida > 0
 			_isActive = false;
+			return;
 		}
-		else{
-			_isActive = true;
+		if(!_isActive){
+			boolean aux = true; //tudo bem
+			for(Request reqi : _requests){	//requests em atraso
+				if(reqi.isLate()){
+					aux = false;
+					break;
+				}
+			}
+			if(aux){
+				_isActive = true;
+			}
 		}
-		_behavior = b;
 	}
 }
