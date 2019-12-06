@@ -9,7 +9,7 @@ public class Request implements Serializable, Observer{
 	private User _user;
 
 	public Request(Work work, User user, int currentDay){
-		_deadline=user.getBehaviour().getDeadline(work.getNumberOfCopies());
+		_deadline=currentDay + user.getBehaviour().getDeadline(work.getNumberOfCopies());
 		_work=work;
 		_user=user;
 		_lastDayCheck=currentDay;
