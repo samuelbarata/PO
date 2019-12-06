@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Request implements Serializable, Observer{
 	private int _deadline;
 	private int _lastDayCheck;
+	private boolean _isLate;
 	private Work _work;
 	private User _user;
 
@@ -13,7 +14,7 @@ public class Request implements Serializable, Observer{
 		_work=work;
 		_user=user;
 		_lastDayCheck=currentDay;
-
+		_isLate=false;
 		_work.requestWork();
 		_user.workRequested(this);
 		_user.addNotification(new Notification("REQUISIÇÃO", _work));
@@ -58,9 +59,17 @@ public class Request implements Serializable, Observer{
 	@Override
 	public void update(int currentDay) {
 		if(_deadline<currentDay){
+			_isLate=true;
 			_user.addDivida((currentDay-_lastDayCheck)*5);
 		}
 		_lastDayCheck = currentDay;
+	}
+
+	/**
+	 * @return if the user is late to return or not
+	 */
+	public boolean isLate() {
+		return _isLate;
 	}
 
 	@Override public void update(Notification noti){}

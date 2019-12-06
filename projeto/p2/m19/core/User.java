@@ -18,6 +18,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	private List<Notification> _notifications;
 	private Set<Request> _requests;
 	private int _divida;
+	private int _behaviorCounter;
 
 	public User(String name, String email) throws UserRegistrationFailedException{
 		if(name.isEmpty() || email.isEmpty())
@@ -30,6 +31,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 		_id = -1;
 		_divida = 0;
 		_requests = new HashSet<>();
+		_behaviorCounter=0;
 	}
 
 	public int hashCode(){
@@ -57,6 +59,14 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 */
 	protected void addDivida(int payment){
 		_divida += (_divida+payment < 0) ? 0 : payment;
+		if(_divida == 0){
+			//verifica se pode mudar o estado do utente
+			for(Request reqi : _requests){
+				if(reqi.isLate()){
+					//verifica se pode passar de faltoso a normal
+				}
+			}
+		}
 	}
 
 	/**
@@ -185,10 +195,26 @@ public class User implements Comparable<User>, Serializable, Observer{
 	}
 
 	protected void workReturned(Request reqi){
+		if(reqi.isLate()){
+			_behaviorCounter=0;
+		}
+		else {
+			_behaviorCounter++;
+		}
 		_requests.remove(reqi);
 	}
 
 	protected Set<Request> getRequests(){
 		return _requests;
+	}
+
+	protected void setBehavior(UserBehavior b){
+		if(b == UserBehavior.FALTOSO){
+			_isActive = false;
+		}
+		else{
+			_isActive = true;
+		}
+		_behavior = b;
 	}
 }
