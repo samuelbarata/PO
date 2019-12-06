@@ -49,8 +49,9 @@ public class DoRequestWork extends Command<LibraryManager> {
 				if(_notiPref.value().equals("s")){
 					_receiver.notifyWorkAvailable(_userId, _workId);
 				}
+			}else{
+				throw e;
 			}
-			throw e;
 		}
 	}
 

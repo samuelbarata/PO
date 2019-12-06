@@ -23,11 +23,18 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	}
 
 	/**
-	 * 
-	 * @return if it has been delivered or not
+	 * decreases the number of available copies
 	 */
 	protected void requestWork(){
 		_available--;
+	}
+
+	/**
+	 * increases the number of available copies
+	 */
+	protected void returnWork(){
+		_available++;
+		update();
 	}
 
 	/**
@@ -178,7 +185,7 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 		User _user;
 		for (Observer obs : _observers) {
 			_user = (User) obs;
-			_user.addNotification(new Notification("ENTREGUE", this));
+			_user.addNotification(new Notification("ENTREGA", this));
 		}
 	}
 }

@@ -17,7 +17,7 @@ public class Request implements Serializable, Observer{
 		_isLate=false;
 		_work.requestWork();
 		_user.workRequested(this);
-		_user.addNotification(new Notification("REQUISIÇÃO", _work));
+		//_user.addNotification(new Notification("REQUISIÇÃO", _work));
 
 		for(Observer obs : work.getObservers()){
 			if(obs == user){
@@ -50,7 +50,8 @@ public class Request implements Serializable, Observer{
 
 	protected void returnWork(){
 		_user.workReturned(this);
-		_user.addNotification(new Notification("ENTREGA", _work));
+		_work.returnWork();
+		//_user.addNotification(new Notification("ENTREGA", _work));
 	}
 
 	/**
