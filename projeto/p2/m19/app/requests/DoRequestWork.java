@@ -1,5 +1,6 @@
 package m19.app.requests;
 
+import m19.app.exception.RuleFailedException;
 import m19.app.exception.WorkNotBorrowedByUserException;
 import m19.core.LibraryManager;
 import pt.tecnico.po.ui.Command;
@@ -40,13 +41,16 @@ public class DoRequestWork extends Command<LibraryManager> {
 			returnDate = _receiver.makeRequest(_userId, _workId);
 			_display.addLine(Message.workReturnDay(_workId, returnDate));
 			_display.display();
-		} catch(WorkNotBorrowedByUserException e) {
-			_form.clear();
-			_notiPref = _form.addStringInput(Message.requestReturnNotificationPreference());
-			_form.parse();
-			if(_notiPref.value().equals("s")){
-				//TODO: adicionar notificação
+		} catch(RuleFailedException e) {
+			if(e.getRuleIndex() == 3){
+				_form.clear();
+				_notiPref = _form.addStringInput(Message.requestReturnNotificationPreference());
+				_form.parse();
+				if(_notiPref.value().equals("s")){
+					_receiver.notifyWorkAvailable(_userId, _workId);
+				}
 			}
+			throw new WorkNotBorrowedByUserException(_workId, _userId);
 		}
 	}
 

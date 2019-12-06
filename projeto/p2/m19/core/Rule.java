@@ -1,10 +1,11 @@
 package m19.core;
 
+import java.io.Serializable;
 import m19.app.exception.RuleFailedException;
 import m19.core.User;
 import m19.core.Work;
 
-public abstract class Rule{
+public abstract class Rule implements Serializable{
 
 	/**
 	 * Checks if user violates a rule

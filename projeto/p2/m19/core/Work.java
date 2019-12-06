@@ -166,6 +166,10 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 		_observers.remove(user);
 	}
 
+	public List<Observer> getObservers(){
+		return _observers;
+	}
+
 	/**
 	 * Sends Notification to every User that asked to be notified
 	 */

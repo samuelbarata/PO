@@ -8,8 +8,8 @@ public class Request implements Serializable, Observer{
 	private Work _work;
 	private User _user;
 
-	public Request(Work work, User user, int currentDay, int deadline){
-		_deadline=deadline;
+	public Request(Work work, User user, int currentDay){
+		_deadline=user.getBehaviour().getDeadline(work.getNumberOfCopies());
 		_work=work;
 		_user=user;
 		_lastDayCheck=currentDay;
@@ -17,6 +17,12 @@ public class Request implements Serializable, Observer{
 		_work.requestWork();
 		_user.workRequested(this);
 		_user.addNotification(new Notification("REQUISIÇÃO", _work));
+
+		for(Observer obs : work.getObservers()){
+			if(obs == user){
+				work.rmObserver(user);
+			}
+		}
 	}
 
 	/**

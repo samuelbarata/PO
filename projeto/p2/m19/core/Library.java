@@ -239,17 +239,13 @@ public class Library implements Serializable {
 		return res;
 	}
 
-	protected int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException, RuleFailedException{
+	protected int makeRequest(int userId, int workId) throws NoSuchUserException, NoSuchWorkException, RuleFailedException{
 		return requestWork(this.getUserById(userId), this.getWorkById(workId));
 	}
 
-	protected int requestWork(User user, Work work) throws WorkNotBorrowedByUserException{
-		try{
-			ruleChecker(user, work);
-		} catch (RuleFailedException e){
-			return e.getRuleIndex();
-		}
-		Request request = new Request(work, user, _date.getCurrentDate(), 0/*FIXME: get deadline*/);
+	protected int requestWork(User user, Work work) throws RuleFailedException{
+		ruleChecker(user, work);
+		Request request = new Request(work, user, _date.getCurrentDate());
 		_requests.add(request);
 		_date.addObserver(request);
 		return request.getDeadline();
@@ -272,6 +268,14 @@ public class Library implements Serializable {
 	private void ruleChecker(User user, Work work) throws RuleFailedException{
 		for(Rule regra: _rules){
 			regra.checkRule(user, work);
+		}
+	}
+
+	protected void notifyWorkAvailable(int userId, int workId){
+		try{
+			getWorkById(workId).addObserver(this.getUserById(userId));
+		} catch (NoSuchUserException | NoSuchWorkException e) {
+			;//never happens, checked previously
 		}
 	}
 }

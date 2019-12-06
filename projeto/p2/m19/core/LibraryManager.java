@@ -191,4 +191,7 @@ public class LibraryManager {
 		return _library.makeRequest(userId, workId);
 	}
 
+	public void notifyWorkAvailable(int userId, int workId){
+		_library.notifyWorkAvailable(userId, workId);
+	}
 }
