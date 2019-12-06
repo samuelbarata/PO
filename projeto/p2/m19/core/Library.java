@@ -258,10 +258,10 @@ public class Library implements Serializable {
 	}
 
 	protected void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
-		User _myUser = this.getUserById(_userId);
-		if(!_myUser.isActive()){
+		User _myUser = this.getUserById(_userId); //devia de tirar o _ pq convencoes?
+		/* if(!_myUser.isActive()){
 			throw new UserIsActiveException(_userId);
-		}
+		} */
 		_myUser.addDivida(-_myUser.getDivida());
 	}
 

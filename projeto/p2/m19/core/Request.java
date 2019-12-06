@@ -60,8 +60,11 @@ public class Request implements Serializable, Observer{
 	@Override
 	public void update(int currentDay) {
 		if(_deadline<currentDay){
+			if (_lastDayCheck < _deadline){
+				_lastDayCheck = _deadline;
+			}
 			_isLate=true;
-			_user.addDivida((currentDay-_lastDayCheck)*5);
+			_user.addDivida((currentDay-_lastDayCheck)*5); //o erro n começa no lastdaycheck acho;
 		}
 		_lastDayCheck = currentDay;
 	}
