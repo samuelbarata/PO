@@ -22,22 +22,22 @@ public class Dvd extends Work implements Serializable{
 		return _igac;
 	}
 
-    /**
-     * 
-     * @return Dvd's Description
-     */
-    @Override
-    public String getDescription(){
-        return super.getDescription("DVD", " - " + _director + " - " + _igac);
-    }
+	/**
+	 * 
+	 * @return Dvd's Description
+	 */
+	@Override
+	public String getDescription(){
+		return super.getDescription("DVD", " - " + _director + " - " + _igac);
+	}
 
-    /**
-     * Check's if the Dvd's director matches the searchQuery
-     * @param searchQuery
-     * @return boolean
-     */
-    protected boolean search(String searchQuery){
-        return super.search(searchQuery) || super.containsIgnoreCase(_director, searchQuery);
-    }
+	/**
+	 * Check's if the Dvd's director matches the searchQuery
+	 * @param searchQuery
+	 * @return boolean
+	 */
+	protected boolean search(String searchQuery){
+		return super.search(searchQuery) || super.containsIgnoreCase(_director, searchQuery);
+	}
 
 }

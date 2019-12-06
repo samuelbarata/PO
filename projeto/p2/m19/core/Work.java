@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import m19.app.requests.Message;
-
 public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	private int _id;
 	private final int _price;
