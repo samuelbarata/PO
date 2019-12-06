@@ -9,7 +9,6 @@ public enum Category implements Serializable{
 	
 	private String _categoria;
 
-
 	private Category(String categoria){
 		_categoria=categoria;
 	}

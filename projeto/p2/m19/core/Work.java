@@ -26,12 +26,8 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	 * 
 	 * @return if it has been delivered or not
 	 */
-	protected boolean requestWork(){
-		if (_available>0){
-			_available--;
-			return true;
-		}
-		return false;
+	protected void requestWork(){
+		_available--;
 	}
 
 	/**

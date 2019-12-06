@@ -3,6 +3,9 @@ package m19.core;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.Set;
+import java.util.HashSet;
+
 import m19.app.exception.UserRegistrationFailedException;
 import java.io.Serializable;
 
@@ -13,6 +16,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	private final String _email;
 	private UserBehavior _behavior;
 	private List<Notification> _notifications;
+	private Set<Request> _requests;
 	private int _divida;
 
 	public User(String name, String email) throws UserRegistrationFailedException{
@@ -25,6 +29,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 		_notifications = new ArrayList<>();
 		_id = -1;
 		_divida = 0;
+		_requests = new HashSet<>();
 	}
 
 	public int hashCode(){
@@ -174,4 +179,16 @@ public class User implements Comparable<User>, Serializable, Observer{
 	}
 
 	@Override public void update(int novoDia){}
+
+	protected void workRequested(Request reqi){
+		_requests.add(reqi);
+	}
+
+	protected void workReturned(Request reqi){
+		_requests.remove(reqi);
+	}
+
+	protected Set<Request> getRequests(){
+		return _requests;
+	}
 }

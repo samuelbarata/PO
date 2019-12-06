@@ -187,7 +187,7 @@ public class LibraryManager {
 		_library.payFine(_userId);
 	}
 
-	public int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException{
+	public int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException, RuleFailedException{
 		return _library.makeRequest(userId, workId);
 	}
 

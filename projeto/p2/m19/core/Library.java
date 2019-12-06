@@ -25,6 +25,7 @@ public class Library implements Serializable {
 	private Set<User> _users;
 	private Set<Work> _works;
 	private Set<Request> _requests;
+	private List<Rule> _rules;
 
 	/**
 	 * Initialize empty library
@@ -36,6 +37,13 @@ public class Library implements Serializable {
 		_users = new HashSet<>();
 		_works = new HashSet<>();
 		_requests = new HashSet<>();
+		_rules = new ArrayList<>();
+		_rules.add(new CheckRequestTwice());
+		_rules.add(new CheckUserSuspended());
+		_rules.add(new CheckWorkAvailable());
+		_rules.add(new CheckUserSpace());
+		_rules.add(new CheckWorkCategory());
+		_rules.add(new CheckWorkPrice());
 	}
 
 	/**
@@ -76,8 +84,7 @@ public class Library implements Serializable {
 	 * Read the text input file at the beginning of the program and populates the
 	 * instances of the various possible types (books, DVDs, users).
 	 * 
-	 * @param filename
-	 *          name of the file to load
+	 * @param filename name of the file to load
 	 * @throws BadEntrySpecificationException
 	 * @throws IOException
 	 */
@@ -232,12 +239,17 @@ public class Library implements Serializable {
 		return res;
 	}
 
-	protected int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException{
-		return requestWork(this.getUserById(userId), this.getWorkById(workId), _date.getCurrentDate()+5/*FIXME: DEADLINE*/);
+	protected int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException, RuleFailedException{
+		return requestWork(this.getUserById(userId), this.getWorkById(workId));
 	}
 
-	protected int requestWork(User user, Work work, int deadline) throws WorkNotBorrowedByUserException{
-		Request request = new Request(deadline, work, user, _date.getCurrentDate());
+	protected int requestWork(User user, Work work) throws WorkNotBorrowedByUserException{
+		try{
+			ruleChecker(user, work);
+		} catch (RuleFailedException e){
+			return e.getRuleIndex();
+		}
+		Request request = new Request(work, user, _date.getCurrentDate(), 0/*FIXME: get deadline*/);
 		_requests.add(request);
 		_date.addObserver(request);
 		return request.getDeadline();
@@ -255,5 +267,11 @@ public class Library implements Serializable {
 			throw new UserIsActiveException(_userId);
 		}
 		//pagarMulta
+	}
+
+	private void ruleChecker(User user, Work work) throws RuleFailedException{
+		for(Rule regra: _rules){
+			regra.checkRule(user, work);
+		}
 	}
 }

@@ -1,7 +1,6 @@
 package m19.core;
 
 import java.io.Serializable;
-import m19.app.exception.WorkNotBorrowedByUserException;
 
 public class Request implements Serializable, Observer{
 	private int _deadline;
@@ -9,18 +8,15 @@ public class Request implements Serializable, Observer{
 	private Work _work;
 	private User _user;
 
-	public Request(int deadline, Work work, User user, int currentDay) throws WorkNotBorrowedByUserException{
+	public Request(Work work, User user, int currentDay, int deadline){
 		_deadline=deadline;
 		_work=work;
 		_user=user;
 		_lastDayCheck=currentDay;
-		//TODO: verificar regras
 
-		if(_work.requestWork()){
-			_user.addNotification(new Notification("REQUISIÇÃO", _work));
-		} else {
-			throw new WorkNotBorrowedByUserException(work.getId(), user.getId());
-		}
+		_work.requestWork();
+		_user.workRequested(this);
+		_user.addNotification(new Notification("REQUISIÇÃO", _work));
 	}
 
 	/**
@@ -46,7 +42,7 @@ public class Request implements Serializable, Observer{
 	}
 
 	protected void returnWork(){
-		//TODO: verificar o resto das cenas
+		_user.workReturned(this);
 		_user.addNotification(new Notification("ENTREGA", _work));
 	}
 
