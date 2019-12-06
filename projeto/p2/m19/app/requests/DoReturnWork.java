@@ -3,28 +3,42 @@ package m19.app.requests;
 import m19.core.LibraryManager;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
-// FIXME import other core concepts
-// FIXME import other ui concepts
+import pt.tecnico.po.ui.Input;
 
 /**
  * 4.4.2. Return a work.
  */
 public class DoReturnWork extends Command<LibraryManager> {
 
-	// FIXME define input fields
+	private Input<Integer> _userIdForm;
+	private Input<Integer> _workIdForm;
+	private Input<String> _payment;
 
 	/**
 	 * @param receiver
 	 */
 	public DoReturnWork(LibraryManager receiver) {
 		super(Label.RETURN_WORK, receiver);
-		// FIXME initialize input fields
 	}
 
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException {
-		// FIXME implement command
+		int _userId, _workId, divida;
+		_form.clear();
+		_userIdForm = _form.addIntegerInput(Message.requestUserId());
+		_workIdForm = _form.addIntegerInput(Message.requestWorkId());
+		_form.parse();
+		_userId = _userIdForm.value();
+		_workId = _workIdForm.value();
+		divida = _receiver.returnWork(_userId, _workId);
+		if(divida > 0){
+			_form.clear();
+			_payment = _form.addStringInput(Message.requestFinePaymentChoice());
+			_form.parse();
+			if(_payment.value().equals("s")){
+				_receiver.payFine(_userId);
+			}
+		}
 	}
-
 }

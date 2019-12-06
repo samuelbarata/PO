@@ -10,7 +10,8 @@ public class CheckWorkCategory extends Rule{
 
 	@Override
 	public void checkRule(User user, Work work) throws RuleFailedException{
-		
+		if(work.getCategory()==Category.REFERENCE){
+			throw new RuleFailedException(user.getId(), work.getId(), ruleIndex);
+		}
 	}
-
 }

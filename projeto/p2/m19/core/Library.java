@@ -262,7 +262,8 @@ public class Library implements Serializable {
 		if(!_myUser.isActive()){
 			throw new UserIsActiveException(_userId);
 		}
-		//pagarMulta
+		_myUser.addDivida(-_myUser.getDivida());
+		//TODO: verificar estado do utente
 	}
 
 	private void ruleChecker(User user, Work work) throws RuleFailedException{
@@ -277,5 +278,17 @@ public class Library implements Serializable {
 		} catch (NoSuchUserException | NoSuchWorkException e) {
 			;//never happens, checked previously
 		}
+	}
+
+	protected int returnWork(int userId, int workId) throws NoSuchUserException, NoSuchWorkException, WorkNotBorrowedByUserException{
+		User user = getUserById(userId);
+		Work work = getWorkById(workId);
+		for(Request reqi : user.getRequests()){
+			if(reqi.getWork().equals(work)){
+				returnWork(reqi);
+				break;
+			}
+		}
+		return user.getDivida();
 	}
 }

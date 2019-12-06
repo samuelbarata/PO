@@ -194,4 +194,8 @@ public class LibraryManager {
 	public void notifyWorkAvailable(int userId, int workId){
 		_library.notifyWorkAvailable(userId, workId);
 	}
+
+	public int returnWork(int userId, int workId) throws NoSuchUserException, NoSuchWorkException, WorkNotBorrowedByUserException{
+		return _library.returnWork(userId, workId);
+	}
 }

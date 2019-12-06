@@ -50,7 +50,7 @@ public class DoRequestWork extends Command<LibraryManager> {
 					_receiver.notifyWorkAvailable(_userId, _workId);
 				}
 			}
-			throw new WorkNotBorrowedByUserException(_workId, _userId);
+			throw e;
 		}
 	}
 
