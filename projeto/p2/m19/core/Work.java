@@ -11,8 +11,8 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	private final int _price;
 	private final int _numberOfCopies;
 	private int _available;
-	private String _title;
-	private Category _category;
+	private final String _title;
+	private final Category _category;
 	private List<Observer> _observers = new ArrayList<>();
 
 	public Work(String titulo, int preco, Category categoria, int exemplares){
@@ -92,14 +92,6 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	 */
 	protected Category getCategory() {
 		return _category;
-	}
-
-	/**
-	 * Set Work's category to
-	 * @param category
-	 */
-	protected void setCategory(Category category) {
-		_category = category;
 	}
 
 	/**

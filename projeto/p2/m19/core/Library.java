@@ -24,7 +24,6 @@ public class Library implements Serializable {
 	private Date _date;
 	private Set<User> _users;
 	private Set<Work> _works;
-	private Set<Request> _requests;
 	private List<Rule> _rules;
 
 	/**
@@ -36,7 +35,6 @@ public class Library implements Serializable {
 		_date = new Date();
 		_users = new HashSet<>();
 		_works = new HashSet<>();
-		_requests = new HashSet<>();
 		_rules = new ArrayList<>();
 		_rules.add(new CheckRequestTwice());
 		_rules.add(new CheckUserSuspended());
@@ -115,6 +113,7 @@ public class Library implements Serializable {
 		}
 		user.setId(getNextUId());
 		_users.add(user);
+		_date.addObserver(user);
 		return user.getId();
 	}
 
@@ -267,7 +266,6 @@ public class Library implements Serializable {
 	private int requestWork(User user, Work work) throws RuleFailedException{
 		ruleChecker(user, work);
 		Request request = new Request(work, user, _date.getCurrentDate());
-		_requests.add(request);
 		_date.addObserver(request);
 		return request.getDeadline();
 	}
@@ -300,7 +298,6 @@ public class Library implements Serializable {
 	private int returnWork(Request reqi){
 		reqi.getUser().addDivida(reqi.returnWork());
 		_date.rmObserver(reqi);
-		_requests.remove(reqi);
 		return reqi.getUser().getDivida();
 	}
 

@@ -182,8 +182,12 @@ public class User implements Comparable<User>, Serializable, Observer{
 		this.addNotification(noti);
 	}
 
-	/**send day updates; not used by user*/
-	@Override public void update(int novoDia){}
+	/**
+	 * Updates the user Status
+	*/
+	@Override public void update(int novoDia){
+		updateActive();
+	}
 
 	protected void workRequested(Request reqi){
 		_requests.add(reqi);
