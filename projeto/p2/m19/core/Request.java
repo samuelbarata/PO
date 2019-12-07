@@ -53,7 +53,7 @@ public class Request implements Serializable, Observer{
 	protected int returnWork(){
 		_user.workReturned(this);
 		_work.returnWork();
-		return _deadline<=_currentDay ? (_currentDay-_deadline)*5 : 0;
+		return _deadline<_currentDay ? (_currentDay-_deadline)*5 : 0;
 	}
 
 	/**
@@ -62,23 +62,13 @@ public class Request implements Serializable, Observer{
 	@Override
 	public void update(int currentDay) {
 		_currentDay = currentDay;
-		int behaviorCounter;
-		if(currentDay > _deadline && _lastDayCheck <= _deadline){
-			behaviorCounter = _user.getCounter();
-			behaviorCounter= behaviorCounter > 0 ? -1 : behaviorCounter-1;
-			_user.setCounter(behaviorCounter);
-		}
-		if(_deadline<currentDay){
-			_isLate=true;
-		}
-		_lastDayCheck = currentDay;
 	}
 
 	/**
 	 * @return if the user is late to return or not
 	 */
 	public boolean isLate() {
-		return _isLate;
+		return _currentDay>_deadline;
 	}
 
 	/**not used */
