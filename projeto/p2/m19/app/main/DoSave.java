@@ -8,7 +8,6 @@ import m19.core.exception.MissingFileAssociationException;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.Input;
-import pt.tecnico.po.ui.Display;
 
 /**
  * 4.1.1. Save to file under current name (if unnamed, query for name).
@@ -16,15 +15,12 @@ import pt.tecnico.po.ui.Display;
 public class DoSave extends Command<LibraryManager>{
   
 	private Input<String> _inputForm;
-	private Display _display;
 
 	/**
 	 * @param receiver
 	 */
 	public DoSave(LibraryManager receiver) {
 		super(Label.SAVE, receiver);
-		_display = new Display();
-		_display.addLine(Message.saveAs());
 		_inputForm = _form.addStringInput(Message.newSaveAs());
 	}
 
@@ -35,9 +31,7 @@ public class DoSave extends Command<LibraryManager>{
 		if(_filename.isEmpty()){
 			_form.parse();
 			_filename=_inputForm.value();
-		} /*else {	//TODO: apagar isto if not needed
-			_display.display();
-		}	*/	
+		}
 		try{
 			_receiver.saveAs(_filename);
 		} catch(MissingFileAssociationException | IOException ex) {

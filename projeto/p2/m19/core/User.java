@@ -2,7 +2,6 @@ package m19.core;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -58,6 +57,8 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 * @param payment
 	 */
 	protected void addDivida(int payment){
+		if(payment==0)//pagar tudo
+			_divida=0;
 		_divida = (_divida+payment <= 0) ? 0 : _divida+payment;
 		updateEstado();
 	}
@@ -220,7 +221,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 				}
 				break;
 		}
-		if(_divida > 0){	//divida > 0
+		if(_divida > 0){
 			_isActive = false;
 			return;
 		}

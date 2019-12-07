@@ -12,9 +12,6 @@ import pt.tecnico.po.ui.Display;
  */
 public class DoReturnWork extends Command<LibraryManager> {
 
-	private Input<Integer> _userIdForm;
-	private Input<Integer> _workIdForm;
-	private Input<String> _payment;
 	private Display _display;
 
 	/**
@@ -29,6 +26,10 @@ public class DoReturnWork extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException {
 		int _userId, _workId, divida;
+		Input<Integer> _userIdForm;
+		Input<Integer> _workIdForm;
+		Input<String> _payment;
+
 		_form.clear();
 		_userIdForm = _form.addIntegerInput(Message.requestUserId());
 		_workIdForm = _form.addIntegerInput(Message.requestWorkId());

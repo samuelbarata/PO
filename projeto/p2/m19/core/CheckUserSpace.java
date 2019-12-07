@@ -10,11 +10,7 @@ public class CheckUserSpace extends Rule{
 
 	@Override
 	public void checkRule(User user, Work work) throws RuleFailedException{
-		int i = 0;
-		for(Request requi : user.getRequests()){
-			i++;
-		}
-		if(i>=user.getBehaviour().getMaxRequests()){
+		if(user.getRequests().size()>=user.getBehaviour().getMaxRequests()){
 			throw new RuleFailedException(user.getId(), work.getId(), ruleIndex);
 		}
 	}
