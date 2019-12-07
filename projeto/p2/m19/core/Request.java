@@ -16,7 +16,6 @@ public class Request implements Serializable, Observer{
 		_user=user;
 		_lastDayCheck=currentDay;
 		_isLate=false;
-		
 		_work.requestWork();
 		_user.workRequested(this);
 
