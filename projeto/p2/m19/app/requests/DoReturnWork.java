@@ -37,9 +37,6 @@ public class DoReturnWork extends Command<LibraryManager> {
 		_workId = _workIdForm.value();
 		divida = _receiver.returnWork(_userId, _workId);
 		if(divida > 0){
-			_display.clear();
-			_display.addLine(Message.showFine(_userId, divida));
-			_display.display();
 			_form.clear();
 			_display.clear();
 			_display.addLine(Message.showFine(_userId, divida));
