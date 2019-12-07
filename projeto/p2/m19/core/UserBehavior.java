@@ -10,7 +10,7 @@ public enum UserBehavior{
 			if(behaviourCounter<=-3){
 				return FALTOSO;
 			}
-			return NORMAL;
+			return this;
 		}
 	}, CUMPRIDOR("CUMPRIDOR", 5, 8, 15, 30){
 		@Override
@@ -18,7 +18,7 @@ public enum UserBehavior{
 			if(behaviourCounter<0){
 				return NORMAL;
 			}
-			return CUMPRIDOR;
+			return this;
 		}
 
 	}, FALTOSO("FALTOSO", 1, 2, 2, 2){
@@ -27,7 +27,7 @@ public enum UserBehavior{
 			if(behaviourCounter>=3){
 				return NORMAL;
 			}
-			return FALTOSO;
+			return this;
 		}
 	};
 
