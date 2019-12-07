@@ -34,7 +34,8 @@ public class DoSave extends Command<LibraryManager>{
 		try{
 			_receiver.saveAs(_filename);
 		} catch(MissingFileAssociationException | IOException ex) {
-			;
+			//this errors should never occur
+			ex.printStackTrace();
 		}
 	}
 }
