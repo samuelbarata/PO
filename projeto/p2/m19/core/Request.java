@@ -10,6 +10,12 @@ public class Request implements Serializable, Observer{
 	private Work _work;
 	private User _user;
 
+	/**
+	 * Creates a new Request
+	 * @param work	Work that was requested
+	 * @param user	User that made the request
+	 * @param currentDay Day of the Request
+	 */
 	public Request(Work work, User user, int currentDay){
 		_deadline=currentDay + user.getBehaviour().getDeadline(work.getNumberOfCopies());
 		_work=work;
@@ -17,6 +23,7 @@ public class Request implements Serializable, Observer{
 		_work.requestWork();
 		_user.workRequested(this);
 
+		/**if the user asked for notifications on this work, they will be turned off */
 		for(Observer obs : work.getObservers()){
 			if(obs == user){
 				work.rmObserver(user);
@@ -45,6 +52,9 @@ public class Request implements Serializable, Observer{
 		return _work;
 	}
 
+	/**
+	 * @return fine
+	 */
 	protected int returnWork(){
 		_user.workReturned(this);
 		_work.returnWork();

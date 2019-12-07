@@ -139,7 +139,6 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return Sorted Users String List
 	 */
 	protected List<String> getAllUsers(){
@@ -152,7 +151,6 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * 
 	 * @return Sorted Works String List
 	 */
 	protected List<String> getAllWorks(){
@@ -331,7 +329,8 @@ public class Library implements Serializable {
 		try{
 			getWorkById(workId).addObserver(this.getUserById(userId));
 		} catch (NoSuchUserException | NoSuchWorkException e) {
-			;//never happens, checked previously
+			//never happens, checked previously
+			e.printStackTrace();
 		}
 	}
 

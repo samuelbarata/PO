@@ -19,7 +19,6 @@ public class User implements Comparable<User>, Serializable, Observer{
 	private List<Notification> _notifications;
 	private Set<Request> _requests;
 	private int _divida;
-	private int _behaviorCounter;
 
 	public User(String name, String email) throws UserRegistrationFailedException{
 		if(name.isEmpty() || email.isEmpty())
@@ -32,7 +31,6 @@ public class User implements Comparable<User>, Serializable, Observer{
 		_id = -1;
 		_divida = 0;
 		_requests = new HashSet<>();
-		_behaviorCounter=0;
 	}
 
 	public int hashCode(){
@@ -62,7 +60,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 		if(payment==0)//pagar tudo
 			_divida=0;
 		_divida = (_divida+payment <= 0) ? 0 : _divida+payment;
-		updateEstado();
+		updateActive();
 	}
 
 	/**
@@ -109,7 +107,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	}
 
 	/**
-	 * Compares if 2 works have the same name
+	 * Compares if 2 works have the same name and email
 	 * @param work
 	 * @return boolean
 	 */
@@ -129,7 +127,6 @@ public class User implements Comparable<User>, Serializable, Observer{
 	}
 
 	/**
-	 * 
 	 * @return User's Id
 	 */
 	protected int getId(){
@@ -197,14 +194,9 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 * @param reqi Request
 	 */
 	protected void workReturned(Request reqi){
-		if(!reqi.isLate()){
-			_behavior = _behavior.goodReturn();
-		}
-		else {
-			_behavior = _behavior.badReturn();
-		}
+		_behavior = reqi.isLate() ? _behavior.badReturn() : _behavior.goodReturn();
 		_requests.remove(reqi);
-		updateEstado();
+		updateActive();
 	}
 
 	/**
@@ -215,9 +207,9 @@ public class User implements Comparable<User>, Serializable, Observer{
 	}
 
 	/**
-	 * Updates the user's state
+	 * Updates if user is Active or not
 	 */
-	private void updateEstado(){
+	private void updateActive(){
 		if(_divida > 0){
 			_isActive = false;
 			return;
@@ -231,19 +223,4 @@ public class User implements Comparable<User>, Serializable, Observer{
 		_isActive = true;
 	}
 
-	/**
-	 * @return User's state counter
-	 */
-	protected int getCounter(){
-		return _behaviorCounter;
-	}
-
-	/**
-	 * Set's the user state counter
-	 * @param counter
-	 */
-	protected void setCounter(int counter){
-		_behaviorCounter = counter;
-		updateEstado();
-	}
 }

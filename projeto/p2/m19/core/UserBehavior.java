@@ -31,9 +31,6 @@ public enum UserBehavior{
 		}
 	};
 
-
-	protected abstract UserBehavior updateState(int behaviourCounter);
-
 	private final String _behavior;
 	private final int _copies;
 	private final int _um;		//deadline 1 exemplar
@@ -71,7 +68,7 @@ public enum UserBehavior{
 
 	/**
 	 * @param numeroExemplares
-	 * @return deadline acording to user behaviour and number of copies
+	 * @return deadline acording to user behaviour and number of work's copies
 	 */
 	public int getDeadline(int numeroExemplares){
 		if(numeroExemplares==1){
@@ -83,13 +80,30 @@ public enum UserBehavior{
 		return _umCinco;
 	}
 
+	/**
+	 * changes the behaviour counter
+	 * @return new user behaviour
+	 */
 	protected UserBehavior goodReturn(){
 		_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
 		return updateState(_behaviorCounter);
 	}
 
+	/**
+	 * changes the behaviour counter
+	 * @return new user behaviour
+	 */
 	protected UserBehavior badReturn(){
 		_behaviorCounter= _behaviorCounter > 0 ? -1 : _behaviorCounter-1;
 		return updateState(_behaviorCounter);
 	}
+
+	/**
+	 * Updates the User's Behavior
+	 * @param behaviourCounter
+	 * @return new User's Behaviour
+	 * 
+	 * @see https://www.baeldung.com/java-enum-simple-state-machine
+	 */
+	protected abstract UserBehavior updateState(int behaviourCounter);
 }
