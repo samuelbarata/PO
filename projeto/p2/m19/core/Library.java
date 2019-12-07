@@ -252,11 +252,10 @@ public class Library implements Serializable {
 	}
 
 	protected int returnWork(Request reqi){
-		int aux = reqi.returnWork();
-		reqi.getUser().addDivida(aux);
+		reqi.getUser().addDivida(reqi.returnWork());
 		_date.rmObserver(reqi);
 		_requests.remove(reqi);
-		return aux;
+		return reqi.getUser().getDivida();
 	}
 
 	protected void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
