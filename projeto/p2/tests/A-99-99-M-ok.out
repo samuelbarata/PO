@@ -7,37 +7,26 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 7
+Escolha uma opção: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 3 deve ser devolvida no dia 15.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 1
-Introduza o número de utente: 1
-Introduza o número da obra: 3
-A obra 3 deve ser devolvida no dia 15.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 6 deve ser devolvida no dia 8.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 1
-Introduza o número de utente: 1
-Introduza o número da obra: 6
-A obra 6 deve ser devolvida no dia 8.
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 8 deve ser devolvida no dia 3.
 Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 1
-Introduza o número de utente: 1
-Introduza o número da obra: 8
-A obra 8 deve ser devolvida no dia 3.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -46,9 +35,7 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 4
-Introduza número de dias a avançar: 4
-Menu Principal
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -57,20 +44,15 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 7
-Menu de Gestão de Requisições
+Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 2
-Introduza o número de utente: 1
-Introduza o número da obra: 3
-Menu de Gestão de Requisições
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -79,16 +61,14 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 5
-Menu de Gestão de Utentes
+Escolha uma opção: Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente
 3 - Listar utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 3
-5 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
+Escolha uma opção: 5 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
 1 - Darth Vader - darth@dark.force.com - NORMAL - SUSPENSO - EUR 0
 9 - Darth Vader - darth2@dark.force.coAm - NORMAL - ACTIVO
 7 - Han Solo - han.solo@milenium.falcon.org - NORMAL - ACTIVO
@@ -105,8 +85,7 @@ Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -115,9 +94,7 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 4
-Introduza número de dias a avançar: 1
-Menu Principal
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -126,22 +103,16 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 7
-Menu de Gestão de Requisições
+Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 2
-Introduza o número de utente: 1
-Introduza o número da obra: 8
-O utente 1 deve pagar uma multa de EUR 10.
-O utente deseja pagar multa (s/n)? s
-Menu de Gestão de Requisições
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 10.
+O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -150,7 +121,14 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 5
+Escolha uma opção: Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: Introduza o número de utente: 1 - Darth Vader - darth@dark.force.com - NORMAL - ACTIVO
 Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente
@@ -158,9 +136,82 @@ Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 2
-Introduza o número de utente: 1
-1 - Darth Vader - darth@dark.force.com - NORMAL - ACTIVO
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: Requisitar obra: Operação inválida: O utente 1 não pode requisitar a obra 5. Violação da regra 5.
+Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: A obra 4 deve ser devolvida no dia 21.
+Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 5.
+O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
+1 - Requisitar obra
+2 - Devolver obra
+0 - Sair
+Escolha uma opção: Menu Principal
+1 - Abrir dados
+2 - Guardar dados
+3 - Ver data
+4 - Avançar data
+5 - Menu de gestão de utentes
+6 - Menu de gestão de obras
+7 - Menu de gestão de requisições
+0 - Sair
+Escolha uma opção: Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
+0 - Sair
+Escolha uma opção: Introduza o número de utente: 1 - Darth Vader - darth@dark.force.com - NORMAL - ACTIVO
 Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente
@@ -168,8 +219,7 @@ Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -178,9 +228,7 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 4
-Introduza número de dias a avançar: 1
-Menu Principal
+Escolha uma opção: Introduza número de dias a avançar: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -189,29 +237,16 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 7
-Menu de Gestão de Requisições
+Escolha uma opção: Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 1
-Introduza o número de utente: 1
-Introduza o número da obra: 5
-Requisitar obra: Operação inválida: O utente 1 não pode requisitar a obra 5. Violação da regra 5.
-Menu de Gestão de Requisições
+Escolha uma opção: Introduza o número de utente: Introduza o número da obra: O utente 1 deve pagar uma multa de EUR 40.
+O utente deseja pagar multa (s/n)? Menu de Gestão de Requisições
 1 - Requisitar obra
 2 - Devolver obra
 0 - Sair
-Escolha uma opção: 1
-Introduza o número de utente: 1
-Introduza o número da obra: 4
-A obra 4 deve ser devolvida no dia 21.
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -220,42 +255,14 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 4
-Introduza número de dias a avançar: 3
-Menu Principal
-1 - Abrir dados
-2 - Guardar dados
-3 - Ver data
-4 - Avançar data
-5 - Menu de gestão de utentes
-6 - Menu de gestão de obras
-7 - Menu de gestão de requisições
+Escolha uma opção: Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 7
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: 2
-Introduza o número de utente: 1
-Introduza o número da obra: 6
-O utente 1 deve pagar uma multa de EUR 5.
-O utente deseja pagar multa (s/n)? s
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
-1 - Abrir dados
-2 - Guardar dados
-3 - Ver data
-4 - Avançar data
-5 - Menu de gestão de utentes
-6 - Menu de gestão de obras
-7 - Menu de gestão de requisições
-0 - Sair
-Escolha uma opção: 5
+Escolha uma opção: Introduza o número de utente: 1 - Darth Vader - darth@dark.force.com - FALTOSO - ACTIVO
 Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente
@@ -263,18 +270,7 @@ Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 2
-Introduza o número de utente: 1
-1 - Darth Vader - darth@dark.force.com - NORMAL - ACTIVO
-Menu de Gestão de Utentes
-1 - Registar utente
-2 - Mostrar utente
-3 - Listar utentes
-4 - Mostrar notificações de utente
-5 - Saldar multa de utente
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -283,42 +279,14 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 4
-Introduza número de dias a avançar: 20
-Menu Principal
-1 - Abrir dados
-2 - Guardar dados
-3 - Ver data
-4 - Avançar data
-5 - Menu de gestão de utentes
-6 - Menu de gestão de obras
-7 - Menu de gestão de requisições
+Escolha uma opção: Menu de Gestão de Utentes
+1 - Registar utente
+2 - Mostrar utente
+3 - Listar utentes
+4 - Mostrar notificações de utente
+5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 7
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: 2
-Introduza o número de utente: 1
-Introduza o número da obra: 4
-O utente 1 deve pagar uma multa de EUR 40.
-O utente deseja pagar multa (s/n)? s
-Menu de Gestão de Requisições
-1 - Requisitar obra
-2 - Devolver obra
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
-1 - Abrir dados
-2 - Guardar dados
-3 - Ver data
-4 - Avançar data
-5 - Menu de gestão de utentes
-6 - Menu de gestão de obras
-7 - Menu de gestão de requisições
-0 - Sair
-Escolha uma opção: 5
+Escolha uma opção: Introduza o nome do utente: Introduza o endereço de correio do utente: Novo utente criado com o número 10.
 Menu de Gestão de Utentes
 1 - Registar utente
 2 - Mostrar utente
@@ -326,47 +294,7 @@ Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 2
-Introduza o número de utente: 1
-1 - Darth Vader - darth@dark.force.com - FALTOSO - ACTIVO
-Menu de Gestão de Utentes
-1 - Registar utente
-2 - Mostrar utente
-3 - Listar utentes
-4 - Mostrar notificações de utente
-5 - Saldar multa de utente
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
-1 - Abrir dados
-2 - Guardar dados
-3 - Ver data
-4 - Avançar data
-5 - Menu de gestão de utentes
-6 - Menu de gestão de obras
-7 - Menu de gestão de requisições
-0 - Sair
-Escolha uma opção: 5
-Menu de Gestão de Utentes
-1 - Registar utente
-2 - Mostrar utente
-3 - Listar utentes
-4 - Mostrar notificações de utente
-5 - Saldar multa de utente
-0 - Sair
-Escolha uma opção: 1
-Introduza o nome do utente: leya
-Introduza o endereço de correio do utente: leya@gmail.com
-Novo utente criado com o número 10.
-Menu de Gestão de Utentes
-1 - Registar utente
-2 - Mostrar utente
-3 - Listar utentes
-4 - Mostrar notificações de utente
-5 - Saldar multa de utente
-0 - Sair
-Escolha uma opção: 3
-5 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
+Escolha uma opção: 5 - Chewbacca - chewbacca@milenium.falcon.org - NORMAL - ACTIVO
 1 - Darth Vader - darth@dark.force.com - FALTOSO - ACTIVO
 9 - Darth Vader - darth2@dark.force.coAm - NORMAL - ACTIVO
 7 - Han Solo - han.solo@milenium.falcon.org - NORMAL - ACTIVO
@@ -384,8 +312,7 @@ Menu de Gestão de Utentes
 4 - Mostrar notificações de utente
 5 - Saldar multa de utente
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Abrir dados
 2 - Guardar dados
 3 - Ver data
@@ -394,4 +321,4 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: 0
+Escolha uma opção: 
