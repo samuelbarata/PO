@@ -1,13 +1,45 @@
 package m19.core;
 
 public enum UserBehavior{
-	NORMAL("NORMAL", 3, 3, 8, 15), CUMPRIDOR("CUMPRIDOR", 5, 8, 15, 30), FALTOSO("FALTOSO", 1, 2, 2, 2);
+	NORMAL("NORMAL", 3, 3, 8, 15){
+		@Override
+		protected UserBehavior updateState(int behaviourCounter){
+			if(behaviourCounter>=5){
+				return CUMPRIDOR;
+			}
+			if(behaviourCounter<=-3){
+				return FALTOSO;
+			}
+			return NORMAL;
+		}
+	}, CUMPRIDOR("CUMPRIDOR", 5, 8, 15, 30){
+		@Override
+		protected UserBehavior updateState(int behaviourCounter){
+			if(behaviourCounter<0){
+				return NORMAL;
+			}
+			return CUMPRIDOR;
+		}
+
+	}, FALTOSO("FALTOSO", 1, 2, 2, 2){
+		@Override
+		protected UserBehavior updateState(int behaviourCounter){
+			if(behaviourCounter>=3){
+				return NORMAL;
+			}
+			return FALTOSO;
+		}
+	};
+
+
+	protected abstract UserBehavior updateState(int behaviourCounter);
 
 	private final String _behavior;
 	private final int _copies;
 	private final int _um;		//deadline 1 exemplar
 	private final int _umCinco;	//deadline 1-5 exemplares
 	private final int _cincoMais;	//deadline 5+ exemplares
+	private int _behaviorCounter;
 
 	/**
 	 * 
@@ -23,6 +55,7 @@ public enum UserBehavior{
 		_um = a;
 		_umCinco = b;
 		_cincoMais = c;
+		_behaviorCounter=0;
 	}
 
 	public String toString(){
@@ -48,5 +81,15 @@ public enum UserBehavior{
 			return _cincoMais;
 		}
 		return _umCinco;
+	}
+
+	protected UserBehavior goodReturn(){
+		_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
+		return updateState(_behaviorCounter);
+	}
+
+	protected UserBehavior badReturn(){
+		_behaviorCounter= _behaviorCounter > 0 ? -1 : _behaviorCounter-1;
+		return updateState(_behaviorCounter);
 	}
 }

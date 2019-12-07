@@ -198,12 +198,11 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 */
 	protected void workReturned(Request reqi){
 		if(!reqi.isLate()){
-			_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
+			_behavior = _behavior.goodReturn();
 		}
 		else {
-			_behaviorCounter= _behaviorCounter > 0 ? -1 : _behaviorCounter-1;
+			_behavior = _behavior.badReturn();
 		}
-
 		_requests.remove(reqi);
 		updateEstado();
 	}
@@ -219,25 +218,6 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 * Updates the user's state
 	 */
 	private void updateEstado(){
-		switch(this.getBehaviour()){
-			case FALTOSO:
-				if(_behaviorCounter>=3){
-					_behavior = UserBehavior.NORMAL;
-				}
-				break;
-			case NORMAL:
-				if(_behaviorCounter>=5){
-					_behavior = UserBehavior.CUMPRIDOR;
-				} else if(_behaviorCounter<=-3){
-					_behavior = UserBehavior.FALTOSO;
-				}
-				break;
-			case CUMPRIDOR:
-				if(_behaviorCounter<0) {
-					_behavior = UserBehavior.NORMAL;
-				}
-				break;
-		}
 		if(_divida > 0){
 			_isActive = false;
 			return;
@@ -249,7 +229,6 @@ public class User implements Comparable<User>, Serializable, Observer{
 			}
 		}
 		_isActive = true;
-
 	}
 
 	/**

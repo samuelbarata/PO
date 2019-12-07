@@ -6,8 +6,6 @@ public class Request implements Serializable, Observer{
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = -1549234534516490041L;
 	private int _deadline;
-	private int _lastDayCheck;
-	private boolean _isLate;
 	private int _currentDay;
 	private Work _work;
 	private User _user;
@@ -16,8 +14,6 @@ public class Request implements Serializable, Observer{
 		_deadline=currentDay + user.getBehaviour().getDeadline(work.getNumberOfCopies());
 		_work=work;
 		_user=user;
-		_lastDayCheck=currentDay;
-		_isLate=false;
 		_work.requestWork();
 		_user.workRequested(this);
 
@@ -43,8 +39,7 @@ public class Request implements Serializable, Observer{
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return Work that was requested
 	 */
 	protected Work getWork(){
 		return _work;
