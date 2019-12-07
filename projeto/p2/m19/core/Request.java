@@ -61,17 +61,15 @@ public class Request implements Serializable, Observer{
 	public void update(int currentDay) {
 		_currentDay = currentDay;
 		int behaviorCounter;
-		if(currentDay > _deadline && _lastDayCheck < _deadline){
+		if(currentDay > _deadline && _lastDayCheck <= _deadline){
 			behaviorCounter = _user.getCounter();
-			behaviorCounter= behaviorCounter>0 ? -1 : behaviorCounter-1;
+			behaviorCounter= behaviorCounter > 0 ? -1 : behaviorCounter-1;
 			_user.setCounter(behaviorCounter);
 		}
 		if(_deadline<currentDay){
 			_isLate=true;
-			//_user.addDivida((currentDay-_lastDayCheck)*5);
 		}
 		_lastDayCheck = currentDay;
-		_user.updateEstado();
 	}
 
 	/**

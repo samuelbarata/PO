@@ -201,7 +201,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 		return _requests;
 	}
 
-	protected void updateEstado(){
+	private void updateEstado(){
 		switch(this.getBehaviour()){
 			case FALTOSO:
 				if(_behaviorCounter>=3){
