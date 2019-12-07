@@ -266,7 +266,6 @@ public class Library implements Serializable {
 	private int requestWork(User user, Work work) throws RuleFailedException{
 		ruleChecker(user, work);
 		Request request = new Request(work, user, _date.getCurrentDate());
-		_date.addObserver(request);
 		return request.getDeadline();
 	}
 
@@ -297,23 +296,21 @@ public class Library implements Serializable {
 	 */
 	private int returnWork(Request reqi){
 		reqi.getUser().addDivida(reqi.returnWork());
-		_date.rmObserver(reqi);
 		return reqi.getUser().getDivida();
 	}
 
 	/**
 	 * Pays user debt
 	 * @param _userId
-	 * @param value if(0) pays everything
 	 * @throws NoSuchUserException
 	 * @throws UserIsActiveException
 	 */
-	protected void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
+	protected void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
 		User _myUser = this.getUserById(_userId);
 		if(_myUser.isActive()){
 			throw new UserIsActiveException(_userId);
 		}
-		_myUser.addDivida(-value);
+		_myUser.addDivida(0);
 	}
 
 	/**

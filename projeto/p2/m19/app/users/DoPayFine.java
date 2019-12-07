@@ -27,6 +27,6 @@ public class DoPayFine extends Command<LibraryManager> {
 		int _userId;
 		_form.parse();
 		_userId = _inputForm.value();
-		_receiver.payFine(_userId, 0);
+		_receiver.payFine(_userId);
 	}
 }

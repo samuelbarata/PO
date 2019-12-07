@@ -176,6 +176,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	/**
 	 * Recives a Notification when a work that hasn't available was returned
 	 * by another user
+	 * @frequency When work returned
 	 */
 	@Override
 	public void update(Notification noti){
@@ -184,8 +185,12 @@ public class User implements Comparable<User>, Serializable, Observer{
 
 	/**
 	 * Updates the user Status
-	*/
+	 * @frequency Daily
+	 */
 	@Override public void update(int novoDia){
+		for(Request reqi: _requests){
+			reqi.update(novoDia);
+		}
 		updateActive();
 	}
 

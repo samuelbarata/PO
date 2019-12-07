@@ -185,12 +185,11 @@ public class LibraryManager {
 	/**
 	 * Pay's User fine
 	 * @param _userId user Id
-	 * @param value	payment value
 	 * @throws NoSuchUserException
 	 * @throws UserIsActiveException
 	 */
-	public void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
-		_library.payFine(_userId, value);
+	public void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
+		_library.payFine(_userId);
 	}
 
 	/**

@@ -2,7 +2,7 @@ package m19.core;
 
 import java.io.Serializable;
 
-public class Request implements Serializable, Observer{
+public class Request implements Serializable{
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = -1549234534516490041L;
 	private int _deadline;
@@ -64,7 +64,6 @@ public class Request implements Serializable, Observer{
 	/**
 	 * Recebe o novo dia
 	 */
-	@Override
 	public void update(int currentDay) {
 		_currentDay = currentDay;
 	}
@@ -75,7 +74,4 @@ public class Request implements Serializable, Observer{
 	public boolean isLate() {
 		return _currentDay>_deadline;
 	}
-
-	/**not used */
-	@Override public void update(Notification noti){}
 }
