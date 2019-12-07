@@ -251,18 +251,20 @@ public class Library implements Serializable {
 		return request.getDeadline();
 	}
 
-	protected void returnWork(Request reqi){
-		reqi.returnWork();
+	protected int returnWork(Request reqi){
+		int aux = reqi.returnWork();
+		reqi.getUser().addDivida(aux);
 		_date.rmObserver(reqi);
 		_requests.remove(reqi);
+		return aux;
 	}
 
-	protected void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
+	protected void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
 		User _myUser = this.getUserById(_userId);
-		if(!_myUser.isActive()){
+		if(_myUser.isActive()){
 			throw new UserIsActiveException(_userId);
 		}
-		_myUser.addDivida(-_myUser.getDivida());
+		_myUser.addDivida(-value);
 	}
 
 	private void ruleChecker(User user, Work work) throws RuleFailedException{
@@ -284,8 +286,7 @@ public class Library implements Serializable {
 		Work work = getWorkById(workId);
 		for(Request reqi : user.getRequests()){
 			if(reqi.getWork().equals(work)){
-				returnWork(reqi);
-				return user.getDivida();
+				return returnWork(reqi);
 			}
 		}
 		throw new WorkNotBorrowedByUserException(workId, userId);

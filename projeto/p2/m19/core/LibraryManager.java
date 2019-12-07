@@ -183,8 +183,8 @@ public class LibraryManager {
 		return _library.getUserNotifications(id);
 	}
 
-	public void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
-		_library.payFine(_userId);
+	public void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
+		_library.payFine(_userId, value);
 	}
 
 	public int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException, RuleFailedException{

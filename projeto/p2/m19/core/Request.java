@@ -6,6 +6,7 @@ public class Request implements Serializable, Observer{
 	private int _deadline;
 	private int _lastDayCheck;
 	private boolean _isLate;
+	private int _currentDay;
 	private Work _work;
 	private User _user;
 
@@ -15,9 +16,9 @@ public class Request implements Serializable, Observer{
 		_user=user;
 		_lastDayCheck=currentDay;
 		_isLate=false;
+		
 		_work.requestWork();
 		_user.workRequested(this);
-		//_user.addNotification(new Notification("REQUISIÇÃO", _work));
 
 		for(Observer obs : work.getObservers()){
 			if(obs == user){
@@ -48,10 +49,10 @@ public class Request implements Serializable, Observer{
 		return _work;
 	}
 
-	protected void returnWork(){
+	protected int returnWork(){
 		_user.workReturned(this);
 		_work.returnWork();
-		//_user.addNotification(new Notification("ENTREGA", _work));
+		return _deadline<=_currentDay ? (_currentDay-_deadline)*5 : 0;
 	}
 
 	/**
@@ -59,11 +60,19 @@ public class Request implements Serializable, Observer{
 	 */
 	@Override
 	public void update(int currentDay) {
+		_currentDay = currentDay;
+		int behaviorCounter;
+		if(currentDay > _deadline && _lastDayCheck < _deadline){
+			behaviorCounter = _user.getCounter();
+			behaviorCounter= behaviorCounter>0 ? -1 : behaviorCounter-1;
+			_user.setCounter(behaviorCounter);
+		}
 		if(_deadline<currentDay){
 			_isLate=true;
-			_user.addDivida((currentDay-_lastDayCheck)*5);
+			//_user.addDivida((currentDay-_lastDayCheck)*5);
 		}
 		_lastDayCheck = currentDay;
+		_user.updateEstado();
 	}
 
 	/**

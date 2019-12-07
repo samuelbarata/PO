@@ -29,6 +29,6 @@ public class DoPayFine extends Command<LibraryManager> {
 		int _userId;
 		_form.parse();
 		_userId = _inputForm.value();
-		_receiver.payFine(_userId);
+		_receiver.payFine(_userId, 999999999/*FIXME: meter valor da divida; mostrar divida? */);
 	}
 }

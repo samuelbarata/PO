@@ -26,7 +26,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 		_isActive = true;
 		_name = name;
 		_email = email;
-		_behavior = UserBehavior.valueOf("NORMAL");
+		_behavior = UserBehavior.NORMAL;
 		_notifications = new ArrayList<>();
 		_id = -1;
 		_divida = 0;
@@ -58,7 +58,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 * @param payment
 	 */
 	protected void addDivida(int payment){
-		_divida += (_divida+payment < 0) ? 0 : payment;
+		_divida = (_divida+payment <= 0) ? 0 : _divida+payment;
 		updateEstado();
 	}
 
@@ -67,8 +67,9 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 * @return status as String
 	 */
 	private String statusMessage(){
-		if(this.isActive())
+		if(this.isActive()){
 			return "ACTIVO";
+		}
 		return "SUSPENSO - EUR " + _divida;
 	}
 
@@ -188,10 +189,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	}
 
 	protected void workReturned(Request reqi){
-		if(reqi.isLate()){
-			_behaviorCounter= _behaviorCounter>0 ? -1 : _behaviorCounter-1;
-		}
-		else {
+		if(!reqi.isLate()){
 			_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
 		}
 		_requests.remove(reqi);
@@ -202,7 +200,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 		return _requests;
 	}
 
-	private void updateEstado(){
+	protected void updateEstado(){
 		switch(this.getBehaviour()){
 			case FALTOSO:
 				if(_behaviorCounter>=3){
@@ -238,5 +236,13 @@ public class User implements Comparable<User>, Serializable, Observer{
 				_isActive = true;
 			}
 		}
+	}
+
+	protected int getCounter(){
+		return _behaviorCounter;
+	}
+	protected void setCounter(int counter){
+		_behaviorCounter = counter;
+		updateEstado();
 	}
 }
