@@ -6,6 +6,7 @@ import m19.app.exception.RuleFailedException;
 
 public class CheckWorkPrice extends Rule{
 
+	private static final long serialVersionUID = 1L;
 	private static final int ruleIndex = 6;
 	private static final int PRICE_LIMIT = 25;
 

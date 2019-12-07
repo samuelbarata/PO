@@ -6,6 +6,7 @@ import m19.app.exception.RuleFailedException;
 
 public class CheckRequestTwice extends Rule{
 
+	private static final long serialVersionUID = -7528087457364595492L;
 	private static final int ruleIndex = 1;
 
 	@Override

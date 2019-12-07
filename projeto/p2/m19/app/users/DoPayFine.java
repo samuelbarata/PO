@@ -4,8 +4,6 @@ import m19.core.LibraryManager;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Input;
-import m19.app.exception.UserIsActiveException;
-import m19.app.exception.NoSuchUserException;
 
 /**
  * 4.2.5. Settle a fine.

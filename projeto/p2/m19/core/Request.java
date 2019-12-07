@@ -3,6 +3,8 @@ package m19.core;
 import java.io.Serializable;
 
 public class Request implements Serializable, Observer{
+
+	private static final long serialVersionUID = -1549234534516490041L;
 	private int _deadline;
 	private int _lastDayCheck;
 	private boolean _isLate;

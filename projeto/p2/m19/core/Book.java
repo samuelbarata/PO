@@ -3,6 +3,8 @@ package m19.core;
 import java.io.Serializable;
 
 public class Book extends Work implements Serializable{
+
+	private static final long serialVersionUID = -5863226379882723342L;
 	private String _author;
 	private int _isbn;      //enunciado diz String; parser diz int
 

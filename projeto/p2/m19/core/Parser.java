@@ -3,7 +3,6 @@ package m19.core;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
-import pt.tecnico.po.ui.DialogException;
 
 import m19.core.exception.BadEntrySpecificationException;
 import m19.app.exception.UserRegistrationFailedException;

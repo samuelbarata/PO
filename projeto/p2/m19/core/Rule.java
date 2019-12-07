@@ -7,14 +7,15 @@ import m19.core.Work;
 
 public abstract class Rule implements Serializable{
 
+	private static final long serialVersionUID = -5195846552106228044L;
+
 	/**
 	 * Checks if user violates a rule
+	 * 
 	 * @param user
 	 * @param work
 	 * @throws RuleFailedException
 	 */
 	public abstract void checkRule(User user, Work work) throws RuleFailedException;
-
-	public Rule(){}
 
 }

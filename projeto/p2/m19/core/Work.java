@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Work implements Comparable<Work>, Serializable, Subject{
+	private static final long serialVersionUID = -1407186276489357901L;
 	private int _id;
 	private final int _price;
 	private final int _numberOfCopies;

@@ -10,6 +10,8 @@ import java.util.List;
  * @see http://www.newthinktank.com/2012/08/observer-design-pattern-tutorial/
  */
 public class Date implements Serializable, Subject{
+
+	private static final long serialVersionUID = -7653987002939589315L;
 	private int _currentDate;
 	private List<Observer> _observers;
 

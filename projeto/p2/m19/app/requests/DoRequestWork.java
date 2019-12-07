@@ -1,7 +1,6 @@
 package m19.app.requests;
 
 import m19.app.exception.RuleFailedException;
-import m19.app.exception.WorkNotBorrowedByUserException;
 import m19.core.LibraryManager;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;

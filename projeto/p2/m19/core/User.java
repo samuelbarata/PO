@@ -9,6 +9,7 @@ import m19.app.exception.UserRegistrationFailedException;
 import java.io.Serializable;
 
 public class User implements Comparable<User>, Serializable, Observer{
+	private static final long serialVersionUID = 9081337929192883019L;
 	private int _id;
 	private boolean _isActive;
 	private final String _name;

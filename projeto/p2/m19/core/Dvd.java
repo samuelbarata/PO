@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 
 public class Dvd extends Work implements Serializable{
+	
+	private static final long serialVersionUID = -539363745797215253L;
 	private String _director;
 	private int _igac;      //enunciado diz String; parser diz int
 

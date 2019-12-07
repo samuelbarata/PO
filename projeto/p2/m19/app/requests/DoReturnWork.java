@@ -5,7 +5,6 @@ import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Display;
 import pt.tecnico.po.ui.Input;
-import pt.tecnico.po.ui.Display;
 
 /**
  * 4.4.2. Return a work.

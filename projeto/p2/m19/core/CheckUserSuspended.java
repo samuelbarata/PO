@@ -6,6 +6,7 @@ import m19.app.exception.RuleFailedException;
 
 public class CheckUserSuspended extends Rule{
 
+	private static final long serialVersionUID = 2724256104974790168L;
 	private static final int ruleIndex = 2;
 
 	@Override

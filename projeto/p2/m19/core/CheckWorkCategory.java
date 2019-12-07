@@ -6,6 +6,7 @@ import m19.app.exception.RuleFailedException;
 
 public class CheckWorkCategory extends Rule{
 
+	private static final long serialVersionUID = 7527408906572355191L;
 	private static final int ruleIndex = 5;
 
 	@Override

@@ -6,6 +6,7 @@ import m19.app.exception.RuleFailedException;
 
 public class CheckUserSpace extends Rule{
 
+	private static final long serialVersionUID = 4022831768861609022L;
 	private static final int ruleIndex = 4;
 
 	@Override

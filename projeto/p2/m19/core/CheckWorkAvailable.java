@@ -6,6 +6,7 @@ import m19.app.exception.RuleFailedException;
 
 public class CheckWorkAvailable extends Rule{
 
+	private static final long serialVersionUID = 8662012092706950258L;
 	private static final int ruleIndex = 3;
 
 	@Override
