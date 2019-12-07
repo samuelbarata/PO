@@ -2,7 +2,7 @@ package m19.core;
 
 public interface Subject{
 	/**
-	 * Adds observers that will be notified of a change of date
+	 * Adds observer
 	 * @param obs Observer
 	 */
 	public void addObserver(Observer obs);

@@ -2,7 +2,6 @@ package m19.app.main;
 
 import java.io.IOException;
 
-import m19.app.exception.FileOpenFailedException;
 import m19.core.LibraryManager;
 import m19.core.exception.MissingFileAssociationException;
 import pt.tecnico.po.ui.DialogException;
@@ -35,7 +34,7 @@ public class DoSave extends Command<LibraryManager>{
 		try{
 			_receiver.saveAs(_filename);
 		} catch(MissingFileAssociationException | IOException ex) {
-			;//throw new FileOpenFailedException(_filename);//TODO: apagar isto if not nedded
+			;
 		}
 	}
 }

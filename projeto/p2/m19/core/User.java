@@ -9,6 +9,7 @@ import m19.app.exception.UserRegistrationFailedException;
 import java.io.Serializable;
 
 public class User implements Comparable<User>, Serializable, Observer{
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = 9081337929192883019L;
 	private int _id;
 	private boolean _isActive;
@@ -184,12 +185,17 @@ public class User implements Comparable<User>, Serializable, Observer{
 		this.addNotification(noti);
 	}
 
+	/**send day updates; not used by user*/
 	@Override public void update(int novoDia){}
 
 	protected void workRequested(Request reqi){
 		_requests.add(reqi);
 	}
 
+	/**
+	 * Return a work
+	 * @param reqi Request
+	 */
 	protected void workReturned(Request reqi){
 		if(!reqi.isLate()){
 			_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
@@ -198,10 +204,16 @@ public class User implements Comparable<User>, Serializable, Observer{
 		updateEstado();
 	}
 
+	/**
+	 * @return Current requests of the current user
+	 */
 	protected Set<Request> getRequests(){
 		return _requests;
 	}
 
+	/**
+	 * Updates the user's state
+	 */
 	private void updateEstado(){
 		switch(this.getBehaviour()){
 			case FALTOSO:
@@ -240,9 +252,17 @@ public class User implements Comparable<User>, Serializable, Observer{
 		}
 	}
 
+	/**
+	 * @return User's state counter
+	 */
 	protected int getCounter(){
 		return _behaviorCounter;
 	}
+
+	/**
+	 * Set's the user state counter
+	 * @param counter
+	 */
 	protected void setCounter(int counter){
 		_behaviorCounter = counter;
 		updateEstado();

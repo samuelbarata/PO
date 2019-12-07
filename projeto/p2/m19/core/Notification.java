@@ -3,7 +3,7 @@ package m19.core;
 import java.io.Serializable;
 
 public class Notification implements Serializable{
-
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = 7464590430015610640L;
 	private final String _message;
 

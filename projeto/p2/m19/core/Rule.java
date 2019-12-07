@@ -6,11 +6,11 @@ import m19.core.User;
 import m19.core.Work;
 
 public abstract class Rule implements Serializable{
-
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = -5195846552106228044L;
 
 	/**
-	 * Checks if user violates a rule
+	 * Checks if the user violates a rule
 	 * 
 	 * @param user
 	 * @param work

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Work implements Comparable<Work>, Serializable, Subject{
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = -1407186276489357901L;
 	private int _id;
 	private final int _price;
@@ -39,7 +40,6 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	}
 
 	/**
-	 * 
 	 * @return work's id
 	 */
 	protected int getId() {
@@ -174,6 +174,9 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 		_observers.remove(user);
 	}
 
+	/**
+	 * @return The list of Users that wants to be notified of this work return
+	 */
 	public List<Observer> getObservers(){
 		return _observers;
 	}

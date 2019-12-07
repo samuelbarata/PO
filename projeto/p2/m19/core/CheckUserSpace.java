@@ -5,7 +5,7 @@ import m19.core.Work;
 import m19.app.exception.RuleFailedException;
 
 public class CheckUserSpace extends Rule{
-
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = 4022831768861609022L;
 	private static final int ruleIndex = 4;
 

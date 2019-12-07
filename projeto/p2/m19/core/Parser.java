@@ -82,13 +82,13 @@ public class Parser{
 	 * @throws BadEntrySpecificationException
 	 */
 	private void parseBook(String[] components, String line) throws BadEntrySpecificationException {
-    	if (components.length != 7)
-      		throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
+		if (components.length != 7)
+			throw new BadEntrySpecificationException("Wrong number of fields (6) in " + line);
 
-    	Book book = new Book(components[1], components[2], Integer.parseInt(components[3]),
+		Book book = new Book(components[1], components[2], Integer.parseInt(components[3]),
 							Category.valueOf(components[4]), Integer.parseInt(components[5]),
 							Integer.parseInt(components[6]));
-    
+
 		_library.addWork(book);
 	}
 

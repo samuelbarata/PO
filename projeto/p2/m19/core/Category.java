@@ -15,4 +15,4 @@ public enum Category implements Serializable{
 		return _categoria;
 	}
 
-}   
+}

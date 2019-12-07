@@ -5,7 +5,7 @@ import m19.core.Work;
 import m19.app.exception.RuleFailedException;
 
 public class CheckWorkAvailable extends Rule{
-
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = 8662012092706950258L;
 	private static final int ruleIndex = 3;
 

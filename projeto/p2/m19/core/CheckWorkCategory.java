@@ -5,7 +5,7 @@ import m19.core.Work;
 import m19.app.exception.RuleFailedException;
 
 public class CheckWorkCategory extends Rule{
-
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = 7527408906572355191L;
 	private static final int ruleIndex = 5;
 

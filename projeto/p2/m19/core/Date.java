@@ -1,6 +1,5 @@
 package m19.core;
 
-import m19.core.exception.BadEntrySpecificationException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
  * @see http://www.newthinktank.com/2012/08/observer-design-pattern-tutorial/
  */
 public class Date implements Serializable, Subject{
-
+	/** Serial number for serialization. */
 	private static final long serialVersionUID = -7653987002939589315L;
 	private int _currentDate;
 	private List<Observer> _observers;
@@ -37,6 +36,9 @@ public class Date implements Serializable, Subject{
 		_observers.remove(obs);
 	}
 
+	/**
+	 * Sends an update with the current date to every observer
+	 */
 	@Override
 	public void update(){
 		for(Observer obs: _observers){
@@ -45,13 +47,13 @@ public class Date implements Serializable, Subject{
 	}
 
 	/**
-	 * 
-	 * @param nDays
+	 * Advances the current date
+	 * @param nDays number of days to advance
 	 * @return current date
 	 */
-	protected int advanceDay(int nDays) throws BadEntrySpecificationException{
-		if(nDays < 0){
-			throw new BadEntrySpecificationException("number of days to advance < 0");
+	protected int advanceDay(int nDays){
+		if(nDays <= 0){
+			return _currentDate;
 		}
 		_currentDate+=nDays;
 		update();

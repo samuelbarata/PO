@@ -5,9 +5,10 @@ import m19.core.Work;
 import m19.app.exception.RuleFailedException;
 
 public class CheckWorkPrice extends Rule{
-
-	private static final long serialVersionUID = 1L;
+	/** Serial number for serialization. */
+	private static final long serialVersionUID = -769425412110510035L;
 	private static final int ruleIndex = 6;
+	/** price limit para quem não é CUMPRIDOR*/
 	private static final int PRICE_LIMIT = 25;
 
 	@Override

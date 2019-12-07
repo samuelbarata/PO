@@ -29,6 +29,7 @@ public class LibraryManager {
 	 *         state has not been set yet.
 	 * @throws IOException if some error happen during the serialization of the persistent state
 	 * 
+	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 29;31
 	*/
 	public void save() throws MissingFileAssociationException, IOException {
 		if(_filename.isEmpty()){
@@ -47,8 +48,6 @@ public class LibraryManager {
 	 * @throws MissingFileAssociationException if the name of the file to store the persistent
 	 *         is not a valid one.
 	 * @throws IOException if some error happen during the serialization of the persistent state
-	 * 
-	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 29;31
 	 */
 	public void saveAs(String filename) throws MissingFileAssociationException, IOException {
 		_filename=filename;
@@ -183,18 +182,49 @@ public class LibraryManager {
 		return _library.getUserNotifications(id);
 	}
 
+	/**
+	 * Pay's User fine
+	 * @param _userId user Id
+	 * @param value	payment value
+	 * @throws NoSuchUserException
+	 * @throws UserIsActiveException
+	 */
 	public void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
 		_library.payFine(_userId, value);
 	}
 
+	/**
+	 * Makes a request
+	 * @param userId
+	 * @param workId
+	 * @return Deadline
+	 * @throws WorkNotBorrowedByUserException
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
+	 * @throws RuleFailedException
+	 */
 	public int makeRequest(int userId, int workId) throws WorkNotBorrowedByUserException, NoSuchUserException, NoSuchWorkException, RuleFailedException{
 		return _library.makeRequest(userId, workId);
 	}
 
+	/**
+	 * Ask's to be notified when a work is available
+	 * @param userId
+	 * @param workId
+	 */
 	public void notifyWorkAvailable(int userId, int workId){
 		_library.notifyWorkAvailable(userId, workId);
 	}
 
+	/**
+	 * Returns a work to the library
+	 * @param userId
+	 * @param workId
+	 * @return Fine to be payed
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
+	 * @throws WorkNotBorrowedByUserException
+	 */
 	public int returnWork(int userId, int workId) throws NoSuchUserException, NoSuchWorkException, WorkNotBorrowedByUserException{
 		return _library.returnWork(userId, workId);
 	}

@@ -68,16 +68,12 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Advances date
 	 * @param nDays Days to advance
 	 * @return current date
 	 */
 	protected int advanceDay(int nDays){
-		try {
-			return _date.advanceDay(nDays);
-		} catch(BadEntrySpecificationException e) {
-			return _date.getCurrentDate();
-		}
+		return _date.advanceDay(nDays);
 	}
 	
 	/**
@@ -239,11 +235,39 @@ public class Library implements Serializable {
 		return res;
 	}
 
+	/**
+	 * Checks if a request can be made
+	 * @param user
+	 * @param work
+	 * @throws RuleFailedException
+	 */
+	private void ruleChecker(User user, Work work) throws RuleFailedException{
+		for(Rule regra: _rules){
+			regra.checkRule(user, work);
+		}
+	}
+
+	/**
+	 * Make request 
+	 * @param userId
+	 * @param workId
+	 * @return Deadline
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
+	 * @throws RuleFailedException
+	 */
 	protected int makeRequest(int userId, int workId) throws NoSuchUserException, NoSuchWorkException, RuleFailedException{
 		return requestWork(this.getUserById(userId), this.getWorkById(workId));
 	}
 
-	protected int requestWork(User user, Work work) throws RuleFailedException{
+	/**
+	 * Make request
+	 * @param user
+	 * @param work
+	 * @return Deadline
+	 * @throws RuleFailedException
+	 */
+	private int requestWork(User user, Work work) throws RuleFailedException{
 		ruleChecker(user, work);
 		Request request = new Request(work, user, _date.getCurrentDate());
 		_requests.add(request);
@@ -251,35 +275,15 @@ public class Library implements Serializable {
 		return request.getDeadline();
 	}
 
-	protected int returnWork(Request reqi){
-		reqi.getUser().addDivida(reqi.returnWork());
-		_date.rmObserver(reqi);
-		_requests.remove(reqi);
-		return reqi.getUser().getDivida();
-	}
-
-	protected void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
-		User _myUser = this.getUserById(_userId);
-		if(_myUser.isActive()){
-			throw new UserIsActiveException(_userId);
-		}
-		_myUser.addDivida(-value);
-	}
-
-	private void ruleChecker(User user, Work work) throws RuleFailedException{
-		for(Rule regra: _rules){
-			regra.checkRule(user, work);
-		}
-	}
-
-	protected void notifyWorkAvailable(int userId, int workId){
-		try{
-			getWorkById(workId).addObserver(this.getUserById(userId));
-		} catch (NoSuchUserException | NoSuchWorkException e) {
-			;//never happens, checked previously
-		}
-	}
-
+	/**
+	 * Return's a work to the library
+	 * @param userId
+	 * @param workId
+	 * @return fine
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
+	 * @throws WorkNotBorrowedByUserException
+	 */
 	protected int returnWork(int userId, int workId) throws NoSuchUserException, NoSuchWorkException, WorkNotBorrowedByUserException{
 		User user = getUserById(userId);
 		Work work = getWorkById(workId);
@@ -290,4 +294,46 @@ public class Library implements Serializable {
 		}
 		throw new WorkNotBorrowedByUserException(workId, userId);
 	}
+
+	/**
+	 * Return's a work to the library
+	 * @param reqi
+	 * @return fine
+	 */
+	private int returnWork(Request reqi){
+		reqi.getUser().addDivida(reqi.returnWork());
+		_date.rmObserver(reqi);
+		_requests.remove(reqi);
+		return reqi.getUser().getDivida();
+	}
+
+	/**
+	 * Pays user debt
+	 * @param _userId
+	 * @param value if(0) pays everything
+	 * @throws NoSuchUserException
+	 * @throws UserIsActiveException
+	 */
+	protected void payFine(int _userId, int value) throws NoSuchUserException, UserIsActiveException{
+		User _myUser = this.getUserById(_userId);
+		if(_myUser.isActive()){
+			throw new UserIsActiveException(_userId);
+		}
+		_myUser.addDivida(-value);
+	}
+
+	/**
+	 * Asks to be notified if the work is available
+	 * @param userId
+	 * @param workId
+	 */
+	protected void notifyWorkAvailable(int userId, int workId){
+		try{
+			getWorkById(workId).addObserver(this.getUserById(userId));
+		} catch (NoSuchUserException | NoSuchWorkException e) {
+			;//never happens, checked previously
+		}
+	}
+
+	
 }
