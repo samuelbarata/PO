@@ -5,15 +5,15 @@ all: lib/po-uilib.jar
 	@clear
 	javac -cp lib/po-uilib.jar:. `find m19 -name *.java`
 
-run: all #usa o ficheiro ficheiro.im para inicializar a library
-	@java -Dimport=ficheiro.im -cp lib/po-uilib.jar:. m19.app.App
+run: all
+	@java -Dimport=tests/A-99-99-M-ok.import -cp lib/po-uilib.jar:. m19.app.App
 
 runy: all
 	@java -cp lib/po-uilib.jar:. m19.app.App
 clean:
 	@rm -rf `find m19 -name *.class` tests/*.outhyp tests/*.diff proj2.jar 0 1 2 3 4 5 6 7 8 9 10 s requisicao cumpridor faltoso user work works tests/*.out2 notificacao
 
-individual: all
+individual: all	//testar cenas individuais
 	java -Dimport=tests/A-11-07-M-ok.import -cp lib/po-uilib.jar:. m19.app.App
 
 test: all
