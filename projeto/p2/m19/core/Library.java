@@ -333,6 +333,4 @@ public class Library implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
-	
 }

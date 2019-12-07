@@ -4,6 +4,9 @@ import m19.core.User;
 import m19.core.Work;
 import m19.app.exception.RuleFailedException;
 
+/**
+ * Rule 1
+ */
 public class CheckRequestTwice extends Rule{
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = -7528087457364595492L;

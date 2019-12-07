@@ -4,6 +4,9 @@ import m19.core.User;
 import m19.core.Work;
 import m19.app.exception.RuleFailedException;
 
+/**
+ * Rule 6
+ */
 public class CheckWorkPrice extends Rule{
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = -769425412110510035L;
