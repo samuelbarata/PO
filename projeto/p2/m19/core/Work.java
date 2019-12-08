@@ -29,6 +29,7 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	 */
 	protected void requestWork(){
 		_available--;
+		update("REQUISIÇÃO");
 	}
 
 	/**
@@ -36,7 +37,7 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	 */
 	protected void returnWork(){
 		_available++;
-		update();
+		update("ENTREGA");
 	}
 
 	/**
@@ -176,12 +177,15 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	/**
 	 * Sends Notification to every User that asked to be notified
 	 */
-	@Override
-	public void update(){
+	public void update(String label){
 		User _user;
 		for (Observer obs : _observers) {
 			_user = (User) obs;
-			_user.addNotification(new Notification("ENTREGA", this));
+			_user.addNotification(new Notification(label, this));
 		}
+	}
+
+	@Override public void update(){
+		update("ENTREGA");
 	}
 }

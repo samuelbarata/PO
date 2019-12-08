@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * @see http://www.newthinktank.com/2012/08/observer-design-pattern-tutorial/
  */

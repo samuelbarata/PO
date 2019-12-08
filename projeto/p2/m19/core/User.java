@@ -194,6 +194,10 @@ public class User implements Comparable<User>, Serializable, Observer{
 		updateActive();
 	}
 
+	protected void resetNotifications(){
+		_notifications.clear();
+	}
+
 	protected void workRequested(Request reqi){
 		_requests.add(reqi);
 	}

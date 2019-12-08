@@ -183,7 +183,10 @@ public class Library implements Serializable {
 	 * @throws NoSuchUserException
 	 */
 	protected List<String> getUserNotifications(int id) throws NoSuchUserException{
-		return getUserById(id).getNotifications();
+		User user = getUserById(id);
+		List<String> notifications = user.getNotifications();
+		user.resetNotifications();
+		return notifications;
 	}
 
 	/**
