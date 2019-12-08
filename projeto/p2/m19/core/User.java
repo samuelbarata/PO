@@ -33,6 +33,7 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 		_requests = new HashSet<>();
 	}
 
+	@Override
 	public int hashCode(){
 		return _id;
 	}

@@ -33,8 +33,8 @@ public enum UserBehavior{
 
 	private final String _behavior;
 	private final int _copies;
-	private final int _um;		//deadline 1 exemplar
-	private final int _umCinco;	//deadline 1-5 exemplares
+	private final int _um;			//deadline 1 exemplar
+	private final int _umCinco;		//deadline 1-5 exemplares
 	private final int _cincoMais;	//deadline 5+ exemplares
 	private int _behaviorCounter;
 
@@ -55,6 +55,7 @@ public enum UserBehavior{
 		_behaviorCounter=0;
 	}
 
+	@Override
 	public String toString(){
 		return _behavior;
 	}

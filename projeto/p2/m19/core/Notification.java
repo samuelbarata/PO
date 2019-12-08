@@ -15,14 +15,28 @@ public class Notification implements Serializable{
 		_message = label + ": " + work.getDescription();
 	}
 
+	/**
+	 * @return Notification Message
+	 */
 	protected String getMessage(){
 		return _message;
 	}
 
+	@Override
+	public String toString(){
+		return this.getMessage();
+	}
+
+	/**
+	 * @return Notification type
+	 */
 	protected NotiType getType(){
 		return _type;
 	}
 
+	/**
+	 * @return The Work associated with this notification
+	 */
 	protected Work getWork(){
 		return _work;
 	}
@@ -35,4 +49,7 @@ public class Notification implements Serializable{
 		}
 		return false;
 	}
+
+	@Override
+	public int hashCode(){return super.hashCode();}
 }

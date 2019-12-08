@@ -71,7 +71,10 @@ public class Library implements Serializable {
 	 * @return current date
 	 */
 	protected int advanceDay(int nDays){
-		return _date.advanceDay(nDays);
+		int newDate = _date.advanceDay(nDays);
+		for(User u:_users)
+			u.update(newDate);
+		return newDate;
 	}
 	
 	/**
@@ -113,7 +116,6 @@ public class Library implements Serializable {
 		}
 		user.setId(getNextUId());
 		_users.add(user);
-		_date.addObserver(user);
 		return user.getId();
 	}
 
@@ -183,9 +185,7 @@ public class Library implements Serializable {
 	 * @throws NoSuchUserException
 	 */
 	protected List<String> getUserNotifications(int id) throws NoSuchUserException{
-		User user = getUserById(id);
-		List<String> notifications = user.getNotifications();
-		return notifications;
+		return getUserById(id).getNotifications();
 	}
 
 	/**
