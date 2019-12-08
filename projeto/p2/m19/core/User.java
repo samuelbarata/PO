@@ -19,6 +19,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	private List<Notification> _notifications;
 	private Set<Request> _requests;
 	private int _divida;
+	private int _notificationIndex;
 
 	public User(String name, String email) throws UserRegistrationFailedException{
 		if(name.isEmpty() || email.isEmpty())
@@ -31,6 +32,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 		_id = -1;
 		_divida = 0;
 		_requests = new HashSet<>();
+		_notificationIndex=0;
 	}
 
 	public int hashCode(){
@@ -138,6 +140,11 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 * @param noti
 	 */
 	protected void addNotification(Notification noti){
+		if(noti.getType()==NotiType.ENTREGA)
+			for(Notification notifi: _notifications)
+				if(noti.equals(notifi))
+					return;
+		
 		_notifications.add(noti);
 	}
 
@@ -158,10 +165,13 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 * @return User's Notification as List String
 	 */
 	protected List<String> getNotifications(){
-		List<String> res = new ArrayList<>(); 
-		for(Notification myNoti : _notifications){
-			res.add(myNoti.getMessage());
-		}
+		List<String> res = new ArrayList<>();
+		try{
+			for(int index = _notificationIndex;index<_notifications.size();index++){
+				res.add(_notifications.get(index).getMessage());
+			}
+		} catch(IndexOutOfBoundsException e){;}
+		_notificationIndex=_notifications.size();
 		return res;
 	}
 
@@ -192,10 +202,6 @@ public class User implements Comparable<User>, Serializable, Observer{
 			reqi.update(novoDia);
 		}
 		updateActive();
-	}
-
-	protected void resetNotifications(){
-		_notifications.clear();
 	}
 
 	protected void workRequested(Request reqi){

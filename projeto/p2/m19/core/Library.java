@@ -185,7 +185,6 @@ public class Library implements Serializable {
 	protected List<String> getUserNotifications(int id) throws NoSuchUserException{
 		User user = getUserById(id);
 		List<String> notifications = user.getNotifications();
-		user.resetNotifications();
 		return notifications;
 	}
 
