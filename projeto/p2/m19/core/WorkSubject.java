@@ -14,7 +14,7 @@ public interface WorkSubject{
 	public void rmObserver(WorkObserver obs, NotiType type);
 
 	/**
-	 * Sends update to observers
+	 * Sends notification to users subscribed to this type of notification
 	 */
-	public abstract void update();
+	public abstract void update(NotiType label);
 }

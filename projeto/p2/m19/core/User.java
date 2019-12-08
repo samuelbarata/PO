@@ -19,7 +19,6 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	private List<Notification> _notifications;
 	private Set<Request> _requests;
 	private int _divida;
-	private int _notificationIndex;
 
 	public User(String name, String email) throws UserRegistrationFailedException{
 		if(name.isEmpty() || email.isEmpty())
@@ -32,7 +31,6 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 		_id = -1;
 		_divida = 0;
 		_requests = new HashSet<>();
-		_notificationIndex=0;
 	}
 
 	public int hashCode(){
@@ -140,8 +138,6 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	 * @param noti
 	 */
 	protected void addNotification(Notification noti){
-		if(noti.getType()==NotiType.ENTREGA)
-			noti.getWork().rmObserver(this, NotiType.ENTREGA);
 		_notifications.add(noti);
 	}
 
@@ -163,12 +159,9 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	 */
 	protected List<String> getNotifications(){
 		List<String> res = new ArrayList<>();
-		try{
-			for(int index = _notificationIndex;index<_notifications.size();index++){
-				res.add(_notifications.get(index).getMessage());
-			}
-		} catch(IndexOutOfBoundsException e){;}
-		_notificationIndex=_notifications.size();
+		for(Notification noti: _notifications){
+			res.add(noti.getMessage());
+		}
 		return res;
 	}
 
@@ -238,5 +231,4 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 		}
 		_isActive = true;
 	}
-
 }

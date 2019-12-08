@@ -194,6 +194,7 @@ public abstract class Work implements Comparable<Work>, Serializable, WorkSubjec
 	/**
 	 * Sends Notification to every User that asked to be notified
 	 */
+	@Override
 	public void update(NotiType label){
 		List<WorkObserver> observers = null;
 		switch(label){
@@ -208,9 +209,8 @@ public abstract class Work implements Comparable<Work>, Serializable, WorkSubjec
 		for (WorkObserver obs : observers) {
 			obs.update(noti);
 		}
+		if(label == NotiType.ENTREGA)
+			_entrega.clear();
 	}
 
-	@Override public void update(){
-		update(NotiType.ENTREGA);
-	}
 }

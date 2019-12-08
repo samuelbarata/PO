@@ -11,10 +11,10 @@ run: all
 runy: all
 	@java -cp lib/po-uilib.jar:. m19.app.App
 clean:
-	@rm -rf `find m19 -name *.class` tests/*.outhyp tests/*.diff proj2.jar proj.jar 0 1 2 3 4 5 6 7 8 9 10 s requisicao cumpridor faltoso user work works tests/*.out2 notificacao tests.zip
+	@rm -rf `find m19 -name *.class` tests/*.outhyp tests/*.diff proj2.jar proj.jar 0 1 2 3 4 5 6 7 8 9 10 s requisicao cumpridor faltoso user work works tests/*.out2 notificacao tests.zip myLastRun.outhyp
 
 individual: all
-	java -Dimport=tests/A-99-98-M-ok.import -cp lib/po-uilib.jar:. m19.app.App
+	java -Dimport=tests/A-99-98-M-ok.import -cp lib/po-uilib.jar:. -Dout=myLastRun.outhyp m19.app.App
 
 test: all
 	@./runtests.sh
