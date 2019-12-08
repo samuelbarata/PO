@@ -162,6 +162,7 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 		for(Notification noti: _notifications){
 			res.add(noti.getMessage());
 		}
+		_notifications.clear();
 		return res;
 	}
 
