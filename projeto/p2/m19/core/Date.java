@@ -7,11 +7,11 @@ import java.util.List;
 /**
  * @see http://www.newthinktank.com/2012/08/observer-design-pattern-tutorial/
  */
-public class Date implements Serializable, Subject{
+public class Date implements Serializable, DateSubject{
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = -7653987002939589315L;
 	private int _currentDate;
-	private List<Observer> _observers;
+	private List<DateObserver> _observers;
 
 	public Date(){
 		_currentDate=0;
@@ -26,12 +26,12 @@ public class Date implements Serializable, Subject{
 	}
 
 	@Override
-	public void addObserver(Observer obs){
+	public void addObserver(DateObserver obs){
 		_observers.add(obs);
 	}
 
 	@Override
-	public void rmObserver(Observer obs){
+	public void rmObserver(DateObserver obs){
 		_observers.remove(obs);
 	}
 
@@ -40,7 +40,7 @@ public class Date implements Serializable, Subject{
 	 */
 	@Override
 	public void update(){
-		for(Observer obs: _observers){
+		for(DateObserver obs: _observers){
 			obs.update(_currentDate);
 		}
 	}

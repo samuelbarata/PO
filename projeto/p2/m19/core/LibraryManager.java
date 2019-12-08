@@ -211,8 +211,17 @@ public class LibraryManager {
 	 * @param userId
 	 * @param workId
 	 */
-	public void notifyWorkAvailable(int userId, int workId){
+	public void notifyWorkAvailable(int userId, int workId) throws NoSuchUserException, NoSuchWorkException{
 		_library.notifyWorkAvailable(userId, workId);
+	}
+
+	/**
+	 * Asks to be notified when work is requested
+	 * @param userId
+	 * @param workId
+	 */
+	public void showInterest(int userId, int workId)throws NoSuchUserException, NoSuchWorkException{
+		_library.showInterest(userId, workId);
 	}
 
 	/**

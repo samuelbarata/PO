@@ -22,13 +22,6 @@ public class Request implements Serializable{
 		_user=user;
 		_work.requestWork();
 		_user.workRequested(this);
-
-		/**if the user asked for notifications on this work, they will be turned off */
-		for(Observer obs : work.getObservers()){
-			if(obs == user){
-				work.rmObserver(user);
-			}
-		}
 	}
 
 	/**

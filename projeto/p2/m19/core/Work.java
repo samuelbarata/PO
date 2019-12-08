@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Work implements Comparable<Work>, Serializable, Subject{
+public abstract class Work implements Comparable<Work>, Serializable, WorkSubject{
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = -1407186276489357901L;
 	private int _id;
@@ -13,7 +13,8 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 	private int _available;
 	private final String _title;
 	private final Category _category;
-	private List<Observer> _observers = new ArrayList<>();
+	private List<WorkObserver> _entrega;
+	private List<WorkObserver> _request;
 
 	public Work(String titulo, int preco, Category categoria, int exemplares){
 		_price = preco;
@@ -21,6 +22,8 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 		_available = _numberOfCopies;
 		_title = titulo;
 		_category = categoria;
+		_entrega = new ArrayList<>();
+		_request = new ArrayList<>();
 		_id=-1;
 	}
 
@@ -158,30 +161,52 @@ public abstract class Work implements Comparable<Work>, Serializable, Subject{
 
 	
 	@Override
-	public void addObserver(Observer user){
-		_observers.add(user);
+	public void addObserver(WorkObserver user, NotiType type){
+		switch(type){
+			case ENTREGA:
+				_entrega.add(user);
+				break;
+			case REQUISIÇÃO:
+				_request.add(user);
+				break;
+		}
 	}
 
 	@Override
-	public void rmObserver(Observer user){
-		_observers.remove(user);
+	public void rmObserver(WorkObserver user, NotiType type){
+		switch(type){
+			case ENTREGA:
+				_entrega.remove(user);
+				break;
+			case REQUISIÇÃO:
+				_request.remove(user);
+				break;
+		}
 	}
 
 	/**
 	 * @return The list of Users that wants to be notified of this work return
 	 */
-	public List<Observer> getObservers(){
-		return _observers;
+	public List<WorkObserver> getObservers(){
+		return _entrega;
 	}
 
 	/**
 	 * Sends Notification to every User that asked to be notified
 	 */
 	public void update(NotiType label){
-		User _user;
-		for (Observer obs : _observers) {
-			_user = (User) obs;
-			_user.addNotification(new Notification(label, this));
+		List<WorkObserver> observers = null;
+		switch(label){
+			case ENTREGA:
+				observers = _entrega;
+				break;
+			case REQUISIÇÃO:
+				observers = _request;
+				break;
+		}
+		Notification noti = new Notification(label, this);
+		for (WorkObserver obs : observers) {
+			obs.update(noti);
 		}
 	}
 

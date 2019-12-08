@@ -8,7 +8,7 @@ import java.util.HashSet;
 import m19.app.exception.UserRegistrationFailedException;
 import java.io.Serializable;
 
-public class User implements Comparable<User>, Serializable, Observer{
+public class User implements Comparable<User>, Serializable, WorkObserver, DateObserver{
 	/** Serial number for serialization. */
 	private static final long serialVersionUID = 9081337929192883019L;
 	private int _id;
@@ -141,10 +141,7 @@ public class User implements Comparable<User>, Serializable, Observer{
 	 */
 	protected void addNotification(Notification noti){
 		if(noti.getType()==NotiType.ENTREGA)
-			for(Notification notifi: _notifications)
-				if(noti.equals(notifi))
-					return;
-		
+			noti.getWork().rmObserver(this, NotiType.ENTREGA);
 		_notifications.add(noti);
 	}
 

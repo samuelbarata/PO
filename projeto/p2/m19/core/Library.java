@@ -320,12 +320,16 @@ public class Library implements Serializable {
 	 * @param userId
 	 * @param workId
 	 */
-	protected void notifyWorkAvailable(int userId, int workId){
-		try{
-			getWorkById(workId).addObserver(this.getUserById(userId));
-		} catch (NoSuchUserException | NoSuchWorkException e) {
-			//never happens, checked previously
-			e.printStackTrace();
-		}
+	protected void notifyWorkAvailable(int userId, int workId) throws NoSuchUserException, NoSuchWorkException{
+		getWorkById(workId).addObserver(this.getUserById(userId), NotiType.ENTREGA);
+	}
+
+	/**
+	 * Asks to be notified when work is requested
+	 * @param userId
+	 * @param workId
+	 */
+	protected void showInterest(int userId, int workId)throws NoSuchUserException, NoSuchWorkException{
+		getWorkById(workId).addObserver(this.getUserById(userId), NotiType.REQUISIÇÃO);
 	}
 }
