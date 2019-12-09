@@ -123,8 +123,8 @@ public class LibraryManager {
 	 * @return User's Id
 	 * @throws UserRegistrationFailedException
 	 */
-	public int addUser(User user) throws UserRegistrationFailedException{
-		return _library.addUser(user);
+	public int addUser(String name, String email) throws UserRegistrationFailedException{
+		return _library.addNewUser(name, email);
 	}
 
 	/**
@@ -188,8 +188,8 @@ public class LibraryManager {
 	 * @throws NoSuchUserException
 	 * @throws UserIsActiveException
 	 */
-	public void payFine(int _userId) throws NoSuchUserException, UserIsActiveException{
-		_library.payFine(_userId);
+	public void payFine(int userId) throws NoSuchUserException, UserIsActiveException{
+		_library.payFine(userId);
 	}
 
 	/**

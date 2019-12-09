@@ -11,7 +11,7 @@ run: all
 runy: all
 	@java -cp lib/po-uilib.jar:. m19.app.App
 clean:
-	@rm -rf `find m19 -name *.class` tests/*.outhyp tests/*.diff proj2.jar proj.jar 0 1 2 3 4 5 6 7 8 9 10 s requisicao cumpridor faltoso user work works tests/*.out2 notificacao tests.zip myLastRun.outhyp
+	@rm -rf `find m19 -name *.class` tests/*.outhyp tests/*.diff proj2.jar proj.jar 0 1 2 3 4 5 6 7 8 9 10 s requisicao cumpridor faltoso user work works tests/*.out2 notificacao tests.zip myLastRun.outhyp myReport.html
 
 individual: all
 	java -Dimport=tests/A-99-95-M-ok.import -cp lib/po-uilib.jar:. m19.app.App
@@ -24,3 +24,7 @@ jar:
 
 zipTestes:
 	zip tests.zip tests/00.md tests/*.in tests/*.out tests/*.import
+
+analyse:
+	#pmd -f html -d proj.jar -R category/java/bestpractices.xml -ignorelist ignorer.txt -auxclasspath lib/ > myReport.html
+	#pmd -f html -d proj.jar -R rulesets/java/quickstart.xml -ignorelist ignorer.txt -auxclasspath lib/ > myReport.html

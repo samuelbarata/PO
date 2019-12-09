@@ -1,7 +1,6 @@
 package m19.app.works;
 
 import m19.core.LibraryManager;
-import m19.app.works.Message;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Input;

@@ -60,7 +60,7 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	protected void addDivida(int payment){
 		if(payment==0)//pagar tudo
 			_divida=0;
-		_divida = (_divida+payment <= 0) ? 0 : _divida+payment;
+		_divida = _divida+payment <= 0 ? 0 : _divida+payment;
 		updateActive();
 	}
 

@@ -1,7 +1,5 @@
 package m19.core;
 
-import m19.core.User;
-import m19.core.Work;
 import m19.app.exception.RuleFailedException;
 
 /**

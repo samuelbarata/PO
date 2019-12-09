@@ -1,8 +1,6 @@
 package m19.app.users;
 
 import m19.core.LibraryManager;
-import m19.core.User;
-import m19.app.users.Message;
 import pt.tecnico.po.ui.Command;
 import pt.tecnico.po.ui.DialogException;
 import pt.tecnico.po.ui.Display;
@@ -36,7 +34,7 @@ public class DoRegisterUser extends Command<LibraryManager> implements Message{
 		_form.parse();
 		_name=this._name.value();
 		_email=this._email.value();
-		uId = _receiver.addUser(new User(_name, _email));
+		uId = _receiver.addUser(_name, _email);
 		_display.addLine(Message.userRegistrationSuccessful(uId));
 		_display.display();
 	}

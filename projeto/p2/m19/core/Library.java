@@ -8,9 +8,13 @@ import java.util.List;
 import java.util.Collections;
 import java.io.IOException;
 
-import m19.app.exception.*;
-import m19.core.exception.*;
-
+import m19.app.exception.NoSuchUserException;
+import m19.app.exception.NoSuchWorkException;
+import m19.app.exception.UserRegistrationFailedException;
+import m19.app.exception.RuleFailedException;
+import m19.app.exception.UserIsActiveException;
+import m19.app.exception.WorkNotBorrowedByUserException;
+import m19.core.exception.BadEntrySpecificationException;
 /**
  * Class that represents the library as a whole.
  */
@@ -101,6 +105,17 @@ public class Library implements Serializable {
 		}
 		work.setId(getNextWId());
 		_works.add(work);
+	}
+
+	/**
+	 * Creates new User and adds it to the library
+	 * @param name
+	 * @param email
+	 * @return new user id
+	 * @throws UserRegistrationFailedException
+	 */
+	protected int addNewUser(String name, String email)throws UserRegistrationFailedException{
+		return addUser(new User(name, email));
 	}
 
 	/**

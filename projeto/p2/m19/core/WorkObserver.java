@@ -5,5 +5,5 @@ public interface WorkObserver{
 	 * recives new notification
 	 * @param noti
 	 */
-	public void update(Notification noti);
+	void update(Notification noti);
 }
