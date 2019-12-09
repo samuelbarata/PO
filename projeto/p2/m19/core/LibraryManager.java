@@ -66,7 +66,7 @@ public class LibraryManager {
 	 * @see https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335626781/11%20-%20Java%20IO.pdf slides 30;32
 	 */
 	public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
-		//ObjectInputStream obIn = null;
+		_filename = filename;
 		try (ObjectInputStream obIn = new ObjectInputStream(new FileInputStream(filename))){
 			Object in = obIn.readObject();
 			_library = (Library)in;
@@ -85,21 +85,6 @@ public class LibraryManager {
 		} catch (IOException | BadEntrySpecificationException e) {
 			throw new ImportFileException(e);
 		}
-	}
-
-	/**
-	 * @return Associated filename
-	 */
-	public String getFilename(){
-		return _filename;
-	}
-
-	/**
-	 * Set's the Library associated file
-	 * @param filename
-	 */
-	public void setFileName(String filename){
-		_filename = filename;
 	}
 
 	/**
@@ -210,6 +195,8 @@ public class LibraryManager {
 	 * Ask's to be notified when a work is available
 	 * @param userId
 	 * @param workId
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
 	 */
 	public void notifyWorkAvailable(int userId, int workId) throws NoSuchUserException, NoSuchWorkException{
 		_library.notifyWorkAvailable(userId, workId);
@@ -219,6 +206,8 @@ public class LibraryManager {
 	 * Asks to be notified when work is requested
 	 * @param userId
 	 * @param workId
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
 	 */
 	public void showInterest(int userId, int workId)throws NoSuchUserException, NoSuchWorkException{
 		_library.showInterest(userId, workId);

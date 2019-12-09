@@ -119,7 +119,8 @@ public abstract class Work implements Comparable<Work>, Serializable, WorkSubjec
 	 */
 	@Override
 	public boolean equals(Object other){
-		if(!(other instanceof Work)) return false;
+		if(!(other instanceof Work))
+			return false;
 		Work otherWork = (Work)other;
 		return this.getTitle().equals(otherWork.getTitle());
 	}
@@ -169,6 +170,8 @@ public abstract class Work implements Comparable<Work>, Serializable, WorkSubjec
 			case REQUISIÇÃO:
 				_request.add(user);
 				break;
+			default:
+				break;
 		}
 	}
 
@@ -180,6 +183,8 @@ public abstract class Work implements Comparable<Work>, Serializable, WorkSubjec
 				break;
 			case REQUISIÇÃO:
 				_request.remove(user);
+				break;
+			default:
 				break;
 		}
 	}
@@ -203,6 +208,8 @@ public abstract class Work implements Comparable<Work>, Serializable, WorkSubjec
 				break;
 			case REQUISIÇÃO:
 				observers = _request;
+				break;
+			default:
 				break;
 		}
 		Notification noti = new Notification(label, this);

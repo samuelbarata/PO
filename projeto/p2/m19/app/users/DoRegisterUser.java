@@ -28,13 +28,13 @@ public class DoRegisterUser extends Command<LibraryManager> implements Message{
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException{
-		String _name, _email;
+		String name, email;
 		int uId;
 		_display.clear();
 		_form.parse();
-		_name=this._name.value();
-		_email=this._email.value();
-		uId = _receiver.addUser(_name, _email);
+		name=_name.value();
+		email=_email.value();
+		uId = _receiver.addUser(name, email);
 		_display.addLine(Message.userRegistrationSuccessful(uId));
 		_display.display();
 	}

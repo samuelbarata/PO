@@ -25,29 +25,28 @@ public class DoRequestWork extends Command<LibraryManager> {
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException {
-		int _userId, _workId, returnDate;
-		Input<Integer> _userIdForm;
-		Input<Integer> _workIdForm;
-		Input<String> _notiPref;
-
-		_form.clear();
-		_userIdForm = _form.addIntegerInput(Message.requestUserId());
-		_workIdForm = _form.addIntegerInput(Message.requestWorkId());
-		_form.parse();
-		_userId = _userIdForm.value();
-		_workId = _workIdForm.value();
+		int userId, workId, returnDate;
+		Input<Integer> userIdForm;
+		Input<Integer> workIdForm;
+		Input<String> notiPref;
 		_display.clear();
+		_form.clear();
+		userIdForm = _form.addIntegerInput(Message.requestUserId());
+		workIdForm = _form.addIntegerInput(Message.requestWorkId());
+		_form.parse();
+		userId = userIdForm.value();
+		workId = workIdForm.value();
 		try{
-			returnDate = _receiver.makeRequest(_userId, _workId);
-			_display.addLine(Message.workReturnDay(_workId, returnDate));
+			returnDate = _receiver.makeRequest(userId, workId);
+			_display.addLine(Message.workReturnDay(workId, returnDate));
 			_display.display();
 		} catch(RuleFailedException e) {
 			if(e.getRuleIndex() == 3){
 				_form.clear();
-				_notiPref = _form.addStringInput(Message.requestReturnNotificationPreference());
+				notiPref = _form.addStringInput(Message.requestReturnNotificationPreference());
 				_form.parse();
-				if(_notiPref.value().equals("s")){
-					_receiver.notifyWorkAvailable(_userId, _workId);
+				if(notiPref.value().equals("s")){
+					_receiver.notifyWorkAvailable(userId, workId);
 				}
 			}else{
 				throw e;

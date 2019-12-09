@@ -114,7 +114,8 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	 */
 	@Override
 	public boolean equals(Object other){
-		if(!(other instanceof User)) return false;
+		if(!(other instanceof User))
+			return false;
 		User otherUser = (User)other;
 		return this.getName().equals(otherUser.getName()) && this.getEmail().equals(otherUser.getEmail());
 	}
@@ -132,14 +133,6 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	 */
 	protected int getId(){
 		return _id;
-	}
-
-	/**
-	 * Adds a Notification to the user
-	 * @param noti
-	 */
-	protected void addNotification(Notification noti){
-		_notifications.add(noti);
 	}
 
 	/**
@@ -176,13 +169,12 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	}
 
 	/**
-	 * Recives a Notification when a work that hasn't available was returned
-	 * by another user
+	 * Recives a Notification
 	 * @frequency When work returned
 	 */
 	@Override
 	public void update(Notification noti){
-		this.addNotification(noti);
+		_notifications.add(noti);
 	}
 
 	/**
@@ -196,6 +188,10 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 		updateActive();
 	}
 
+	/**
+	 * Adds a request to this user
+	 * @param reqi
+	 */
 	protected void workRequested(Request reqi){
 		_requests.add(reqi);
 	}

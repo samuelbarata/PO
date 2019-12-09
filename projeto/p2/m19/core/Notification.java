@@ -40,16 +40,4 @@ public class Notification implements Serializable{
 	protected Work getWork(){
 		return _work;
 	}
-
-	@Override
-	public boolean equals(Object o){
-		if(o instanceof Notification){
-			Notification other = (Notification) o;
-			return this.getType().equals(other.getType()) && this.getWork().equals(other.getWork());
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode(){return super.hashCode();}
 }

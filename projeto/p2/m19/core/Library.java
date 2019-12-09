@@ -15,6 +15,7 @@ import m19.app.exception.RuleFailedException;
 import m19.app.exception.UserIsActiveException;
 import m19.app.exception.WorkNotBorrowedByUserException;
 import m19.core.exception.BadEntrySpecificationException;
+
 /**
  * Class that represents the library as a whole.
  */
@@ -70,7 +71,7 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * Advances date
+	 * Advances date and updates user's situation
 	 * @param nDays Days to advance
 	 * @return current date
 	 */
@@ -94,15 +95,10 @@ public class Library implements Serializable {
 	}
 	
 	/**
-	 * checks if a work with the same title exists;
-	 * if not, adds it
+	 * adds a work to the library
 	 * @param work
 	 */
 	void addWork(Work work){
-		for(Work myWork:_works){
-			if(myWork.equals(work))
-				return;
-		}
 		work.setId(getNextWId());
 		_works.add(work);
 	}
@@ -119,7 +115,7 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * checks if a user with the same name exists;
+	 * checks if a user is already registered;
 	 * if not, adds it
 	 * @param user
 	 * @throws UserRegistrationFailedException
@@ -205,7 +201,7 @@ public class Library implements Serializable {
 
 	/**
 	 * 
-	 * @param id User
+	 * @param id User Id
 	 * @return User with given Id
 	 * @throws NoSuchUserException
 	 */
@@ -221,7 +217,7 @@ public class Library implements Serializable {
 
 	/**
 	 * 
-	 * @param id Work
+	 * @param id Work Id
 	 * @return Work with given Id
 	 * @throws NoSuchWorkException
 	 */
@@ -308,7 +304,7 @@ public class Library implements Serializable {
 
 	/**
 	 * Return's a work to the library
-	 * @param reqi
+	 * @param reqi Request
 	 * @return fine
 	 */
 	private int returnWork(Request reqi){
@@ -334,6 +330,8 @@ public class Library implements Serializable {
 	 * Asks to be notified if the work is available
 	 * @param userId
 	 * @param workId
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
 	 */
 	protected void notifyWorkAvailable(int userId, int workId) throws NoSuchUserException, NoSuchWorkException{
 		getWorkById(workId).addObserver(this.getUserById(userId), NotiType.ENTREGA);
@@ -343,6 +341,8 @@ public class Library implements Serializable {
 	 * Asks to be notified when work is requested
 	 * @param userId
 	 * @param workId
+	 * @throws NoSuchUserException
+	 * @throws NoSuchWorkException
 	 */
 	protected void showInterest(int userId, int workId)throws NoSuchUserException, NoSuchWorkException{
 		getWorkById(workId).addObserver(this.getUserById(userId), NotiType.REQUISIÇÃO);

@@ -63,7 +63,7 @@ public enum UserBehavior{
 	/**
 	 * @return maximum requests this user can have at a given time
 	 */
-	public int getMaxRequests(){
+	protected int getMaxRequests(){
 		return _copies;
 	}
 
@@ -71,7 +71,7 @@ public enum UserBehavior{
 	 * @param numeroExemplares
 	 * @return deadline acording to user behaviour and number of work's copies
 	 */
-	public int getDeadline(int numeroExemplares){
+	protected int getDeadline(int numeroExemplares){
 		if(numeroExemplares==1){
 			return _um;
 		}

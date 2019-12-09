@@ -33,7 +33,7 @@ public class Book extends Work implements Serializable{
 	 */
 	@Override
 	public String getDescription(){
-		return super.getDescription("Livro",  " - " + _author + " - " + _isbn);
+		return super.getDescription("Livro", " - " + _author + " - " + _isbn);
 	}
 
 	/**
@@ -44,6 +44,4 @@ public class Book extends Work implements Serializable{
 	protected boolean search(String searchQuery){
 		return super.search(searchQuery) || super.containsIgnoreCase(_author, searchQuery);
 	}
-
-
 }

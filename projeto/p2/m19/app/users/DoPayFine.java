@@ -24,9 +24,9 @@ public class DoPayFine extends Command<LibraryManager> {
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException {
-		int _userId;
+		int userId;
 		_form.parse();
-		_userId = _inputForm.value();
-		_receiver.payFine(_userId);
+		userId = _inputForm.value();
+		_receiver.payFine(userId);
 	}
 }

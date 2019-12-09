@@ -24,27 +24,27 @@ public class DoReturnWork extends Command<LibraryManager> {
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException {
-		int _userId, _workId, divida;
-		Input<Integer> _userIdForm;
-		Input<Integer> _workIdForm;
-		Input<String> _payment;
+		int userId, workId, divida;
+		Input<Integer> userIdForm;
+		Input<Integer> workIdForm;
+		Input<String> payment;
 
 		_form.clear();
-		_userIdForm = _form.addIntegerInput(Message.requestUserId());
-		_workIdForm = _form.addIntegerInput(Message.requestWorkId());
+		userIdForm = _form.addIntegerInput(Message.requestUserId());
+		workIdForm = _form.addIntegerInput(Message.requestWorkId());
 		_form.parse();
-		_userId = _userIdForm.value();
-		_workId = _workIdForm.value();
-		divida = _receiver.returnWork(_userId, _workId);
+		userId = userIdForm.value();
+		workId = workIdForm.value();
+		divida = _receiver.returnWork(userId, workId);
 		if(divida > 0){
 			_form.clear();
 			_display.clear();
-			_display.addLine(Message.showFine(_userId, divida));
+			_display.addLine(Message.showFine(userId, divida));
 			_display.display();
-			_payment = _form.addStringInput(Message.requestFinePaymentChoice());
+			payment = _form.addStringInput(Message.requestFinePaymentChoice());
 			_form.parse();
-			if(_payment.value().equals("s")){
-				_receiver.payFine(_userId);
+			if(payment.value().equals("s")){
+				_receiver.payFine(userId);
 			}
 		}
 	}

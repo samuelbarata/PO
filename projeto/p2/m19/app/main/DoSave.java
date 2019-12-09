@@ -26,16 +26,14 @@ public class DoSave extends Command<LibraryManager>{
 	/** @see pt.tecnico.po.ui.Command#execute() */
 	@Override
 	public final void execute() throws DialogException{
-		String _filename;
 		try{
 			_receiver.save();
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		} catch(MissingFileAssociationException e){
 			_form.parse();
-			_filename=_inputForm.value();
 			try{
-				_receiver.saveAs(_filename);
+				_receiver.saveAs(_inputForm.value());
 			} catch(MissingFileAssociationException | IOException ex){
 				ex.printStackTrace();
 			}

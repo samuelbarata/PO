@@ -27,7 +27,7 @@ public class DoShowUserNotifications extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException {
 		int userId;
-		_form.parse(true);
+		_form.parse();
 		userId = _userId.value();
 		_display.clear();
 		for(String myNoti: _receiver.getUserNotifications(userId)){

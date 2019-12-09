@@ -28,9 +28,8 @@ public class DoPerformSearch extends Command<LibraryManager> {
 	public final void execute() throws DialogException{
 		String searchQuery;
 		_display.clear();
-		_form.parse(true);
+		_form.parse();
 		searchQuery = _searchQuery.value();
-		_display.clear();
 		for(String myString : _receiver.searchWork(searchQuery)){
 			_display.addLine(myString);
 		}
