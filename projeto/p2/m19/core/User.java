@@ -19,6 +19,7 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	private List<Notification> _notifications;
 	private Set<Request> _requests;
 	private int _divida;
+	private int _behaviorCounter;
 
 	public User(String name, String email) throws UserRegistrationFailedException{
 		if(name.isEmpty() || email.isEmpty())
@@ -31,6 +32,7 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 		_id = -1;
 		_divida = 0;
 		_requests = new HashSet<>();
+		_behaviorCounter=0;
 	}
 
 	@Override
@@ -197,11 +199,16 @@ public class User implements Comparable<User>, Serializable, WorkObserver, DateO
 	}
 
 	/**
-	 * Return a work
+	 * Return a work update user state
 	 * @param reqi Request
 	 */
 	protected void workReturned(Request reqi){
-		_behavior = reqi.isLate() ? _behavior.badReturn() : _behavior.goodReturn();
+		if(reqi.isLate()){
+			_behaviorCounter=_behaviorCounter > 0 ? -1 : _behaviorCounter-1;
+		} else {
+			_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
+		}
+		_behavior =  _behavior.updateState(_behaviorCounter);
 		_requests.remove(reqi);
 		updateActive();
 	}

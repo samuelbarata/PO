@@ -36,7 +36,6 @@ public enum UserBehavior{
 	private final int _um;			//deadline 1 exemplar
 	private final int _umCinco;		//deadline 1-5 exemplares
 	private final int _cincoMais;	//deadline 5+ exemplares
-	private int _behaviorCounter;
 
 	/**
 	 * 
@@ -52,7 +51,6 @@ public enum UserBehavior{
 		_um = a;
 		_umCinco = b;
 		_cincoMais = c;
-		_behaviorCounter=0;
 	}
 
 	@Override
@@ -79,24 +77,6 @@ public enum UserBehavior{
 			return _cincoMais;
 		}
 		return _umCinco;
-	}
-
-	/**
-	 * changes the behaviour counter
-	 * @return new user behaviour
-	 */
-	protected UserBehavior goodReturn(){
-		_behaviorCounter= _behaviorCounter>0 ? _behaviorCounter+1 : 1;
-		return updateState(_behaviorCounter);
-	}
-
-	/**
-	 * changes the behaviour counter
-	 * @return new user behaviour
-	 */
-	protected UserBehavior badReturn(){
-		_behaviorCounter= _behaviorCounter > 0 ? -1 : _behaviorCounter-1;
-		return updateState(_behaviorCounter);
 	}
 
 	/**
