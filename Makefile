@@ -8,6 +8,9 @@ all: lib/po-uilib.jar
 run: all
 	@java -Dimport=tests/A-99-99-M-ok.import -cp lib/po-uilib.jar:. m19.app.App
 
+graph: clean all
+	@java -Dimport=tests/A-99-99-M-ok.import -Dui=swing -cp lib/po-uilib.jar:. m19.app.App
+
 runy: all
 	@java -cp lib/po-uilib.jar:. m19.app.App
 clean:
