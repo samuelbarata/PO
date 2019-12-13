@@ -35,8 +35,7 @@ public class DoRegisterUser extends Command<LibraryManager> implements Message{
 		name=_name.value();
 		email=_email.value();
 		uId = _receiver.addUser(name, email);
-		_display.addLine(Message.userRegistrationSuccessful(uId));
-		_display.display();
+		_display.popup(Message.userRegistrationSuccessful(uId));
 	}
 
 }

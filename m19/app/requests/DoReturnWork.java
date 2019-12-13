@@ -39,8 +39,7 @@ public class DoReturnWork extends Command<LibraryManager> {
 		if(divida > 0){
 			_form.clear();
 			_display.clear();
-			_display.addLine(Message.showFine(userId, divida));
-			_display.display();
+			_display.popup(Message.showFine(userId, divida));
 			payment = _form.addStringInput(Message.requestFinePaymentChoice());
 			_form.parse();
 			if(payment.value().equals("s")){

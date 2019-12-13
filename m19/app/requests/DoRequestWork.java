@@ -38,8 +38,7 @@ public class DoRequestWork extends Command<LibraryManager> {
 		workId = workIdForm.value();
 		try{
 			returnDate = _receiver.makeRequest(userId, workId);
-			_display.addLine(Message.workReturnDay(workId, returnDate));
-			_display.display();
+			_display.popup(Message.workReturnDay(workId, returnDate));
 		} catch(RuleFailedException e) {
 			if(e.getRuleIndex() == 3){
 				_form.clear();
