@@ -140,6 +140,12 @@ public class LibraryManager {
 		return _library.getAllUsers();
 	}
 
+
+public List<String> getAllFines(){
+	return _library.getAllFines();
+}
+
+
 	/**
 	 * Get's all work's descriptions ordered by id
 	 * @return List of Strings

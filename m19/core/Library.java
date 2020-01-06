@@ -121,11 +121,15 @@ public class Library implements Serializable {
 	 * @throws UserRegistrationFailedException
 	 */
 	protected int addUser(User user) throws UserRegistrationFailedException{
+		int id;
 		for(User myUser:_users){
 			if(myUser.equals(user))
 				throw new UserRegistrationFailedException(user.getName(), user.getEmail());
 		}
-		user.setId(getNextUId());
+		id = getNextUId();
+		if (id > 10)
+			throw new UserRegistrationFailedException(user.getName(), user.getEmail());
+		user.setId(id);
 		_users.add(user);
 		return user.getId();
 	}
@@ -161,6 +165,23 @@ public class Library implements Serializable {
 		Collections.sort(sorted);
 		return listToString(sorted);
 	}
+
+
+	protected List<String> getAllFines(){
+		List<User> multas = new ArrayList<>();
+		for(User myUser:_users){
+			if (myUser.getDivida() > 0){
+				multas.add(myUser);
+			}
+		}
+		Collections.sort(multas);
+		return listToString(multas);
+	}
+
+
+
+
+
 
 	/**
 	 * @return Sorted Works String List
