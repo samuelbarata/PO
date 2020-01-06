@@ -140,6 +140,12 @@ public class LibraryManager {
 		return _library.getAllUsers();
 	}
 
+
+	public User getMostValue(){
+		return _library.getMostValue();
+	}
+
+
 	/**
 	 * Get's all work's descriptions ordered by id
 	 * @return List of Strings

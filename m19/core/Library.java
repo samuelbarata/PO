@@ -125,6 +125,9 @@ public class Library implements Serializable {
 			if(myUser.equals(user))
 				throw new UserRegistrationFailedException(user.getName(), user.getEmail());
 		}
+		if (user.getName().equals(user.getEmail())){
+			throw new UserRegistrationFailedException(user.getName(), user.getEmail());
+		}
 		user.setId(getNextUId());
 		_users.add(user);
 		return user.getId();
@@ -161,6 +164,33 @@ public class Library implements Serializable {
 		Collections.sort(sorted);
 		return listToString(sorted);
 	}
+
+
+	protected User getMostValue(){
+		int total = 0, maior = 0;
+		User valioso = null;
+		List<User> sorted = new ArrayList<>();
+		for(User myUser:_users){
+			sorted.add(myUser);
+		}
+		Collections.sort(sorted);
+		
+		for(User myUser : sorted){
+			for (Request req : myUser.getRequests()){
+				total += req.getWork().getPrice();
+
+			}
+			if (total >= maior){
+				maior = total;
+				valioso = myUser;
+				total = 0;
+			}
+		}
+		return valioso;
+	}
+
+
+
 
 	/**
 	 * @return Sorted Works String List
