@@ -174,6 +174,78 @@ public class Library implements Serializable {
 		return listToString(sorted);
 	}
 
+
+	protected List<String> getAllAvailable(){
+		List<Work> sorted = new ArrayList<>();
+		for(Work myWork:_works){
+			if (myWork.getAvailable() > 0){
+				sorted.add(myWork);
+			}
+		}
+		Collections.sort(sorted);
+		return listToString(sorted);
+	}
+
+
+
+	protected int removeUsers(String name){
+		int total = 0;
+		for(User myUser:_users){
+			if (myUser.getName().contains(name)){
+				if (myUser.getRequests() == null){
+					_users.remove(myUser);
+					total ++;
+				}
+			}
+		}
+		return total;
+	}
+
+
+
+	public int getNumberWorks(){
+		int total = 0;
+		for (Work myWork: _works){
+			total += myWork.getNumberOfCopies();
+		}
+		return total;
+	}
+
+
+	public int getNumberAWorks(){
+		int total = 0;
+		for (Work myWork: _works){
+			total += myWork.getAvailable();
+		}
+		return total;
+	}
+
+
+	public Work getMostAv(){
+		Work obra = null;
+		int este = 0, maior = 0;
+		for (Work myWork : _works){
+			este = myWork.getAvailable();
+			if (este > maior){
+				este = maior;
+				if (obra == null){
+					obra = myWork;
+				}
+				else{ /*
+					if (myWork.getTitle.length() < obra.getTitle.length()){
+						*/
+						obra = myWork;
+					}
+				}
+				
+			}
+
+		
+		return obra;
+	}
+
+
+
 	/**
 	 * Recebe uma string e pesquisa nos campos relevantes do work
 	 * @param searchQuery

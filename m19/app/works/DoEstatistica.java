@@ -8,14 +8,14 @@ import pt.tecnico.po.ui.DialogException;
 /**
  * 4.3.2. Display all works.
  */
-public class DoDisplayWorks extends Command<LibraryManager> {
+public class DoEstatistica extends Command<LibraryManager> {
 
 	private Display _display;
 
 	/**
 	 * @param receiver
 	 */
-	public DoDisplayWorks(LibraryManager receiver) {
+	public DoEstatistica(LibraryManager receiver) {
 		super(Label.SHOW_WORKS, receiver);
 		_display = new Display();
 	}
@@ -24,9 +24,13 @@ public class DoDisplayWorks extends Command<LibraryManager> {
 	@Override
 	public final void execute() throws DialogException{
 		_display.clear();
-		for(String myString : _receiver.getAllAvailable()){
-			_display.addLine(myString);
-		}
+		
+		_display.addLine(_receiver.getNumberWorks());
+		
+		_display.addLine(_receiver.getNumberAWorks());
+
+		_display.addLine(_receiver.getMostAv().getDescription());
+
 		_display.display();
 	}
 }

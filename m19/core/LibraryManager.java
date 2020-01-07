@@ -148,6 +148,32 @@ public class LibraryManager {
 		return _library.getAllWorks();
 	}
 
+
+	public List<String> getAllAvailable(){
+		return _library.getAllAvailable();
+	}
+
+
+
+	public int removeUsers(String name){
+		return _library.removeUsers(name);
+	}
+
+
+	public int getNumberWorks(){
+		return _library.getNumberWorks();
+	}
+
+	public int getNumberAWorks(){
+		return _library.getNumberAWorks();
+	}
+
+	public Work getMostAv(){
+		return _library.getMostAv();
+	}
+
+
+
 	/**
 	 * Get's all the works that match the given searchQuery
 	 * @param searchQuery
